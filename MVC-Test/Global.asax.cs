@@ -15,7 +15,7 @@ namespace MVC_Test
     {
         protected void Application_Start()
         {// this line bellow get a database recreated from seed data every time you start the application
-            Database.SetInitializer(new CloudbassInitializer());
+           // Database.SetInitializer(new CloudbassInitializer());
 
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);

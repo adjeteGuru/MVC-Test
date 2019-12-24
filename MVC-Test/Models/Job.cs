@@ -14,10 +14,10 @@ namespace MVC_Test.Models
         public  string Name { get; set; }
         public  string Description { get; set; }
         public  string Location { get; set; }
-        public  DateTime DateCreated { get; set; }
-        public  DateTime StartDate { get; set; }
-        public DateTime TXDate { get; set; }
-        public  DateTime EndDate { get; set; }
+        public  DateTime? DateCreated { get; set; }
+        public  DateTime? StartDate { get; set; }
+        public DateTime? TXDate { get; set; }
+        public  DateTime? EndDate { get; set; }
         public  string Coordinator { get; set; }
         public  string CommercialLead { get; set; }
         public  int ClientId { get; set; }

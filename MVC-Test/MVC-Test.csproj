@@ -183,6 +183,8 @@
     <Compile Include="Controllers\Has_RoleController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IEmployeeService.cs" />
+    <Compile Include="Controllers\JobController.cs" />
+    <Compile Include="Controllers\JobDetailsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Controllers\ScheduleController.cs" />
@@ -194,6 +196,18 @@
     <Compile Include="Migrations\201912201550089_Initial.cs" />
     <Compile Include="Migrations\201912201550089_Initial.designer.cs">
       <DependentUpon>201912201550089_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912231633446_AddNullableToDate.cs" />
+    <Compile Include="Migrations\201912231633446_AddNullableToDate.designer.cs">
+      <DependentUpon>201912231633446_AddNullableToDate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912240915596_AddTrucksReturn.cs" />
+    <Compile Include="Migrations\201912240915596_AddTrucksReturn.designer.cs">
+      <DependentUpon>201912240915596_AddTrucksReturn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912241056100_InitiateJobVM.cs" />
+    <Compile Include="Migrations\201912241056100_InitiateJobVM.designer.cs">
+      <DependentUpon>201912241056100_InitiateJobVM.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account.cs" />
@@ -210,6 +224,7 @@
     <Compile Include="Models\Schedule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\JobVM.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -217,6 +232,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="dhxscheduler.sample.mvc3.readme.txt" />
+    <Content Include="Docs\Migrations.txt" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -511,10 +527,15 @@
     <Content Include="Views\Client\Details.cshtml" />
     <Content Include="Views\Client\Edit.cshtml" />
     <Content Include="Views\Client\Index.cshtml" />
+    <Content Include="Views\Job\Create.cshtml" />
+    <Content Include="Views\Job\Delete.cshtml" />
+    <Content Include="Views\Job\Details.cshtml" />
+    <Content Include="Views\Job\Edit.cshtml" />
+    <Content Include="Views\Job\Index.cshtml" />
+    <Content Include="Views\JobDetails\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="ViewModels\" />
     <Folder Include="Views\Employee\" />
   </ItemGroup>
   <ItemGroup>
@@ -537,6 +558,15 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201912201550089_Initial.resx">
       <DependentUpon>201912201550089_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912231633446_AddNullableToDate.resx">
+      <DependentUpon>201912231633446_AddNullableToDate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912240915596_AddTrucksReturn.resx">
+      <DependentUpon>201912240915596_AddTrucksReturn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912241056100_InitiateJobVM.resx">
+      <DependentUpon>201912241056100_InitiateJobVM.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

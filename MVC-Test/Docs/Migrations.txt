@@ -1,0 +1,29 @@
+﻿Enable-Migrations -ContextTypeName CloudbassContext -MigrationsDirectory Migrations
+
+
+Scaffolds a migration script for any pending model changes:
+
+Add-Migration -ConfigurationTypeName MVC_Test.Migrations.Configuration "InitialCreate"
+
+
+Update-Database -ConfigurationTypeName MVC_Test.Migrations.Configuration 
+
+
+<add name="CloudbassContext" connectionString="Data Source=(LocalDb)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\MVCTest.mdf;Initial Catalog = MVCTest;Integrated Security=True" providerName="System.Data.SqlClient" />
+
+ <add name="CloudbassContext" connectionString="Data Source=(LocalDb)\MSSQLLocalDB;Initial Catalog = MVCTestDB;Integrated Security=SSPI;" providerName="System.Data.SqlClient" />  
+  Add-Migration First -IgnoreChanges
+
+
+  Updates the database to the current model by applying pending migrations:
+  Update-Database -Script -SourceMigration $InitialDatabase
+
+
+  Runs the Down method to roll-back any migrations that have been applied to the database
+  Update-Database -TargetMigration $InitialDatabase
+
+  //BEFORE HAND MAKE SURE THERE IS AN ARGUMENT FOR THE METHOD TO ALLOW THE ARGUMENT TO BE PASSED TO
+  //SO HERE WE CREATE "context" ARGUMENT FROM  CloudbassContext CLASS TO LINK THE PARTICULAR OBJECT OF SCHEDULE TO THE FOREIGN KEY JOBiD TO THE APROPRIATE SCHEDULE IT BELONG TO.
+  eg: getJob(CloudbassContext context)
+  // GO TO JOBS COLLECTION AND FIND cb13 AND ASSIGN THAT Id TO JobsId
+  JobId = context.Jobs.Find("cb13").Id

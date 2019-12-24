@@ -19,7 +19,7 @@ namespace MVC_Test.Models
        
         public  bool IsAvailable { get; set; }
     
-        public  DateTime StartDate { get; set; }
+        public  DateTime? StartDate { get; set; }
         public  string Photo { get; set; }
         public  string NextOfKin { get; set; }
         public  string Alergy { get; set; }

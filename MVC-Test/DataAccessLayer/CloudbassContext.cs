@@ -10,6 +10,8 @@ namespace MVC_Test.DataAccessLayer
 {
     public class CloudbassContext : DbContext
     {//the name of the connection string added in the web.config is passews in to this constructor below
+       
+        //this is a constroctor to indicate the database the connecting string he's going to use to talk to DB
         public CloudbassContext() : base("CloudbassContext")
         {
         }

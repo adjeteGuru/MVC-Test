@@ -31,7 +31,7 @@
 
 
             context.Jobs.AddOrUpdate(
-                j => new {j.Id, j.Name, j.Description }, CloudbassInitializer.getJobs(context).ToArray());
+                j => new {j.Name, j.Description, j.Location, j.StartDate, j.TXDate, j.EndDate, j.Coordinator, j.CommercialLead, j.ClientId, j.Status }, CloudbassInitializer.getJobs(context).ToArray());
             
             context.SaveChanges();
 
@@ -51,19 +51,26 @@
 
             context.SaveChanges();
 
+            //context.Has_Roles.AddOrUpdate(
+            // hs => new { hs.StartTime, hs.EndTime, hs.EmployeeId, hs.RoleId}, CloudbassInitializer.getHas_Roles(context).ToArray());
+
+            //context.SaveChanges();
+
             context.Has_Roles.AddOrUpdate(
-             hs => new { hs.StartTime, hs.EndTime}, CloudbassInitializer.getHas_Roles(context).ToArray());
+             hs => hs.Id, CloudbassInitializer.getHas_Roles(context).ToArray());
 
             context.SaveChanges();
 
 
             context.Crews.AddOrUpdate(
-             cr => new {cr.StartTime, cr.EndTime, cr.TotalHours }, CloudbassInitializer.getCrews(context).ToArray());
+             cr => new { cr.StartTime, cr.EndTime, cr.TotalHours, cr.Cost, cr.ScheduleId, cr.Has_RoleId }, CloudbassInitializer.getCrews(context).ToArray());
 
             context.SaveChanges();
 
+
+
             context.Schedules.AddOrUpdate(
-             sc => new { sc.text, sc.start_date, sc.end_date, sc.SchType}, CloudbassInitializer.getSchedules(context).ToArray());
+             sc => new {sc.text, sc.start_date, sc.end_date, sc.SchType}, CloudbassInitializer.getSchedules().ToArray());
 
             context.SaveChanges();
 

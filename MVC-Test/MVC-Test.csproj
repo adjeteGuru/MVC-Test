@@ -209,6 +209,22 @@
     <Compile Include="Migrations\201912241056100_InitiateJobVM.designer.cs">
       <DependentUpon>201912241056100_InitiateJobVM.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201912252149208_CategoryRemoved.cs" />
+    <Compile Include="Migrations\201912252149208_CategoryRemoved.designer.cs">
+      <DependentUpon>201912252149208_CategoryRemoved.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912252237120_ScheduleModified.cs" />
+    <Compile Include="Migrations\201912252237120_ScheduleModified.designer.cs">
+      <DependentUpon>201912252237120_ScheduleModified.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912252240263_EmployeeModified.cs" />
+    <Compile Include="Migrations\201912252240263_EmployeeModified.designer.cs">
+      <DependentUpon>201912252240263_EmployeeModified.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912260023289_CrewIDRemoved.cs" />
+    <Compile Include="Migrations\201912260023289_CrewIDRemoved.designer.cs">
+      <DependentUpon>201912260023289_CrewIDRemoved.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -227,6 +243,10 @@
     <Compile Include="ViewModels\JobVM.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\MVCTest.mdf" />
+    <Content Include="App_Data\MVCTest_log.ldf">
+      <DependentUpon>MVCTest.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -507,11 +527,6 @@
     <Content Include="Views\Has_Role\Details.cshtml" />
     <Content Include="Views\Has_Role\Edit.cshtml" />
     <Content Include="Views\Has_Role\Index.cshtml" />
-    <Content Include="Views\Crew\Create.cshtml" />
-    <Content Include="Views\Crew\Delete.cshtml" />
-    <Content Include="Views\Crew\Details.cshtml" />
-    <Content Include="Views\Crew\Edit.cshtml" />
-    <Content Include="Views\Crew\Index.cshtml" />
     <Content Include="Views\County\Create.cshtml" />
     <Content Include="Views\County\Delete.cshtml" />
     <Content Include="Views\County\Details.cshtml" />
@@ -533,11 +548,18 @@
     <Content Include="Views\Job\Edit.cshtml" />
     <Content Include="Views\Job\Index.cshtml" />
     <Content Include="Views\JobDetails\Index.cshtml" />
+    <Content Include="Views\Employee\Create.cshtml" />
+    <Content Include="Views\Employee\Delete.cshtml" />
+    <Content Include="Views\Employee\Details.cshtml" />
+    <Content Include="Views\Employee\Edit.cshtml" />
+    <Content Include="Views\Employee\Index.cshtml" />
+    <Content Include="Views\Crew\Create.cshtml" />
+    <Content Include="Views\Crew\Delete.cshtml" />
+    <Content Include="Views\Crew\Details.cshtml" />
+    <Content Include="Views\Crew\Edit.cshtml" />
+    <Content Include="Views\Crew\Index.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-    <Folder Include="Views\Employee\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -567,6 +589,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201912241056100_InitiateJobVM.resx">
       <DependentUpon>201912241056100_InitiateJobVM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912252149208_CategoryRemoved.resx">
+      <DependentUpon>201912252149208_CategoryRemoved.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912252237120_ScheduleModified.resx">
+      <DependentUpon>201912252237120_ScheduleModified.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912252240263_EmployeeModified.resx">
+      <DependentUpon>201912252240263_EmployeeModified.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912260023289_CrewIDRemoved.resx">
+      <DependentUpon>201912260023289_CrewIDRemoved.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -11,11 +11,12 @@ namespace MVC_Test.Models
     }
     public class Schedule
     {
-        public Schedule()
-        {
-            Has_Roles = new HashSet<Has_Role>();
+        //public Schedule()
+        //{
+            // Has_Roles = new HashSet<Has_Role>();
+           
             //Employees = new HashSet<Employee>();
-        }
+        //}
         public  int Id { get; set; }
         public  string text { get; set; }
       
@@ -26,10 +27,10 @@ namespace MVC_Test.Models
         public  string JobId { get; set; }
         public virtual Job Job { get; set; }
      
-       // public virtual ICollection<Crew> Crews { get; set; }
+       public virtual ICollection<Crew> Crews { get; set; }
 
         //new
-        public virtual ICollection<Has_Role> Has_Roles { get; set; }
+       // public virtual ICollection<Has_Role> Has_Roles { get; set; }
         //new
         //public virtual ICollection<Employee>Employees { get; set; }
 

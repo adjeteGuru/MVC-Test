@@ -32,7 +32,7 @@ namespace MVC_Test.Models
         }
         public virtual ICollection<Has_Role> Has_Roles { get; set; }
        // public virtual ICollection<Schedule> Schedules { get; set; }
-        public virtual ICollection<Crew> Crews { get; set; }
+       // public virtual ICollection<Crew> Crews { get; set; }
       
     
 

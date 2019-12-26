@@ -12,7 +12,8 @@ Update-Database -ConfigurationTypeName MVC_Test.Migrations.Configuration
 <add name="CloudbassContext" connectionString="Data Source=(LocalDb)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\MVCTest.mdf;Initial Catalog = MVCTest;Integrated Security=True" providerName="System.Data.SqlClient" />
 
  <add name="CloudbassContext" connectionString="Data Source=(LocalDb)\MSSQLLocalDB;Initial Catalog = MVCTestDB;Integrated Security=SSPI;" providerName="System.Data.SqlClient" />  
-  Add-Migration First -IgnoreChanges
+ 
+ Add-Migration First -IgnoreChanges
 
 
   Updates the database to the current model by applying pending migrations:

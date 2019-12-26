@@ -50,7 +50,7 @@ namespace MVC_Test.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,ScheduleId,Has_RoleId,StartTime,EndTime,TotalHours,Cost,Category")] Crew crew)
+        public ActionResult Create([Bind(Include = "ScheduleId,Has_RoleId,StartTime,EndTime,TotalHours,Cost")] Crew crew)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +86,7 @@ namespace MVC_Test.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,ScheduleId,Has_RoleId,StartTime,EndTime,TotalHours,Cost,Category")] Crew crew)
+        public ActionResult Edit([Bind(Include = "ScheduleId,Has_RoleId,StartTime,EndTime,TotalHours,Cost")] Crew crew)
         {
             if (ModelState.IsValid)
             {

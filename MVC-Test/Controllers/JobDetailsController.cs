@@ -11,10 +11,13 @@ namespace MVC_Test.Controllers
 {
     public class JobDetailsController : Controller
     {
+        [AcceptVerbs(HttpVerbs.Get)]
         // GET: JobDetails
         public ActionResult Index()
         {
             CloudbassContext context = new CloudbassContext(); //dbContext class
+
+
 
             List<JobVM> JobVMList = new List<JobVM>(); //to hold list of Job and Schedule details
 

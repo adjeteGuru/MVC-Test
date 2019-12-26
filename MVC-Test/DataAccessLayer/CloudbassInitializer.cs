@@ -7,8 +7,8 @@ using MVC_Test.Models;
 
 namespace MVC_Test.DataAccessLayer
 {
-    //public class CloudbassInitializer : DropCreateDatabaseIfModelChanges<CloudbassContext>
-     public class CloudbassInitializer 
+    public class CloudbassInitializer : DropCreateDatabaseIfModelChanges<CloudbassContext>
+    // public class CloudbassInitializer 
     {
         //protected override void Seed(+)
         public static List<Client> getClients()  
@@ -30,36 +30,36 @@ namespace MVC_Test.DataAccessLayer
                 var jobs = new List<Job>
                 {
            
-                 new Job{Id="cb12", Name="SPL",Description="friendly", Location="Scotland celtic park",Coordinator="Dixon", DateCreated=DateTime.Parse("2019-12-01"), StartDate=DateTime.Parse("2019-12-11"), EndDate=DateTime.Parse("2019-12-17"), Status = Status.Cancelled, CommercialLead="Francis Akai", ClientId= context.Clients.Find(2).Id},
-                 new Job{Id="cb13",Name="MUTV",Description="under 21 league", Location="Manchester Old traford",Coordinator="Sir Bobby", DateCreated=DateTime.Parse("2019-12-10"), StartDate=DateTime.Parse("2019-12-11"), EndDate=DateTime.Parse("2019-12-16"), Status = Status.Active, CommercialLead="Francis Akai", ClientId=context.Clients.Find(3).Id},
+                 new Job{Id="cb12", Name="SPL",Description="friendly", Location="Scotland celtic park",Coordinator="Dixon", DateCreated=DateTime.Parse("2019-12-01"), StartDate=DateTime.Parse("2019-12-11"),TXDate=DateTime.Parse("2019-12-14"), EndDate=DateTime.Parse("2019-12-17"), Status = Status.Cancelled, CommercialLead="Francis Akai", ClientId= context.Clients.Find(2).Id},
+                 new Job{Id="cb13",Name="MUTV",Description="under 21 league", Location="Manchester Old traford",Coordinator="Sir Bobby", DateCreated=DateTime.Parse("2019-12-10"), StartDate=DateTime.Parse("2019-12-11"),TXDate=DateTime.Parse("2019-12-14"), EndDate=DateTime.Parse("2019-12-16"), Status = Status.Active, CommercialLead="Francis Akai", ClientId=context.Clients.Find(3).Id},
 
                 };
                 return jobs;
             }
 
-        public static List<Schedule> getSchedules(CloudbassContext context)
+        public static List<Schedule> getSchedules()
         {
             var schedules = new List<Schedule>
                 {
-                new Schedule{text="SPL-Travel", start_date=DateTime.Parse("2019-12-11"), end_date=DateTime.Parse("2019-12-11"), SchType = SchType.TrucksTravel, JobId = context.Jobs.Find("cb12").Id},
-                new Schedule{text="SPL-Cable", start_date=DateTime.Parse("2019-12-11"), end_date=DateTime.Parse("2019-12-11"),SchType = SchType.CableRig, JobId = context.Jobs.Find("cb12").Id},
-                new Schedule{text="SPL-Tech",start_date=DateTime.Parse("2019-12-12"), end_date=DateTime.Parse("2019-12-12"),SchType = SchType.TechRig, JobId = context.Jobs.Find("cb12").Id},
-                new Schedule{text="SPL-Rehersal",start_date=DateTime.Parse("2019-12-13"), end_date=DateTime.Parse("2019-12-13"),SchType = SchType.Rehersal, JobId = context.Jobs.Find("cb12").Id},
-                new Schedule{text="SPL-RX",start_date=DateTime.Parse("2019-12-14"), end_date=DateTime.Parse("2019-12-14"),SchType = SchType.RX, JobId = context.Jobs.Find("cb12").Id},
-                new Schedule{text="SPL-1200KO", start_date=DateTime.Parse("2019-12-14"), end_date=DateTime.Parse("2019-12-14"), SchType = SchType.TX, JobId = context.Jobs.Find("cb12").Id},
-                new Schedule{text="SPL-Derig",start_date=DateTime.Parse("2019-12-15"), end_date=DateTime.Parse("2019-12-15"),SchType = SchType.DarkDay, JobId =context.Jobs.Find("cb12").Id},
-                new Schedule{text="SPL-Facs",start_date=DateTime.Parse("2019-12-15"), end_date=DateTime.Parse("2019-12-15"),SchType = SchType.Facs, JobId = context.Jobs.Find("cb12").Id},
-                new Schedule{text="SPL-Travel Back", start_date=DateTime.Parse("2019-12-16"), end_date=DateTime.Parse("2019-12-17"), SchType = SchType.TrucksReturn, JobId = context.Jobs.Find("cb12").Id},
+                new Schedule{Id=1, text="SPL-Travel", start_date=DateTime.Parse("2019-12-11"), end_date=DateTime.Parse("2019-12-11"), SchType = SchType.TrucksTravel, JobId = "cb12"},
+                new Schedule{Id=2,text="SPL-Cable", start_date=DateTime.Parse("2019-12-11"), end_date=DateTime.Parse("2019-12-11"),SchType = SchType.CableRig, JobId = "cb12"},
+                new Schedule{Id=3, text="SPL-Tech",start_date=DateTime.Parse("2019-12-12"), end_date=DateTime.Parse("2019-12-12"),SchType = SchType.TechRig, JobId =  "cb12" /*context.Jobs.Find("cb12").Id*/},
+                new Schedule{Id=4,text="SPL-Rehersal",start_date=DateTime.Parse("2019-12-13"), end_date=DateTime.Parse("2019-12-13"),SchType = SchType.Rehersal, JobId = "cb12"},
+                new Schedule{Id=5,text="SPL-RX",start_date=DateTime.Parse("2019-12-14"), end_date=DateTime.Parse("2019-12-14"),SchType = SchType.RX,  JobId = "cb12"},
+                new Schedule{Id=6,text="SPL-1200KO", start_date=DateTime.Parse("2019-12-14"), end_date=DateTime.Parse("2019-12-14"), SchType = SchType.TX,  JobId = "cb12"},
+                new Schedule{Id=7,text="SPL-Derig",start_date=DateTime.Parse("2019-12-15"), end_date=DateTime.Parse("2019-12-15"),SchType = SchType.DarkDay,  JobId = "cb12"},
+                new Schedule{Id=8,text="SPL-Facs",start_date=DateTime.Parse("2019-12-15"), end_date=DateTime.Parse("2019-12-15"),SchType = SchType.Facs,  JobId = "cb12"},
+                new Schedule{Id=9,text="SPL-Travel Back", start_date=DateTime.Parse("2019-12-16"), end_date=DateTime.Parse("2019-12-17"), SchType = SchType.TrucksReturn, JobId = "cb12"},
 
-                new Schedule{text="MUTV-Travel",start_date=DateTime.Parse("2019-12-11"), end_date=DateTime.Parse("2019-09-12"),SchType = SchType.TrucksTravel, JobId = context.Jobs.Find("cb13").Id},
-                new Schedule{text="MUTV-Cable",start_date=DateTime.Parse("2019-12-12"), end_date=DateTime.Parse("2019-12-12"),SchType = SchType.CableRig, JobId = context.Jobs.Find("cb13").Id},
-                new Schedule{text="MUTV-Tech", start_date=DateTime.Parse("2019-12-12"), end_date=DateTime.Parse("2019-12-13"),SchType = SchType.TechRig, JobId = context.Jobs.Find("cb13").Id},
-                new Schedule{text="MUTV-Rehersal", start_date=DateTime.Parse("2019-12-13"), end_date=DateTime.Parse("2019-12-13"),SchType = SchType.Rehersal, JobId = context.Jobs.Find("cb13").Id},
-                new Schedule{text="MUTV-RX",start_date=DateTime.Parse("2019-12-13"), end_date=DateTime.Parse("2019-12-13"),SchType = SchType.RX, JobId = context.Jobs.Find("cb13").Id},
-                new Schedule{text="MUTV-1945KO",start_date=DateTime.Parse("2019-12-14"), end_date=DateTime.Parse("2019-12-14"),SchType = SchType.TX, JobId = context.Jobs.Find("cb13").Id},
-                new Schedule{text="MUTV-Derig", start_date=DateTime.Parse("2019-12-14"), end_date=DateTime.Parse("2019-12-14"),SchType = SchType.DeRig, JobId = context.Jobs.Find("cb13").Id},
-                new Schedule{text="MUTV-Dark",start_date=DateTime.Parse("2019-12-15"), end_date=DateTime.Parse("2019-12-15"),SchType = SchType.DarkDay, JobId = context.Jobs.Find("cb13").Id},
-                new Schedule{text="MUTV-Travel Back",start_date=DateTime.Parse("2019-12-16"), end_date=DateTime.Parse("2019-12-16"),SchType = SchType.TrucksReturn, JobId = context.Jobs.Find("cb13").Id},
+                new Schedule{Id=10,text="MUTV-Travel",start_date=DateTime.Parse("2019-12-11"), end_date=DateTime.Parse("2019-09-12"),SchType = SchType.TrucksTravel,  JobId = "cb13"},
+                new Schedule{Id=11, text="MUTV-Cable",start_date=DateTime.Parse("2019-12-12"), end_date=DateTime.Parse("2019-12-12"),SchType = SchType.CableRig, JobId = "cb13"},
+                new Schedule{Id=12,text="MUTV-Tech", start_date=DateTime.Parse("2019-12-12"), end_date=DateTime.Parse("2019-12-13"),SchType = SchType.TechRig, JobId = "cb13"},
+                new Schedule{Id=13, text="MUTV-Rehersal", start_date=DateTime.Parse("2019-12-13"), end_date=DateTime.Parse("2019-12-13"),SchType = SchType.Rehersal,JobId = "cb13"},
+                new Schedule{Id=14,text="MUTV-RX",start_date=DateTime.Parse("2019-12-13"), end_date=DateTime.Parse("2019-12-13"),SchType = SchType.RX, JobId = "cb13"},
+                new Schedule{Id=15,text="MUTV-1945KO",start_date=DateTime.Parse("2019-12-14"), end_date=DateTime.Parse("2019-12-14"),SchType = SchType.TX, JobId = "cb13"},
+                new Schedule{Id=16,text="MUTV-Derig", start_date=DateTime.Parse("2019-12-14"), end_date=DateTime.Parse("2019-12-14"),SchType = SchType.DeRig, JobId = "cb13"},
+                new Schedule{Id=17,text="MUTV-Dark",start_date=DateTime.Parse("2019-12-15"), end_date=DateTime.Parse("2019-12-15"),SchType = SchType.DarkDay, JobId = "cb13"},
+                new Schedule{Id=18,text="MUTV-Travel Back",start_date=DateTime.Parse("2019-12-16"), end_date=DateTime.Parse("2019-12-16"),SchType = SchType.TrucksReturn, JobId = "cb13"},
                 };
 
             return schedules;
@@ -131,11 +131,11 @@ namespace MVC_Test.DataAccessLayer
 
             var crews = new List<Crew>
                 {
-                new Crew{ScheduleId=context.Schedules.Find(1).Id, Has_RoleId=context.Has_Roles.Find(1).Id, StartTime=DateTime.Parse("2019-12-11"), EndTime=DateTime.Parse("2019-12-14"), Category = Category.Staff, TotalHours= 12, Cost=200},
-                new Crew{ScheduleId=context.Schedules.Find(2).Id,Has_RoleId=context.Has_Roles.Find(2).Id, StartTime=DateTime.Parse("2019-12-11"), EndTime=DateTime.Parse("2019-12-14"), Category = Category.Staff, TotalHours= 12, Cost=200},
-                new Crew{ScheduleId=context.Schedules.Find(3).Id,Has_RoleId=context.Has_Roles.Find(3).Id, StartTime=DateTime.Parse("2019-12-11"), EndTime=DateTime.Parse("2019-12-14"), Category = Category.Freelance, TotalHours= 12, Cost=200},
-                new Crew{ScheduleId=context.Schedules.Find(4).Id,Has_RoleId=context.Has_Roles.Find(1).Id, StartTime=DateTime.Parse("2019-12-11"), EndTime=DateTime.Parse("2019-12-14"), Category = Category.Staff, TotalHours= 12, Cost=200},
-                new Crew{ScheduleId=context.Schedules.Find(5).Id,Has_RoleId=context.Has_Roles.Find(2).Id,StartTime=DateTime.Parse("2019-12-11"), EndTime=DateTime.Parse("2019-12-14"), Category = Category.Contracted, TotalHours= 28, Cost=200},
+                new Crew{ ScheduleId=context.Schedules.Find(1).Id, Has_RoleId=context.Has_Roles.Find(1).Id, StartTime=DateTime.Parse("2019-12-11"), EndTime=DateTime.Parse("2019-12-14"), /*Category = Category.Staff,*/ TotalHours= 12, Cost=200},
+                new Crew{ ScheduleId=context.Schedules.Find(2).Id,Has_RoleId=context.Has_Roles.Find(2).Id, StartTime=DateTime.Parse("2019-12-11"), EndTime=DateTime.Parse("2019-12-14"), /*Category = Category.Staff,*/ TotalHours= 12, Cost=200},
+                new Crew{ScheduleId=context.Schedules.Find(3).Id,Has_RoleId=context.Has_Roles.Find(3).Id, StartTime=DateTime.Parse("2019-12-11"), EndTime=DateTime.Parse("2019-12-14"), /*Category = Category.Freelance,*/ TotalHours= 12, Cost=200},
+                new Crew{ScheduleId=context.Schedules.Find(4).Id,Has_RoleId=context.Has_Roles.Find(4).Id, StartTime=DateTime.Parse("2019-12-11"), EndTime=DateTime.Parse("2019-12-14"), /*Category = Category.Staff,*/ TotalHours= 12, Cost=200},
+                new Crew{ScheduleId=context.Schedules.Find(5).Id,Has_RoleId=context.Has_Roles.Find(5).Id,StartTime=DateTime.Parse("2019-12-11"), EndTime=DateTime.Parse("2019-12-14"), /*Category = Category.Contracted, */TotalHours= 28, Cost=200},
 
                 };
             return crews;

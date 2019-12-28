@@ -35,7 +35,7 @@ namespace MVC_Test.Controllers
                 objcvm.SchType = data.SchType;
                 objcvm.start_date = data.start_date;
                 objcvm.end_date = data.end_date;
-                               
+                JobVMList.Add(objcvm);              
             }
 
             //Using foreach loop fill data from jobList to list<JobVM>

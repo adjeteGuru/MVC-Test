@@ -3,7 +3,7 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Initial : DbMigration
+    public partial class InitialCreate : DbMigration
     {
         public override void Up()
         {
@@ -28,10 +28,10 @@
                         Name = c.String(),
                         Description = c.String(),
                         Location = c.String(),
-                        DateCreated = c.DateTime(nullable: false),
-                        StartDate = c.DateTime(nullable: false),
-                        TXDate = c.DateTime(nullable: false),
-                        EndDate = c.DateTime(nullable: false),
+                        DateCreated = c.DateTime(),
+                        StartDate = c.DateTime(),
+                        TXDate = c.DateTime(),
+                        EndDate = c.DateTime(),
                         Coordinator = c.String(),
                         CommercialLead = c.String(),
                         ClientId = c.Int(nullable: false),
@@ -47,8 +47,8 @@
                     {
                         Id = c.Int(nullable: false, identity: true),
                         text = c.String(),
-                        start_date = c.DateTime(nullable: false),
-                        end_date = c.DateTime(nullable: false),
+                        start_date = c.DateTime(),
+                        end_date = c.DateTime(),
                         SchType = c.Int(nullable: false),
                         JobId = c.String(maxLength: 128),
                     })
@@ -63,8 +63,8 @@
                         Id = c.Int(nullable: false, identity: true),
                         EmployeeId = c.Int(nullable: false),
                         RoleId = c.Int(nullable: false),
-                        StartTime = c.DateTime(nullable: false),
-                        EndTime = c.DateTime(nullable: false),
+                        StartTime = c.DateTime(),
+                        EndTime = c.DateTime(),
                         Schedule_Id = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
@@ -76,28 +76,6 @@
                 .Index(t => t.Schedule_Id);
             
             CreateTable(
-                "dbo.Crew",
-                c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        ScheduleId = c.Int(nullable: false),
-                        Has_RoleId = c.Int(nullable: false),
-                        StartTime = c.DateTime(nullable: false),
-                        EndTime = c.DateTime(nullable: false),
-                        TotalHours = c.Int(nullable: false),
-                        Cost = c.Decimal(nullable: false, precision: 18, scale: 2),
-                        Category = c.Int(nullable: false),
-                        Employee_Id = c.Int(),
-                    })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Has_Role", t => t.Has_RoleId, cascadeDelete: true)
-                .ForeignKey("dbo.Schedule", t => t.ScheduleId, cascadeDelete: true)
-                .ForeignKey("dbo.Employee", t => t.Employee_Id)
-                .Index(t => t.ScheduleId)
-                .Index(t => t.Has_RoleId)
-                .Index(t => t.Employee_Id);
-            
-            CreateTable(
                 "dbo.Employee",
                 c => new
                     {
@@ -106,10 +84,11 @@
                         LastName = c.String(),
                         Mobile = c.String(),
                         Email = c.String(),
+                        Category = c.Int(nullable: false),
                         CountyId = c.Int(nullable: false),
                         bared = c.String(),
                         IsAvailable = c.Boolean(nullable: false),
-                        StartDate = c.DateTime(nullable: false),
+                        StartDate = c.DateTime(),
                         Photo = c.String(),
                         NextOfKin = c.String(),
                         Alergy = c.String(),
@@ -130,6 +109,27 @@
                 .PrimaryKey(t => t.Id);
             
             CreateTable(
+                "dbo.Service",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        ScheduleId = c.Int(nullable: false),
+                        Has_RoleId = c.Int(nullable: false),
+                        StartTime = c.DateTime(),
+                        EndTime = c.DateTime(),
+                        totalDays = c.Double(nullable: false),
+                        Rate = c.Decimal(nullable: false, precision: 18, scale: 2),
+                        Employee_Id = c.Int(),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Has_Role", t => t.Has_RoleId, cascadeDelete: true)
+                .ForeignKey("dbo.Schedule", t => t.ScheduleId, cascadeDelete: true)
+                .ForeignKey("dbo.Employee", t => t.Employee_Id)
+                .Index(t => t.ScheduleId)
+                .Index(t => t.Has_RoleId)
+                .Index(t => t.Employee_Id);
+            
+            CreateTable(
                 "dbo.Role",
                 c => new
                     {
@@ -145,25 +145,25 @@
             DropForeignKey("dbo.Schedule", "JobId", "dbo.Job");
             DropForeignKey("dbo.Has_Role", "Schedule_Id", "dbo.Schedule");
             DropForeignKey("dbo.Has_Role", "RoleId", "dbo.Role");
+            DropForeignKey("dbo.Service", "Employee_Id", "dbo.Employee");
+            DropForeignKey("dbo.Service", "ScheduleId", "dbo.Schedule");
+            DropForeignKey("dbo.Service", "Has_RoleId", "dbo.Has_Role");
             DropForeignKey("dbo.Has_Role", "EmployeeId", "dbo.Employee");
-            DropForeignKey("dbo.Crew", "Employee_Id", "dbo.Employee");
             DropForeignKey("dbo.Employee", "CountyId", "dbo.County");
-            DropForeignKey("dbo.Crew", "ScheduleId", "dbo.Schedule");
-            DropForeignKey("dbo.Crew", "Has_RoleId", "dbo.Has_Role");
             DropForeignKey("dbo.Job", "ClientId", "dbo.Client");
+            DropIndex("dbo.Service", new[] { "Employee_Id" });
+            DropIndex("dbo.Service", new[] { "Has_RoleId" });
+            DropIndex("dbo.Service", new[] { "ScheduleId" });
             DropIndex("dbo.Employee", new[] { "CountyId" });
-            DropIndex("dbo.Crew", new[] { "Employee_Id" });
-            DropIndex("dbo.Crew", new[] { "Has_RoleId" });
-            DropIndex("dbo.Crew", new[] { "ScheduleId" });
             DropIndex("dbo.Has_Role", new[] { "Schedule_Id" });
             DropIndex("dbo.Has_Role", new[] { "RoleId" });
             DropIndex("dbo.Has_Role", new[] { "EmployeeId" });
             DropIndex("dbo.Schedule", new[] { "JobId" });
             DropIndex("dbo.Job", new[] { "ClientId" });
             DropTable("dbo.Role");
+            DropTable("dbo.Service");
             DropTable("dbo.County");
             DropTable("dbo.Employee");
-            DropTable("dbo.Crew");
             DropTable("dbo.Has_Role");
             DropTable("dbo.Schedule");
             DropTable("dbo.Job");

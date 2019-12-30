@@ -7,13 +7,13 @@ namespace MVC_Test.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.0")]
-    public sealed partial class AddNullableToDate : IMigrationMetadata
+    public sealed partial class InitialCreate : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddNullableToDate));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialCreate));
         
         string IMigrationMetadata.Id
         {
-            get { return "201912231633446_AddNullableToDate"; }
+            get { return "201912301618260_InitialCreate"; }
         }
         
         string IMigrationMetadata.Source

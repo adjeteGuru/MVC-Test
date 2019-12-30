@@ -7,8 +7,8 @@ using MVC_Test.Models;
 
 namespace MVC_Test.DataAccessLayer
 {
-    //public class CloudbassInitializer : DropCreateDatabaseIfModelChanges<CloudbassContext>
-     public class CloudbassInitializer 
+    public class CloudbassInitializer : DropCreateDatabaseIfModelChanges<CloudbassContext>
+     //public class CloudbassInitializer 
     {
         //protected override void Seed(+)
         public static List<Client> getClients()  
@@ -70,12 +70,12 @@ namespace MVC_Test.DataAccessLayer
 
             var employees = new List<Employee>
                 {
-                new Employee{FirstName="Carson",LastName="Alexander",StartDate=DateTime.Parse("2005-09-01"), CountyId=context.Counties.Find(1).Id, Mobile= "09876654321", Email="al@gmail.com", PostNominals="BSc", bared="sky",IsAvailable=true, Alergy="nut", NextOfKin="frank",Note="ohh",Photo="pic.png"},
-                new Employee{FirstName="Meredith",LastName="Alonso",StartDate=DateTime.Parse("2002-09-01") , CountyId=context.Counties.Find(2).Id, Mobile= "09876654321", Email="al@gmail.com", PostNominals="BSc", bared="sky",IsAvailable=false, Alergy="nut", NextOfKin="frank",Note="ohh",Photo="pic.png"},
-                new Employee{FirstName="Arturo",LastName="Anand",StartDate=DateTime.Parse("2003-09-01") , CountyId=context.Counties.Find(1).Id, Mobile= "09876654321", Email="al@gmail.com", PostNominals="BSc", bared="sky",IsAvailable=true, Alergy="nut", NextOfKin="frank",Note="ohh",Photo="pic.png"},
-                new Employee{FirstName="Gytis",LastName="Barzdukas",StartDate=DateTime.Parse("2002-09-01") , CountyId=context.Counties.Find(2).Id, Mobile= "09876654321", Email="al@gmail.com", PostNominals="BSc", bared="sky",IsAvailable=true, Alergy="nut", NextOfKin="frank",Note="ohh",Photo="pic.png"},
-                new Employee{FirstName="Yan",LastName="Li",StartDate=DateTime.Parse("2002-09-01"), CountyId=context.Counties.Find(1).Id, Mobile= "09876654321", Email="al@gmail.com", PostNominals="BSc", bared="sky",IsAvailable=false, Alergy="nut", NextOfKin="frank",Note="ohh",Photo="pic.png"},
-                new Employee{FirstName="Peggy",LastName="Justice",StartDate=DateTime.Parse("2001-09-01"), CountyId=context.Counties.Find(2).Id, Mobile= "09876654321", Email="al@gmail.com", PostNominals="BSc", bared="sky",IsAvailable=false, Alergy="nut", NextOfKin="frank",Note="ohh",Photo="pic.png"},
+                new Employee{FirstName="Carson",LastName="Alexander",StartDate=DateTime.Parse("2005-09-01"), CountyId=context.Counties.Find(1).Id, Mobile= "09876654321", Email="al@gmail.com", PostNominals="BSc", bared="sky",IsAvailable=true, Alergy="nut", NextOfKin="frank",Note="ohh",Photo="pic.png", Category = Category.Staff,},
+                new Employee{FirstName="Meredith",LastName="Alonso",StartDate=DateTime.Parse("2002-09-01") , CountyId=context.Counties.Find(2).Id, Mobile= "09876654321", Email="al@gmail.com", PostNominals="BSc", bared="sky",IsAvailable=false, Alergy="nut", NextOfKin="frank",Note="ohh",Photo="pic.png", Category = Category.Staff},
+                new Employee{FirstName="Arturo",LastName="Anand",StartDate=DateTime.Parse("2003-09-01") , CountyId=context.Counties.Find(1).Id, Mobile= "09876654321", Email="al@gmail.com", PostNominals="BSc", bared="sky",IsAvailable=true, Alergy="nut", NextOfKin="frank",Note="ohh",Photo="pic.png", Category = Category.Freelance},
+                new Employee{FirstName="Gytis",LastName="Barzdukas",StartDate=DateTime.Parse("2002-09-01") , CountyId=context.Counties.Find(2).Id, Mobile= "09876654321", Email="al@gmail.com", PostNominals="BSc", bared="sky",IsAvailable=true, Alergy="nut", NextOfKin="frank",Note="ohh",Photo="pic.png", Category = Category.Staff},
+                new Employee{FirstName="Yan",LastName="Li",StartDate=DateTime.Parse("2002-09-01"), CountyId=context.Counties.Find(1).Id, Mobile= "09876654321", Email="al@gmail.com", PostNominals="BSc", bared="sky",IsAvailable=false, Alergy="nut", NextOfKin="frank",Note="ohh",Photo="pic.png", Category = Category.Contracted},
+                new Employee{FirstName="Peggy",LastName="Justice",StartDate=DateTime.Parse("2001-09-01"), CountyId=context.Counties.Find(2).Id, Mobile= "09876654321", Email="al@gmail.com", PostNominals="BSc", bared="sky",IsAvailable=false, Alergy="nut", NextOfKin="frank",Note="ohh",Photo="pic.png", Category = Category.Contracted},
 
                 };
             return employees;
@@ -99,11 +99,11 @@ namespace MVC_Test.DataAccessLayer
 
             var has_roles = new List<Has_Role>
                 {
-                new Has_Role{EmployeeId=context.Employees.Find(5).Id,RoleId=context.Roles.Find(5).Id, StartTime=DateTime.Parse("2019-12-11"), EndTime=DateTime.Parse("2019-12-14"), totalDays = 1.5, Rate = 270},
-                new Has_Role{EmployeeId= context.Employees.Find(6).Id, RoleId= context.Roles.Find(2).Id, StartTime=DateTime.Parse("2019-12-11"), EndTime=DateTime.Parse("2019-12-14"), totalDays = 1, Rate = 270},
-               new Has_Role{EmployeeId=context.Employees.Find(2).Id,RoleId=context.Roles.Find(1).Id, StartTime=DateTime.Parse("2019-12-11"), EndTime=DateTime.Parse("2019-12-12"), totalDays = 0.5, Rate = 275},
-               new Has_Role{EmployeeId=context.Employees.Find(3).Id,RoleId=context.Roles.Find(4).Id, StartTime=DateTime.Parse("2019-12-11"), EndTime=DateTime.Parse("2019-12-11"), totalDays = 1, Rate = 270},
-                new Has_Role{EmployeeId= context.Employees.Find(4).Id,RoleId=context.Roles.Find(3).Id, StartTime=DateTime.Parse("2019-12-11"), EndTime=DateTime.Parse("2019-12-13"), totalDays = 0.2, Rate = 250},
+                new Has_Role{EmployeeId=context.Employees.Find(5).Id,RoleId=context.Roles.Find(5).Id, StartTime=DateTime.Parse("2019-12-11"), EndTime=DateTime.Parse("2019-12-14")},
+                new Has_Role{EmployeeId= context.Employees.Find(6).Id, RoleId= context.Roles.Find(2).Id, StartTime=DateTime.Parse("2019-12-11"), EndTime=DateTime.Parse("2019-12-14")},
+               new Has_Role{EmployeeId=context.Employees.Find(2).Id,RoleId=context.Roles.Find(1).Id, StartTime=DateTime.Parse("2019-12-11"), EndTime=DateTime.Parse("2019-12-12")},
+               new Has_Role{EmployeeId=context.Employees.Find(3).Id,RoleId=context.Roles.Find(4).Id, StartTime=DateTime.Parse("2019-12-11"), EndTime=DateTime.Parse("2019-12-11")},
+                new Has_Role{EmployeeId= context.Employees.Find(4).Id,RoleId=context.Roles.Find(3).Id, StartTime=DateTime.Parse("2019-12-11"), EndTime=DateTime.Parse("2019-12-13")},
 
                 };
 
@@ -126,19 +126,19 @@ namespace MVC_Test.DataAccessLayer
             return roles;
         }
 
-        public static List<Crew> getCrews(CloudbassContext context)
+        public static List<Service> getServices(CloudbassContext context)
         {
 
-            var crews = new List<Crew>
+            var services = new List<Service>
                 {
-                new Crew{ScheduleId=context.Schedules.Find(1).Id, Has_RoleId=context.Has_Roles.Find(1).Id, StartTime=DateTime.Parse("2019-12-11"), EndTime=DateTime.Parse("2019-12-14"), Category = Category.Staff, totalDays= 1, Rate=270},
-                new Crew{ScheduleId=context.Schedules.Find(2).Id,Has_RoleId=context.Has_Roles.Find(2).Id, StartTime=DateTime.Parse("2019-12-11"), EndTime=DateTime.Parse("2019-12-14"), Category = Category.Staff, totalDays= 0.2, Rate=270},
-                new Crew{ScheduleId=context.Schedules.Find(3).Id,Has_RoleId=context.Has_Roles.Find(3).Id, StartTime=DateTime.Parse("2019-12-11"), EndTime=DateTime.Parse("2019-12-14"), Category = Category.Freelance, totalDays= 1.5, Rate=275},
-                new Crew{ScheduleId=context.Schedules.Find(4).Id,Has_RoleId=context.Has_Roles.Find(1).Id, StartTime=DateTime.Parse("2019-12-11"), EndTime=DateTime.Parse("2019-12-14"), Category = Category.Staff, totalDays= 1, Rate=270},
-                new Crew{ScheduleId=context.Schedules.Find(5).Id,Has_RoleId=context.Has_Roles.Find(2).Id,StartTime=DateTime.Parse("2019-12-11"), EndTime=DateTime.Parse("2019-12-14"), Category = Category.Contracted, totalDays= 1.5, Rate=250},
+                new Service{ScheduleId=context.Schedules.Find(1).Id, Has_RoleId=context.Has_Roles.Find(1).Id, StartTime=DateTime.Parse("2019-12-11"), EndTime=DateTime.Parse("2019-12-14"), totalDays= 1, Rate=270},
+                new Service{ScheduleId=context.Schedules.Find(2).Id,Has_RoleId=context.Has_Roles.Find(2).Id, StartTime=DateTime.Parse("2019-12-11"), EndTime=DateTime.Parse("2019-12-14"), totalDays= 0.2, Rate=270},
+                new Service{ScheduleId=context.Schedules.Find(3).Id,Has_RoleId=context.Has_Roles.Find(3).Id, StartTime=DateTime.Parse("2019-12-11"), EndTime=DateTime.Parse("2019-12-14"), totalDays= 1.5, Rate=275},
+                new Service{ScheduleId=context.Schedules.Find(4).Id,Has_RoleId=context.Has_Roles.Find(1).Id, StartTime=DateTime.Parse("2019-12-11"), EndTime=DateTime.Parse("2019-12-14"), totalDays= 1, Rate=270},
+                new Service{ScheduleId=context.Schedules.Find(5).Id,Has_RoleId=context.Has_Roles.Find(2).Id,StartTime=DateTime.Parse("2019-12-11"), EndTime=DateTime.Parse("2019-12-14"), totalDays= 1.5, Rate=250},
 
                 };
-            return crews;
+            return services;
         }
 
         }

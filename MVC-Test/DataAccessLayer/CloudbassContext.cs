@@ -21,7 +21,7 @@ namespace MVC_Test.DataAccessLayer
         public DbSet<County> Counties { get; set; }
         public DbSet<Has_Role> Has_Roles { get; set; }
         public DbSet<Role> Roles { get; set; }
-        public DbSet<Crew> Crews { get; set; }
+        public DbSet<Service> Services { get; set; }
         public DbSet<Schedule> Schedules { get; set; }
         public DbSet<Job> Jobs { get; set; }
         public DbSet<Client> Clients { get; set; }

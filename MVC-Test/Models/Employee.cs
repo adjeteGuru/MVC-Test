@@ -5,6 +5,10 @@ using System.Web;
 
 namespace MVC_Test.Models
 {
+    public enum Category
+    {
+        Staff, Freelance, Contracted
+    }
     public class Employee
     { public Employee()
         {
@@ -15,7 +19,8 @@ namespace MVC_Test.Models
         public  string LastName { get; set; }
         public  string Mobile { get; set; }
         public  string Email { get; set; }
-       
+
+        public Category Category { get; set; }
         public  int CountyId { get; set; }
         public  string bared { get; set; }
         public virtual County County { get; set; }
@@ -35,7 +40,7 @@ namespace MVC_Test.Models
         }
         public virtual ICollection<Has_Role> Has_Roles { get; set; }
        // public virtual ICollection<Schedule> Schedules { get; set; }
-        public virtual ICollection<Crew> Crews { get; set; }
+        public virtual ICollection<Service> Services { get; set; }
       
     
 

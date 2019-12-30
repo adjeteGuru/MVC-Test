@@ -52,13 +52,13 @@
             context.SaveChanges();
 
             context.Has_Roles.AddOrUpdate(
-             hs => new { hs.StartTime, hs.EndTime}, CloudbassInitializer.getHas_Roles(context).ToArray());
+             hs => new { hs.StartTime, hs.EndTime, hs.totalDays, hs.Rate}, CloudbassInitializer.getHas_Roles(context).ToArray());
 
             context.SaveChanges();
 
 
             context.Crews.AddOrUpdate(
-             cr => new {cr.StartTime, cr.EndTime, cr.TotalHours }, CloudbassInitializer.getCrews(context).ToArray());
+             cr => new {cr.StartTime, cr.EndTime, cr.totalDays , cr.Rate}, CloudbassInitializer.getCrews(context).ToArray());
 
             context.SaveChanges();
 

@@ -209,6 +209,10 @@
     <Compile Include="Migrations\201912241056100_InitiateJobVM.designer.cs">
       <DependentUpon>201912241056100_InitiateJobVM.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201912301229442_RateUnitAdded.cs" />
+    <Compile Include="Migrations\201912301229442_RateUnitAdded.designer.cs">
+      <DependentUpon>201912301229442_RateUnitAdded.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -567,6 +571,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201912241056100_InitiateJobVM.resx">
       <DependentUpon>201912241056100_InitiateJobVM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912301229442_RateUnitAdded.resx">
+      <DependentUpon>201912301229442_RateUnitAdded.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

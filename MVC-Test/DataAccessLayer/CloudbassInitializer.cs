@@ -99,11 +99,11 @@ namespace MVC_Test.DataAccessLayer
 
             var has_roles = new List<Has_Role>
                 {
-                new Has_Role{EmployeeId=context.Employees.Find(5).Id,RoleId=context.Roles.Find(5).Id, StartTime=DateTime.Parse("2019-12-11"), EndTime=DateTime.Parse("2019-12-14")},
-                new Has_Role{EmployeeId= context.Employees.Find(6).Id, RoleId= context.Roles.Find(2).Id, StartTime=DateTime.Parse("2019-12-11"), EndTime=DateTime.Parse("2019-12-14")},
-               new Has_Role{EmployeeId=context.Employees.Find(2).Id,RoleId=context.Roles.Find(1).Id, StartTime=DateTime.Parse("2019-12-11"), EndTime=DateTime.Parse("2019-12-12")},
-               new Has_Role{EmployeeId=context.Employees.Find(3).Id,RoleId=context.Roles.Find(4).Id, StartTime=DateTime.Parse("2019-12-11"), EndTime=DateTime.Parse("2019-12-11")},
-                new Has_Role{EmployeeId= context.Employees.Find(4).Id,RoleId=context.Roles.Find(3).Id, StartTime=DateTime.Parse("2019-12-11"), EndTime=DateTime.Parse("2019-12-13")},
+                new Has_Role{EmployeeId=context.Employees.Find(5).Id,RoleId=context.Roles.Find(5).Id, StartTime=DateTime.Parse("2019-12-11"), EndTime=DateTime.Parse("2019-12-14"), totalDays = 1.5, Rate = 270},
+                new Has_Role{EmployeeId= context.Employees.Find(6).Id, RoleId= context.Roles.Find(2).Id, StartTime=DateTime.Parse("2019-12-11"), EndTime=DateTime.Parse("2019-12-14"), totalDays = 1, Rate = 270},
+               new Has_Role{EmployeeId=context.Employees.Find(2).Id,RoleId=context.Roles.Find(1).Id, StartTime=DateTime.Parse("2019-12-11"), EndTime=DateTime.Parse("2019-12-12"), totalDays = 0.5, Rate = 275},
+               new Has_Role{EmployeeId=context.Employees.Find(3).Id,RoleId=context.Roles.Find(4).Id, StartTime=DateTime.Parse("2019-12-11"), EndTime=DateTime.Parse("2019-12-11"), totalDays = 1, Rate = 270},
+                new Has_Role{EmployeeId= context.Employees.Find(4).Id,RoleId=context.Roles.Find(3).Id, StartTime=DateTime.Parse("2019-12-11"), EndTime=DateTime.Parse("2019-12-13"), totalDays = 0.2, Rate = 250},
 
                 };
 
@@ -131,11 +131,11 @@ namespace MVC_Test.DataAccessLayer
 
             var crews = new List<Crew>
                 {
-                new Crew{ScheduleId=context.Schedules.Find(1).Id, Has_RoleId=context.Has_Roles.Find(1).Id, StartTime=DateTime.Parse("2019-12-11"), EndTime=DateTime.Parse("2019-12-14"), Category = Category.Staff, TotalHours= 12, Cost=200},
-                new Crew{ScheduleId=context.Schedules.Find(2).Id,Has_RoleId=context.Has_Roles.Find(2).Id, StartTime=DateTime.Parse("2019-12-11"), EndTime=DateTime.Parse("2019-12-14"), Category = Category.Staff, TotalHours= 12, Cost=200},
-                new Crew{ScheduleId=context.Schedules.Find(3).Id,Has_RoleId=context.Has_Roles.Find(3).Id, StartTime=DateTime.Parse("2019-12-11"), EndTime=DateTime.Parse("2019-12-14"), Category = Category.Freelance, TotalHours= 12, Cost=200},
-                new Crew{ScheduleId=context.Schedules.Find(4).Id,Has_RoleId=context.Has_Roles.Find(1).Id, StartTime=DateTime.Parse("2019-12-11"), EndTime=DateTime.Parse("2019-12-14"), Category = Category.Staff, TotalHours= 12, Cost=200},
-                new Crew{ScheduleId=context.Schedules.Find(5).Id,Has_RoleId=context.Has_Roles.Find(2).Id,StartTime=DateTime.Parse("2019-12-11"), EndTime=DateTime.Parse("2019-12-14"), Category = Category.Contracted, TotalHours= 28, Cost=200},
+                new Crew{ScheduleId=context.Schedules.Find(1).Id, Has_RoleId=context.Has_Roles.Find(1).Id, StartTime=DateTime.Parse("2019-12-11"), EndTime=DateTime.Parse("2019-12-14"), Category = Category.Staff, totalDays= 1, Rate=270},
+                new Crew{ScheduleId=context.Schedules.Find(2).Id,Has_RoleId=context.Has_Roles.Find(2).Id, StartTime=DateTime.Parse("2019-12-11"), EndTime=DateTime.Parse("2019-12-14"), Category = Category.Staff, totalDays= 0.2, Rate=270},
+                new Crew{ScheduleId=context.Schedules.Find(3).Id,Has_RoleId=context.Has_Roles.Find(3).Id, StartTime=DateTime.Parse("2019-12-11"), EndTime=DateTime.Parse("2019-12-14"), Category = Category.Freelance, totalDays= 1.5, Rate=275},
+                new Crew{ScheduleId=context.Schedules.Find(4).Id,Has_RoleId=context.Has_Roles.Find(1).Id, StartTime=DateTime.Parse("2019-12-11"), EndTime=DateTime.Parse("2019-12-14"), Category = Category.Staff, totalDays= 1, Rate=270},
+                new Crew{ScheduleId=context.Schedules.Find(5).Id,Has_RoleId=context.Has_Roles.Find(2).Id,StartTime=DateTime.Parse("2019-12-11"), EndTime=DateTime.Parse("2019-12-14"), Category = Category.Contracted, totalDays= 1.5, Rate=250},
 
                 };
             return crews;

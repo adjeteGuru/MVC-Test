@@ -12,7 +12,8 @@ namespace MVC_Test.Models
         public  int RoleId { get; set; }
         public  DateTime? StartTime { get; set; }
         public  DateTime? EndTime { get; set; }
-     
+        public double totalDays { get; set; }
+        public Decimal Rate { get; set; }
         public virtual Employee Employee { get; set; }
         public virtual Role Role { get; set; }
         public virtual ICollection<Crew> Crews { get; set; }

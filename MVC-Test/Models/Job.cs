@@ -9,7 +9,10 @@ namespace MVC_Test.Models
         InQuotation, Active, Cancelled, Completed
     }
     public class Job
-    {
+    { public Job()
+        {
+            Schedules = new HashSet<Schedule>();
+        }
         public  string Id { get; set; }
         public  string Name { get; set; }
         public  string Description { get; set; }

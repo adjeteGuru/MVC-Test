@@ -6,7 +6,10 @@ using System.Web;
 namespace MVC_Test.Models
 {
     public class Employee
-    {
+    { public Employee()
+        {
+            Has_Roles = new HashSet<Has_Role>();
+        }
         public  int Id { get; set; } 
         public  string FirstName { get; set; }
         public  string LastName { get; set; }
@@ -19,7 +22,7 @@ namespace MVC_Test.Models
        
         public  bool IsAvailable { get; set; }
     
-        public  DateTime StartDate { get; set; }
+        public  DateTime? StartDate { get; set; }
         public  string Photo { get; set; }
         public  string NextOfKin { get; set; }
         public  string Alergy { get; set; }

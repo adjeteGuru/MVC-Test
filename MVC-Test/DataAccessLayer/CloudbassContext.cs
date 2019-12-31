@@ -33,7 +33,7 @@ namespace MVC_Test.DataAccessLayer
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
         }
 
-     
+        public System.Data.Entity.DbSet<MVC_Test.ViewModels.JobDisplayViewModel> JobDisplayViewModels { get; set; }
     }
 
 }

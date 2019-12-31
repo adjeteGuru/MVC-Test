@@ -184,9 +184,11 @@
     <Compile Include="Controllers\IEmployeeService.cs" />
     <Compile Include="Controllers\JobController.cs" />
     <Compile Include="Controllers\JobDetailsController.cs" />
+    <Compile Include="Controllers\JobsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Controllers\ScheduleController.cs" />
+    <Compile Include="Controllers\ServicesController.cs" />
     <Compile Include="DataAccessLayer\CloudbassContext.cs" />
     <Compile Include="DataAccessLayer\CloudbassInitializer.cs" />
     <Compile Include="Global.asax.cs">
@@ -524,10 +526,12 @@
     <Content Include="Views\Job\Edit.cshtml" />
     <Content Include="Views\Job\Index.cshtml" />
     <Content Include="Views\JobDetails\Index.cshtml" />
+    <Content Include="Views\Jobs\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Employee\" />
+    <Folder Include="Views\Services\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

@@ -210,12 +210,17 @@
     <Compile Include="Models\Schedule.cs" />
     <Compile Include="Models\Service.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\ClientsRepository.cs" />
+    <Compile Include="Repository\JobsRepository.cs" />
+    <Compile Include="Repository\ScheduleRepository.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\EmployeeDisplayViewModel.cs" />
     <Compile Include="ViewModels\EmployeeEditViewModel.cs" />
     <Compile Include="ViewModels\JobDisplayViewModel.cs" />
     <Compile Include="ViewModels\JobEditViewModel.cs" />
+    <Compile Include="ViewModels\JobSchedulesListViewModel.cs" />
     <Compile Include="ViewModels\JobVM.cs" />
+    <Compile Include="ViewModels\ScheduleDisplayViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />

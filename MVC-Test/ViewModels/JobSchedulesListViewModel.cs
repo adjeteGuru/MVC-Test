@@ -4,11 +4,10 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
-using System.Web.Mvc;
 
 namespace MVC_Test.ViewModels
 {
-    public class JobEditViewModel
+    public class JobSchedulesListViewModel
     {
         [Display(Name = "Job ID")]
         public string Id { get; set; }
@@ -46,12 +45,12 @@ namespace MVC_Test.ViewModels
         public string CommercialLead { get; set; }
 
         [Display(Name = "Client Name")]
-        public int SelectedClientId { get; set; }
-        public IEnumerable<SelectListItem> Clients { get; set; }
+        public string ClientName { get; set; }
+
 
         [Display(Name = "Status")]
         public Status Status { get; set; }
-        
 
+        public List<ScheduleDisplayViewModel> Schedules { get; set; }
     }
 }

@@ -1,18 +1,19 @@
-﻿@model MVC_Test.Models.Job
+﻿@model MVC_Test.ViewModels.JobDisplayViewModel
 
 @{
     ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Create</h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
-        <h4>Job</h4>
+        <h4>JobDisplayViewModel</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
@@ -28,14 +29,6 @@
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -96,10 +89,10 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.ClientId, "ClientId", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.ClientName, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("ClientId", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.ClientId, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.ClientName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ClientName, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -119,10 +112,36 @@
     </div>
 }
 
+
+
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+            $('#Client').change(function () {
+                var selectedClient = $("#Client").val();
+                var clientsSelect = $('#Client');
+                clientsSelect.empty();
+                if (selectedClient != null && selectedClient != '') {
+                    $.getJSON('@Url.Action("GetClients")', { id: selectedClient }, function (clients) {
+                        if (clients != null && !jQuery.isEmptyObject(clients))
+                        {
+                            clientsSelect.append($('<option/>', {
+                                value: null,
+                                text: ""
+                            }));
+                            $.each(clients, function (index, client) {
+                                clientsSelect.append($('<option/>', {
+                                    value: client.Value,
+                                    text: client.Text
+                                }));
+                            });
+                        };
+                    });
+                }
+            });
+    </script>
 }

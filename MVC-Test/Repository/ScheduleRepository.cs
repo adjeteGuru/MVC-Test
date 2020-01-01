@@ -1,7 +1,8 @@
-﻿using MVC_Test.DataAccessLayer;
+﻿//using MVC_Test.DataAccessLayer;
 using MVC_Test.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
@@ -11,10 +12,12 @@ namespace MVC_Test.Repository
     {
         public JobSchedulesListViewModel GetJobSchedulesDisplay(string id)
         {
-            if (id != null )
-            {
+       
+
+         if(id != null && id != string.Empty)
+         {
             
-            using (var context = new CloudbassContext())
+             using (var context = new CloudbassContext())
             {
                     var jobRepo = new JobsRepository();
 
@@ -38,9 +41,11 @@ namespace MVC_Test.Repository
                         };
 
                         List<ScheduleDisplayViewModel> scheduleList = context.Schedules.AsNoTracking()
+                           
                             .Where(sc => sc.JobId == id)
-                            .OrderBy(sc => sc.start_date)
-                            .Select(sc => new ScheduleDisplayViewModel
+                            //.OrderBy(sc => sc.start_date)
+                            .Select(sc =>
+                            new ScheduleDisplayViewModel
                             {
                                 Id = sc.Id,
                                 SchType = sc.SchType,
@@ -48,20 +53,24 @@ namespace MVC_Test.Repository
                                 text = sc.text,
                                 start_date = sc.start_date,
                                 end_date = sc.end_date,
-                               
-                                
 
-                            }).ToList();
+
+
+                            }).AsNoTracking().ToList();
+
+
+
+
                         jobSchedulesListVm.Schedules = scheduleList;
                         return jobSchedulesListVm;
                  }                      
                 
-            }
+             }
 
 
 
              
-            }
+         }
             return null;
         }
 

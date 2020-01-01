@@ -13,7 +13,7 @@ namespace MVC_Test.Repository
     {
         public Job GetJob(string id)
         {
-            if (id != null)
+            if (id != string.Empty)
             {
                 using (var context = new CloudbassContext())
                 {
@@ -70,11 +70,12 @@ namespace MVC_Test.Repository
 
         public JobEditViewModel CreateJob()
         {
-            //var jRepo = new JobsRepository();
+          
             var cRepo = new ClientsRepository();
             var job = new JobEditViewModel()
             {
-                Id = ToString(),
+                //Id = ToString(),
+                Id = Guid.NewGuid().ToString(),
                 Clients = cRepo.GetClients()
             };
 
@@ -87,13 +88,14 @@ namespace MVC_Test.Repository
             {
                 using (var context = new CloudbassContext())
                 {
-                    //if (jobEdit.Id != null)
-                    //{
+                    
 
-                    //}
-
-                    var job = new Job()
+                    if (string.IsNullOrEmpty(jobEdit.Id))
                     {
+
+                        var job = new Job()
+                    {
+                        //Id = newGuid.ToString(),
                         Id = jobEdit.Id,
                         Name = jobEdit.Name,
                         ClientId = jobEdit.SelectedClientId,
@@ -111,8 +113,8 @@ namespace MVC_Test.Repository
                     job.Client = context.Clients.Find(jobEdit.SelectedClientId);
                     context.Jobs.Add(job);
                     context.SaveChanges();
-                   
-
+                        return true;
+                    }
                 }
             }
 

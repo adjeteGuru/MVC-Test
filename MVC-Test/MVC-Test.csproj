@@ -182,13 +182,10 @@
     <Compile Include="Controllers\Has_RoleController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IEmployeeService.cs" />
-    <Compile Include="Controllers\JobController.cs" />
-    <Compile Include="Controllers\JobDetailsController.cs" />
     <Compile Include="Controllers\JobsController.cs" />
+    <Compile Include="Controllers\JobVMController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
-    <Compile Include="Controllers\ScheduleController.cs" />
-    <Compile Include="Controllers\ServicesController.cs" />
     <Compile Include="DataAccessLayer\CloudbassContext.cs" />
     <Compile Include="DataAccessLayer\CloudbassInitializer.cs" />
     <Compile Include="Global.asax.cs">
@@ -495,11 +492,6 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Calendar\Index.cshtml" />
-    <Content Include="Views\Schedule\Create.cshtml" />
-    <Content Include="Views\Schedule\Delete.cshtml" />
-    <Content Include="Views\Schedule\Details.cshtml" />
-    <Content Include="Views\Schedule\Edit.cshtml" />
-    <Content Include="Views\Schedule\Index.cshtml" />
     <Content Include="Views\Has_Role\Create.cshtml" />
     <Content Include="Views\Has_Role\Delete.cshtml" />
     <Content Include="Views\Has_Role\Details.cshtml" />
@@ -520,18 +512,15 @@
     <Content Include="Views\Client\Details.cshtml" />
     <Content Include="Views\Client\Edit.cshtml" />
     <Content Include="Views\Client\Index.cshtml" />
-    <Content Include="Views\Job\Create.cshtml" />
-    <Content Include="Views\Job\Delete.cshtml" />
-    <Content Include="Views\Job\Details.cshtml" />
-    <Content Include="Views\Job\Edit.cshtml" />
-    <Content Include="Views\Job\Index.cshtml" />
     <Content Include="Views\JobDetails\Index.cshtml" />
     <Content Include="Views\Jobs\Index.cshtml" />
+    <Content Include="Views\Jobs\Create.cshtml" />
+    <Content Include="Views\JobVM\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Employee\" />
-    <Folder Include="Views\Services\" />
+    <Folder Include="Views\ScheduleDetail\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

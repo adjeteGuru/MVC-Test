@@ -6,7 +6,7 @@ using MVC_Test.Models;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 
-namespace MVC_Test.DataAccessLayer
+namespace MVC_Test
 {
     public class CloudbassContext : DbContext
     {//the name of the connection string added in the web.config is passews in to this constructor below
@@ -34,6 +34,10 @@ namespace MVC_Test.DataAccessLayer
         }
 
         public System.Data.Entity.DbSet<MVC_Test.ViewModels.JobDisplayViewModel> JobDisplayViewModels { get; set; }
+
+        public System.Data.Entity.DbSet<MVC_Test.ViewModels.JobSchedulesListViewModel> JobSchedulesListViewModels { get; set; }
+
+        public System.Data.Entity.DbSet<MVC_Test.ViewModels.JobEditViewModel> JobEditViewModels { get; set; }
     }
 
 }

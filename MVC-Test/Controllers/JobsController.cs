@@ -18,18 +18,18 @@ namespace MVC_Test.Controllers
             return View(jobList);
         }
 
-        [HttpGet]
-        public ActionResult GetClients(int? id)
-        {
-            if (id!= null)
-            {
-                var repo = new ClientsRepository();
+        //[HttpGet]
+        //public ActionResult GetClients(int? id)
+        //{
+        //    if (id!= null)
+        //    {
+        //        var repo = new ClientsRepository();
 
-                IEnumerable<SelectListItem> clients = repo.GetClients();
-                return Json(clients, JsonRequestBehavior.AllowGet);
-            }
-            return null;
-        }
+        //        IEnumerable<SelectListItem> clients = repo.GetClients();
+        //        return Json(clients, JsonRequestBehavior.AllowGet);
+        //    }
+        //    return null;
+        //}
 
 
         // GET: Customer/Details/5

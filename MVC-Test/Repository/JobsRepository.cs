@@ -103,8 +103,8 @@ namespace MVC_Test.Repository
                         Coordinator = jobEdit.Coordinator,
 
                         StartDate = jobEdit.StartDate,
-                        TXDate = jobEdit.TXDate,
-                        EndDate = jobEdit.EndDate,
+                            TXDate = jobEdit.TXDate,
+                            EndDate = jobEdit.EndDate,
                         CommercialLead = jobEdit.CommercialLead,
                         Status = jobEdit.Status
 

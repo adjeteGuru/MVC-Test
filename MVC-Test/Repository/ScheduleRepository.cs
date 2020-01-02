@@ -10,11 +10,14 @@ namespace MVC_Test.Repository
 {
     public class ScheduleRepository
     {
+        //public IEnumerable <JobSchedulesListViewModel> GetJobSchedulesDisplay(string id)
+        //{
+
         public JobSchedulesListViewModel GetJobSchedulesDisplay(string id)
         {
-       
 
-         if(id != null && id != string.Empty)
+
+            if (id != null && id != string.Empty)
          {
             
              using (var context = new CloudbassContext())
@@ -34,22 +37,23 @@ namespace MVC_Test.Repository
                             Coordinator = job.Coordinator,
                             ClientName = context.Clients.Find(job.ClientId).Name,
                             StartDate = job.StartDate,
-                            TXDate = job.TXDate,
-                            EndDate = job.EndDate,
+                           TXDate = job.TXDate,
+                           EndDate = job.EndDate,
                             CommercialLead = job.CommercialLead,
                             Status = job.Status
                         };
 
-                        List<ScheduleDisplayViewModel> scheduleList = context.Schedules.AsNoTracking()
+                        List<ScheduleDisplayViewModel> scheduleList = context.Schedules
                            
                             .Where(sc => sc.JobId == id)
-                            //.OrderBy(sc => sc.start_date)
+                            .OrderBy(sc => sc.start_date)
                             .Select(sc =>
                             new ScheduleDisplayViewModel
                             {
+                                JobId = sc.JobId,
                                 Id = sc.Id,
                                 SchType = sc.SchType,
-                                JobId = sc.JobId,
+                                
                                 text = sc.text,
                                 start_date = sc.start_date,
                                 end_date = sc.end_date,

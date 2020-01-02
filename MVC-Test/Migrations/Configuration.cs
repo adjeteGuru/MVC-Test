@@ -81,8 +81,8 @@
             var jobs = new List<Job>
                 {
 
-                 new Job{Id="cb12", Name="SPL",Description="friendly", Location="Scotland celtic park",Coordinator="Dixon", DateCreated=DateTime.Parse("2019-12-01"), StartDate=DateTime.Parse("2019-12-11"), EndDate=DateTime.Parse("2019-12-17"), Status = Status.Cancelled, CommercialLead="Francis Akai", ClientId= context.Clients.Find(2).Id},
-                 new Job{Id="cb13",Name="MUTV",Description="under 21 league", Location="Manchester Old traford",Coordinator="Sir Bobby", DateCreated=DateTime.Parse("2019-12-10"), StartDate=DateTime.Parse("2019-12-11"), EndDate=DateTime.Parse("2019-12-16"), Status = Status.Active, CommercialLead="Francis Akai", ClientId=context.Clients.Find(3).Id},
+                 new Job{Id="cb12", Name="SPL",Description="friendly", Location="Scotland celtic park",Coordinator="Dixon", DateCreated=DateTime.Parse("2019-12-01"), StartDate=DateTime.Parse("2019-12-11"),TXDate=DateTime.Parse("2019-12-15") , EndDate=DateTime.Parse("2019-12-17"), Status = Status.Cancelled, CommercialLead="Francis Akai", ClientId= context.Clients.Find(2).Id},
+                 new Job{Id="cb13",Name="MUTV",Description="under 21 league", Location="Manchester Old traford",Coordinator="Sir Bobby", DateCreated=DateTime.Parse("2019-12-10"), StartDate=DateTime.Parse("2019-12-11"),TXDate=DateTime.Parse("2019-12-14") , EndDate=DateTime.Parse("2019-12-16"), Status = Status.Active, CommercialLead="Francis Akai", ClientId=context.Clients.Find(3).Id},
 
                 };
             jobs.ForEach(s => context.Jobs.AddOrUpdate(j => j.Id, s));

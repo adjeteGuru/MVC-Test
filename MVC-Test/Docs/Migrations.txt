@@ -6,6 +6,7 @@ Scaffolds a migration script for any pending model changes:
 Add-Migration -ConfigurationTypeName MVC_Test.Migrations.Configuration "InitialCreate"
 
 
+// 'There is already an object named 'Client' in the database => solution is to delete all table and apply bollow:
 Update-Database -ConfigurationTypeName MVC_Test.Migrations.Configuration 
 
 

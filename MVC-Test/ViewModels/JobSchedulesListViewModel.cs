@@ -13,7 +13,7 @@ namespace MVC_Test.ViewModels
         public string Id { get; set; }
 
         [Display(Name = "Job Name")]
-        public string Name { get; set; }
+        public string text { get; set; }
 
         [Display(Name = "Location")]
         public string Location { get; set; }
@@ -26,7 +26,7 @@ namespace MVC_Test.ViewModels
         [Display(Name = "Start Date")]
         [DataType(DataType.Date)]// but IT DOT NOT SUPPORT IE and Firefox
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyy}", ApplyFormatInEditMode = true)]
-        public DateTime? StartDate { get; set; }
+        public DateTime? start_date { get; set; }
 
         [Display(Name = "TX Date")]
         [DataType(DataType.Date)]// but IT DOT NOT SUPPORT IE and Firefox
@@ -36,7 +36,7 @@ namespace MVC_Test.ViewModels
         [Display(Name = "End Date")]
         [DataType(DataType.Date)]// but IT DOT NOT SUPPORT IE and Firefox
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyy}", ApplyFormatInEditMode = true)]
-        public DateTime? EndDate { get; set; }
+        public DateTime? end_date { get; set; }
 
         [Display(Name = "Coordinator")]
         public string Coordinator { get; set; }

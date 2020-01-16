@@ -28,32 +28,64 @@ namespace MVC_Test.Repository
 
                  if (job !=null)
                     {
-                       var jobSchedulesListVm = new JobSchedulesListViewModel()
+                        //var jobSchedulesListVm = (from p in context.JobSchedulesListViewModels
+                        //                              //join f in context.JobEditViewModel
+                        //                              //on p.Id equals f.Id
+                        //                          select new
+                        //                          {
+                        //                              Id = job.Id,
+                        //                              Name = job.text,
+                        //                              DateCreated = job.DateCreated,
+                        //                              Location = job.Location,
+                        //                              Coordinator = job.Coordinator,
+                        //                              ClientName = context.Clients.Find(job.ClientId).Name,
+                        //                              StartDate = job.start_date,
+                        //                              TXDate = job.TXDate,
+                        //                              EndDate = job.end_date,
+                        //                              CommercialLead = job.CommercialLead,
+                        //                              Status = job.Status
+
+                        //                          }).ToList()
+
+                        //                          .Select(sc => new ScheduleDisplayViewModel()
+                        //                          {
+                        //                              JobId = sc.Id,
+                        //                              //Id = sc.Id,
+                        //                              //SchType = sc.,
+
+                        //                              text = sc.Name,
+                        //                              start_date = sc.StartDate,
+                        //                              end_date = sc.EndDate,
+                        //                          });
+
+                        //return job;
+
+                        var jobSchedulesListVm = new JobSchedulesListViewModel()
                         {
                             Id = job.Id,
-                            Name = job.Name,
+                            text = job.text,
                             DateCreated = job.DateCreated,
                             Location = job.Location,
                             Coordinator = job.Coordinator,
                             ClientName = context.Clients.Find(job.ClientId).Name,
-                            StartDate = job.StartDate,
-                           TXDate = job.TXDate,
-                           EndDate = job.EndDate,
+                            start_date = job.start_date,
+                            TXDate = job.TXDate,
+                            end_date = job.end_date,
                             CommercialLead = job.CommercialLead,
                             Status = job.Status
                         };
 
                         List<ScheduleDisplayViewModel> scheduleList = context.Schedules
-                           
+                        //var scheduleList = new List<ScheduleDisplayViewModel>()
                             .Where(sc => sc.JobId == id)
                             .OrderBy(sc => sc.start_date)
                             .Select(sc =>
-                            new ScheduleDisplayViewModel
+                            new ScheduleDisplayViewModel()
                             {
                                 JobId = sc.JobId,
                                 Id = sc.Id,
                                 SchType = sc.SchType,
-                                
+
                                 text = sc.text,
                                 start_date = sc.start_date,
                                 end_date = sc.end_date,
@@ -67,7 +99,7 @@ namespace MVC_Test.Repository
 
                         jobSchedulesListVm.Schedules = scheduleList;
                         return jobSchedulesListVm;
-                 }                      
+                    }                      
                 
              }
 

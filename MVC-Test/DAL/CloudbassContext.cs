@@ -5,6 +5,7 @@ using System.Web;
 using MVC_Test.Models;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
+using MVC_Test.DAL;
 
 namespace MVC_Test
 {
@@ -14,6 +15,8 @@ namespace MVC_Test
         //this is a constroctor to indicate the database the connecting string he's going to use to talk to DB
         public CloudbassContext() : base("CloudbassContext")
         {
+            //new added
+           // Database.SetInitializer(new CloudbassInitializer());
         }
 
         // this state which entities are included in rthe data model
@@ -21,7 +24,7 @@ namespace MVC_Test
         public DbSet<County> Counties { get; set; }
         public DbSet<Has_Role> Has_Roles { get; set; }
         public DbSet<Role> Roles { get; set; }
-        public DbSet<Service> Services { get; set; }
+        public DbSet<Crew> Crews { get; set; }
         public DbSet<Schedule> Schedules { get; set; }
         public DbSet<Job> Jobs { get; set; }
         public DbSet<Client> Clients { get; set; }

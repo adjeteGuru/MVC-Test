@@ -7,6 +7,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using MVC_Test.Models;
+using MVC_Test.DAL;
 
 namespace MVC_Test.Controllers
 {

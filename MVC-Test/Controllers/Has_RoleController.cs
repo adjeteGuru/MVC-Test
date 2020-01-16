@@ -6,7 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using MVC_Test.DataAccessLayer;
+using MVC_Test.DAL;
 using MVC_Test.Models;
 
 namespace MVC_Test.Controllers

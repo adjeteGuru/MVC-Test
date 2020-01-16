@@ -7,7 +7,7 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using System.Data.Entity;
 using MVC_Test.Models;
-using MVC_Test.DataAccessLayer;
+using MVC_Test.DAL;
 
 namespace MVC_Test
 {

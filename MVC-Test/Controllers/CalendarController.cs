@@ -10,7 +10,7 @@ using DHTMLX.Scheduler.Data;
 using DHTMLX.Scheduler.Controls;
 
 using MVC_Test.Models;
-using MVC_Test.DataAccessLayer;
+using MVC_Test.DAL;
 
 namespace MVC_Test.Controllers
 {
@@ -47,8 +47,9 @@ namespace MVC_Test.Controllers
             //THIS ALLOW TO RENDER DATA FROM THE TABLE TO THE VIEW PAGE WHEN BROWSER LOAD
             var data = new SchedulerAjaxData(
                new CloudbassContext().Schedules
-               .Select(sc => new { sc.Id, sc.text, sc.start_date, sc.end_date })
+               .Select(sc => new { sc.Id, sc.text, sc.start_date, sc.end_date /*, sc.JobId, sc.SchType*/ })
                 );
+
             return data;
 
             //var data = new SchedulerAjaxData(new CloudbassContext().Schedules);

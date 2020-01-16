@@ -1,4 +1,4 @@
-﻿using MVC_Test.DataAccessLayer;
+﻿using MVC_Test.DAL;
 using MVC_Test.Models;
 using MVC_Test.ViewModels;
 using System;
@@ -30,7 +30,7 @@ namespace MVC_Test.Repository
         {
             using (var context = new CloudbassContext())
             {
-                List<Job> jobs = new List<Job>();
+                List<Job> jobs = new List<Job>(); 
                 jobs = context.Jobs.AsNoTracking()
                     .Include(j =>j.Client)
                     .ToList();
@@ -44,14 +44,14 @@ namespace MVC_Test.Repository
                         var jobDisplay = new JobDisplayViewModel()
                         {
                             Id = j.Id,
-                            Name = j.Name,
+                            text = j.text,
                             DateCreated = j.DateCreated,
                             Location = j.Location,
                             Coordinator = j.Coordinator,
                             ClientName = j.Client.Name,
-                            StartDate = j.StartDate,
+                            start_date = j.start_date,
                             TXDate = j.TXDate,
-                            EndDate = j.EndDate,
+                            end_date = j.end_date,
                             CommercialLead = j.CommercialLead,
                             Status = j.Status
                         };
@@ -97,14 +97,14 @@ namespace MVC_Test.Repository
                     {
                         //Id = newGuid.ToString(),
                         Id = jobEdit.Id,
-                        Name = jobEdit.Name,
+                        text = jobEdit.text,
                         ClientId = jobEdit.SelectedClientId,
                         Location = jobEdit.Location,
                         Coordinator = jobEdit.Coordinator,
 
-                        StartDate = jobEdit.StartDate,
+                            start_date = jobEdit.start_date,
                             TXDate = jobEdit.TXDate,
-                            EndDate = jobEdit.EndDate,
+                            end_date = jobEdit.end_date,
                         CommercialLead = jobEdit.CommercialLead,
                         Status = jobEdit.Status
 

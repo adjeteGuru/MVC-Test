@@ -1,4 +1,4 @@
-﻿using MVC_Test.DataAccessLayer;
+﻿using MVC_Test.DAL;
 using MVC_Test.Models;
 using MVC_Test.ViewModels;
 using System;

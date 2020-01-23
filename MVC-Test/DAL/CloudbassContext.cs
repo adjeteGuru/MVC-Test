@@ -36,11 +36,6 @@ namespace MVC_Test
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
         }
 
-        public System.Data.Entity.DbSet<MVC_Test.ViewModels.JobDisplayViewModel> JobDisplayViewModels { get; set; }
-
-        public System.Data.Entity.DbSet<MVC_Test.ViewModels.JobSchedulesListViewModel> JobSchedulesListViewModels { get; set; }
-
-        public System.Data.Entity.DbSet<MVC_Test.ViewModels.JobEditViewModel> JobEditViewModels { get; set; }
     }
 
 }

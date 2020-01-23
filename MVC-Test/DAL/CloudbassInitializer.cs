@@ -9,7 +9,7 @@ using MVC_Test.DAL;
 namespace MVC_Test.DAL
 {
     public class CloudbassInitializer : DropCreateDatabaseIfModelChanges<CloudbassContext>
-    //public class CloudbassInitializer 
+  
     {
         protected override void Seed(CloudbassContext context)
         {
@@ -145,6 +145,8 @@ namespace MVC_Test.DAL
             //}
 
             context.SaveChanges();
+
+            base.Seed(context);
 
         }
 

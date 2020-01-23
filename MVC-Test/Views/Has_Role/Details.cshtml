@@ -1,15 +1,33 @@
-﻿@model MVC_Test.Models.Has_Role
+﻿@model MVC_Test.ViewModels.JobScheduleRoleViewModel
 
 @{
     ViewBag.Title = "Details";
+    Layout = "~/Views/Has_Role/_JobScheduleRoleLayout.cshtml";
 }
 
-<h2>Details</h2>
+@section Job{
 
-<div>
-    <h4>Has_Role</h4>
-    <hr />
-    <dl class="dl-horizontal">
+
+
+
+    <h2>Job info</h2>
+    @*<p> <strong>Client Name:</strong> @Model.Job.Client.Name </p>*@
+    <p> <strong>Job Name:</strong> @Model.Job.text </p>
+    <p> <strong>Job Number:</strong> @Model.Job.Id </p>
+    <p> <strong>Coordinator:</strong> @Model.Job.Coordinator </p>
+    <p> <strong>Job Location:</strong> @Model.Job.Location </p>
+}
+
+@section Has_Role{
+
+
+    <h2>@Model.Has_Role.Role.Name</h2>
+    <h2>@Model.Has_Role.StartTime</h2>
+    <h2>@Model.Has_Role.EndTime</h2>
+
+}
+
+@*<dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.Employee.FirstName)
         </dt>
@@ -42,9 +60,9 @@
             @Html.DisplayFor(model => model.EndTime)
         </dd>
 
-    </dl>
-</div>
+    </dl>*@
+
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @*@Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |*@
     @Html.ActionLink("Back to List", "Index")
 </p>

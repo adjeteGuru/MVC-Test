@@ -66,12 +66,13 @@ namespace MVC_Test.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Role role = db.Roles.Find(id);
-            if (role == null)
+            //Role role = db.Roles.Find(id);
+            Role selectedRole = db.Roles.First(x => x.Id == id);
+            if (selectedRole == null)
             {
                 return HttpNotFound();
             }
-            return View(role);
+            return View(selectedRole);
         }
 
         // POST: Role/Edit/5

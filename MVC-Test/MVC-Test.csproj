@@ -181,12 +181,13 @@
     <Compile Include="Controllers\CalendarController.cs" />
     <Compile Include="Controllers\ClientController.cs" />
     <Compile Include="Controllers\CountyController.cs" />
+    <Compile Include="Controllers\CrewController.cs" />
     <Compile Include="Controllers\Has_RoleController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\JobsController.cs" />
-    <Compile Include="Controllers\JobVMController.cs" />
+    <Compile Include="Controllers\JobController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
+    <Compile Include="Controllers\ScheduleController.cs" />
     <Compile Include="DAL\CloudbassContext.cs" />
     <Compile Include="DAL\CloudbassInitializer.cs" />
     <Compile Include="DAL\IRepository.cs" />
@@ -201,6 +202,10 @@
     <Compile Include="Migrations\202001161625249_InitialCreate_Newd.cs" />
     <Compile Include="Migrations\202001161625249_InitialCreate_Newd.designer.cs">
       <DependentUpon>202001161625249_InitialCreate_Newd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202001221421042_NewSetup.cs" />
+    <Compile Include="Migrations\202001221421042_NewSetup.designer.cs">
+      <DependentUpon>202001221421042_NewSetup.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account.cs" />
@@ -223,18 +228,10 @@
     <Compile Include="Repository\Employee.cs" />
     <Compile Include="Repository\Has_Role.cs" />
     <Compile Include="Repository\Job.cs" />
-    <Compile Include="Repository\JobsRepository.cs" />
     <Compile Include="Repository\Role.cs" />
     <Compile Include="Repository\Schedule.cs" />
-    <Compile Include="Repository\ScheduleRepository.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="ViewModels\EmployeeDisplayViewModel.cs" />
-    <Compile Include="ViewModels\EmployeeEditViewModel.cs" />
-    <Compile Include="ViewModels\JobDisplayViewModel.cs" />
-    <Compile Include="ViewModels\JobEditViewModel.cs" />
-    <Compile Include="ViewModels\JobSchedulesListViewModel.cs" />
-    <Compile Include="ViewModels\JobVM.cs" />
-    <Compile Include="ViewModels\ScheduleDisplayViewModel.cs" />
+    <Compile Include="ViewModels\JobScheduleRoleViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -531,6 +528,22 @@
     <Content Include="Views\Jobs\Index.cshtml" />
     <Content Include="Views\Jobs\Create.cshtml" />
     <Content Include="Views\JobVM\Index.cshtml" />
+    <Content Include="Views\Job\Create.cshtml" />
+    <Content Include="Views\Job\Delete.cshtml" />
+    <Content Include="Views\Job\Details.cshtml" />
+    <Content Include="Views\Job\Edit.cshtml" />
+    <Content Include="Views\Job\Index.cshtml" />
+    <Content Include="Views\Schedule\Create.cshtml" />
+    <Content Include="Views\Schedule\Delete.cshtml" />
+    <Content Include="Views\Schedule\Details.cshtml" />
+    <Content Include="Views\Schedule\Edit.cshtml" />
+    <Content Include="Views\Schedule\Index.cshtml" />
+    <Content Include="Views\Crew\Create.cshtml" />
+    <Content Include="Views\Crew\Delete.cshtml" />
+    <Content Include="Views\Crew\Details.cshtml" />
+    <Content Include="Views\Crew\Edit.cshtml" />
+    <Content Include="Views\Crew\Index.cshtml" />
+    <Content Include="Views\Has_Role\_JobScheduleRoleLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -560,6 +573,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202001161625249_InitialCreate_Newd.resx">
       <DependentUpon>202001161625249_InitialCreate_Newd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001221421042_NewSetup.resx">
+      <DependentUpon>202001221421042_NewSetup.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

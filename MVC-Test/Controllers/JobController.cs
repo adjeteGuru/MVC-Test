@@ -46,33 +46,23 @@ namespace MVC_Test.Controllers
                 return HttpNotFound();
             }
 
+            //show 
+            db.Schedules.ToList().Select(sc => new Schedule
+            {
+                Id = sc.Id,
+                text = sc.text,
+                start_date = sc.start_date,
+                end_date = sc.end_date,
+                SchType = sc.SchType
+            });
 
-            //using (var context = new CloudbassContext())
-            //{
-               // var scheduleList = db.Schedules.AsNoTracking()
-                   // .Where(j => j.Id == id)
-                   // .Where(x => (x.Id, x.text, ) )
-                   // .Single();
-              //  return scheduleList;
-            //}
-            //IF NOT NULL THEN
-            //var scheduleList = new  ;
-            //var schedule = new Schedule
-            //{
-            //    Id = selectedJob.Id,
-            //    text = ,
-            //    start_date = ,
-            //    end_date = ,
-            //    SchType =
-
-
-
-            //};
 
             JobScheduleRoleViewModel viewModel = new JobScheduleRoleViewModel()
             {
-                Job = selectedJob,
-                Schedule = schedule,
+
+                
+                Job = selectedJob
+                
             };
 
             return View(viewModel);

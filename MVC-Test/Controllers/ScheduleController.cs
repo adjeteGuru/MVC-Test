@@ -59,28 +59,37 @@ namespace MVC_Test.Controllers
 
             //IF NOT NULL THEN
 
-            var job = new Job()
-
+            db.Jobs.ToList().Select(jo => new
             {
-                Id = selectedSchedule.Id,
-                ClientId = selectedJob.ClientId,
-                text = selectedJob.text,
-                Location = selectedJob.Location,
-                TXDate = selectedJob.TXDate,
-                Coordinator = selectedJob.Coordinator
+                Id = selectedSchedule.Id.ToString(),
+                ClientId = jo.ClientId,
+                text = jo.text,
+                Location = jo.Location,
+                TXDate = jo.TXDate,
+                Coordinator = jo.Coordinator
+            });
+            //var job = new Job()
 
-            };
+            //{
+            //    Id = selectedSchedule.Id.ToString(),
+            //    ClientId = selectedJob.ClientId,
+            //    text = selectedJob.text,
+            //    Location = selectedJob.Location,
+            //    TXDate = selectedJob.TXDate,
+            //    Coordinator = selectedJob.Coordinator
+
+            //};
 
             JobScheduleRoleViewModel viewModel = new JobScheduleRoleViewModel()
             {
-                Job = job,
-                //Schedule = schedule,
+                //Job = 
+                Schedule = selectedSchedule
 
-            }
+            };
 
             return View(selectedSchedule);
         }
-    }
+    
 
         // GET: Schedule/Create
         public ActionResult Create()

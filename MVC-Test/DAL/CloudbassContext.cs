@@ -6,6 +6,7 @@ using MVC_Test.Models;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using MVC_Test.DAL;
+using MVC_Test.Metadata;
 
 namespace MVC_Test
 {
@@ -26,9 +27,10 @@ namespace MVC_Test
         public DbSet<Role> Roles { get; set; }
         public DbSet<Crew> Crews { get; set; }
         public DbSet<Schedule> Schedules { get; set; }
-        public DbSet<Job> Jobs { get; set; }
+        public DbSet<Jobs> Jobs { get; set; }
         public DbSet<Client> Clients { get; set; }
-     
+        public DbSet<BookingType> BookingTypes { get; set; }
+
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

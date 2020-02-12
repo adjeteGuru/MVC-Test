@@ -4,14 +4,13 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace MVC_Test.Models
+namespace MVC_Test.Metadata
 {
-    public class Role
+    public class BookingType
     {
         [Key]
         [Required]
-        public  int Id { get; set; }
-        public  string name { get; set; }
-       
+        [MaxLength(10), MinLength(2)]
+        public string BookingTypeID { get; set; }
     }
 }

@@ -1,11 +1,12 @@
 ﻿Enable-Migrations -ContextTypeName CloudbassContext -MigrationsDirectory Migrations
 
 
-Scaffolds a migration script for any pending model changes:
+Scaffolds a migration script for any pending model changes: MyTestDB
 
-Add-Migration -ConfigurationTypeName MVC_Test.Migrations.Configuration "InitialCreate"
+Add-Migration -ConfigurationTypeName MVC_Test.Migrations.Configuration "CreateNew"
 
 
+// 'There is already an object named 'Client' in the database => solution is to delete all table and apply bollow:
 Update-Database -ConfigurationTypeName MVC_Test.Migrations.Configuration 
 
 

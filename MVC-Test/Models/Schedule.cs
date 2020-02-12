@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -11,11 +12,8 @@ namespace MVC_Test.Models
     }
     public class Schedule
     {
-        public Schedule()
-        {
-            Has_Roles = new HashSet<Has_Role>();
-            //Employees = new HashSet<Employee>();
-        }
+        [Key]
+        [Required]
         public  int Id { get; set; }
         public  string text { get; set; }
       
@@ -23,15 +21,10 @@ namespace MVC_Test.Models
         public  DateTime? end_date { get; set; }
         public SchType SchType { get; set; }
 
-        public  string JobId { get; set; }
-        public virtual Job Job { get; set; }
+        public Guid JobId { get; set; }
+        public virtual Jobs Job { get; set; }
+
      
-       // public virtual ICollection<Crew> Crews { get; set; }
-
-        //new
-        public virtual ICollection<Has_Role> Has_Roles { get; set; }
-        //new
-        //public virtual ICollection<Employee>Employees { get; set; }
-
+     
     }
 }

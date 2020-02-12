@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace MVC_Test.Models
+namespace MVC_Test.Models.ViewModels
 {
     public class Client
     {
@@ -13,6 +13,5 @@ namespace MVC_Test.Models
         public string email { get; set; }
         public string toContact { get; set; }
         public string address { get; set; }
-        public virtual Client Clients { get; set; }
     }
 }

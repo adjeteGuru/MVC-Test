@@ -10,6 +10,10 @@ namespace MVC_Test.Models.ViewModels
     {
         [Display(Name = "Job Number")]
         public Guid JobId { get; set; }
+
+
+        [Display(Name = "Job Reference")]
+        public string JobRef { get; set; }
         public string text { get; set; }
         public string Description { get; set; }
         public string Location { get; set; }
@@ -25,8 +29,8 @@ namespace MVC_Test.Models.ViewModels
         [Display(Name = "Client")]
         public string Client { get; set; }
 
-      
+        public Status Status { get; set; }
 
-        
+
     }
 }

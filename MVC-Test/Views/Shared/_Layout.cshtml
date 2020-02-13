@@ -3,10 +3,13 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title - CRUD II</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-
+    @RenderSection("header", required: false)
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -24,15 +27,15 @@
                     @*<li>@Html.ActionLink("Home", "Index", "Home")</li>*@
                     @*<li>@Html.ActionLink("About", "About", "Home")</li>
         <li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
-                    <li>@Html.ActionLink("Calendar", "Index", "Calendar")</li>
+                    @*<li>@Html.ActionLink("Calendar", "Index", "Calendar")</li>
                     <li>@Html.ActionLink("Clients", "Index", "Client")</li>
-                    <li>@Html.ActionLink("Staffs", "Index", "Employee")</li>
+                    <li>@Html.ActionLink("Staffs", "Index", "Employee")</li>*@
                     @*<li>@Html.ActionLink("Schedules", "Index", "Schedule")</li>*@
-                    <li>@Html.ActionLink("HasRole", "Index", "Has_Role")</li>
+                    @*<li>@Html.ActionLink("HasRole", "Index", "Has_Role")</li>
                     <li>@Html.ActionLink("Jobs", "Index", "Jobs")</li>
                     <li>@Html.ActionLink("JobVM", "Index", "JobVM")</li>
                     <li>@Html.ActionLink("Counties", "Index", "County")</li>
-                    <li>@Html.ActionLink("Roles", "Index", "Role")</li>
+                    <li>@Html.ActionLink("Roles", "Index", "Role")</li>*@
                     @*<li>@Html.ActionLink("JobView", "Index", "JobDetails")</li>*@
                     
                 </ul>
@@ -44,7 +47,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - cloudbass Limited</p>
         </footer>
     </div>
 

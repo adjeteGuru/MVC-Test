@@ -6,7 +6,7 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-
+    @RenderSection("header", required: false)
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -24,15 +24,15 @@
                     @*<li>@Html.ActionLink("Home", "Index", "Home")</li>*@
                     @*<li>@Html.ActionLink("About", "About", "Home")</li>
         <li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
-                    <li>@Html.ActionLink("Calendar", "Index", "Calendar")</li>
+                    @*<li>@Html.ActionLink("Calendar", "Index", "Calendar")</li>
                     <li>@Html.ActionLink("Clients", "Index", "Client")</li>
-                    <li>@Html.ActionLink("Staffs", "Index", "Employee")</li>
+                    <li>@Html.ActionLink("Staffs", "Index", "Employee")</li>*@
                     @*<li>@Html.ActionLink("Schedules", "Index", "Schedule")</li>*@
-                    <li>@Html.ActionLink("HasRole", "Index", "Has_Role")</li>
+                    @*<li>@Html.ActionLink("HasRole", "Index", "Has_Role")</li>
                     <li>@Html.ActionLink("Jobs", "Index", "Jobs")</li>
                     <li>@Html.ActionLink("JobVM", "Index", "JobVM")</li>
                     <li>@Html.ActionLink("Counties", "Index", "County")</li>
-                    <li>@Html.ActionLink("Roles", "Index", "Role")</li>
+                    <li>@Html.ActionLink("Roles", "Index", "Role")</li>*@
                     @*<li>@Html.ActionLink("JobView", "Index", "JobDetails")</li>*@
                     
                 </ul>

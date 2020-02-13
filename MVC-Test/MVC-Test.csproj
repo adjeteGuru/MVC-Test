@@ -189,6 +189,10 @@
     <Compile Include="Migrations\202002122042582_InitialCreate.designer.cs">
       <DependentUpon>202002122042582_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202002131046574_202002122042582_InitialCreate_New.cs" />
+    <Compile Include="Migrations\202002131046574_202002122042582_InitialCreate_New.designer.cs">
+      <DependentUpon>202002131046574_202002122042582_InitialCreate_New.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models.ViewModels\BookingEquipment.cs" />
     <Compile Include="Models.ViewModels\BookingFleet.cs" />
@@ -284,6 +288,7 @@
     <Content Include="Views\Jobs\Create.cshtml" />
     <Content Include="Views\Jobs\BookingTypePartial.cshtml" />
     <Content Include="Views\Jobs\CreateSchedulePartial.cshtml" />
+    <Content Include="Views\Jobs\EditJobPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -308,6 +313,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202002122042582_InitialCreate.resx">
       <DependentUpon>202002122042582_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002131046574_202002122042582_InitialCreate_New.resx">
+      <DependentUpon>202002131046574_202002122042582_InitialCreate_New.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

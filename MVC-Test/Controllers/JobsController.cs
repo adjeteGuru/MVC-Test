@@ -112,6 +112,7 @@ namespace MVC_Test.Controllers
         }
 
         // POST: Customer/Edit/5
+        [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult EditJobPartial(JobEdit model)
         {

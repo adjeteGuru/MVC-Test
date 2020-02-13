@@ -170,58 +170,49 @@ namespace MVC_Test.Controllers
                         };
                         return PartialView("CreateSchedulePartial", scheduleModel);
 
-                    case "Crew":
-                        var crewModel = new Crew()
-                        {
-                            JobId = model.JobId
-                        };
+                    //    case "Crew":
+                    //        var crewModel = new Crew()
+                    //        {
+                    //            JobId = model.JobId
+                    //        };
 
-                        return PartialView("CreateCrewPartial", crewModel);
+                    //        return PartialView("CreateCrewPartial", crewModel);
 
-                    case "BookinFleet":
-                        var fleetModel = new BookingFleet()
-                        {
-                            JobId = model.JobId
-                        };
-                        //var fleetTypeRepo = new FleetTypeRepository();
-                        //fleetModel. = fleetTypeRepo.GetFleetTypes();
-                        //var regionsRepo = new RegionsRepository();
-                        //postalAddressModel.Regions = regionsRepo.GetRegions();
-                        return PartialView("CreateBookingFleetPartial", fleetModel);
+                    //    case "BookinFleet":
+                    //        var fleetModel = new BookingFleet()
+                    //        {
+                    //            JobId = model.JobId
+                    //        };
 
-                    case "BookingHotel":
-                        var hotelModel = new BookingHotel()
-                        {
-                            JobId = model.JobId
-                        };
-                        //var countriesRepo = new CountriesRepository();
-                        //postalAddressModel.Countries = countriesRepo.GetCountries();
-                        //var regionsRepo = new RegionsRepository();
-                        //postalAddressModel.Regions = regionsRepo.GetRegions();
-                        return PartialView("CreateBookingHotelPartial", hotelModel);
+                    //        return PartialView("CreateBookingFleetPartial", fleetModel);
 
-                    case "BookingKit":
-                        var kitModel = new BookingKit()
-                        {
-                            JobId = model.JobId
-                        };
-                        //var countriesRepo = new CountriesRepository();
-                        //postalAddressModel.Countries = countriesRepo.GetCountries();
-                        //var regionsRepo = new RegionsRepository();
-                        //postalAddressModel.Regions = regionsRepo.GetRegions();
-                        return PartialView("CreateBookingKitPartial", kitModel);
+                    //    case "BookingHotel":
+                    //        var hotelModel = new BookingHotel()
+                    //        {
+                    //            JobId = model.JobId
+                    //        };
+
+                    //        return PartialView("CreateBookingHotelPartial", hotelModel);
+
+                    //    case "BookingKit":
+                    //        var kitModel = new BookingKit()
+                    //        {
+                    //            JobId = model.JobId
+                    //        };
+
+                    //        return PartialView("CreateBookingKitPartial", kitModel);
 
 
-                    case "BookingEquipment":
-                        var equipmentModel = new BookingEquipment()
-                        {
-                            JobId = model.JobId
-                        };
-                        //var countriesRepo = new CountriesRepository();
-                        //postalAddressModel.Countries = countriesRepo.GetCountries();
-                        //var regionsRepo = new RegionsRepository();
-                        //postalAddressModel.Regions = regionsRepo.GetRegions();
-                        return PartialView("CreateBookingPartial", equipmentModel);
+                    //    case "BookingEquipment":
+                    //        var equipmentModel = new BookingEquipment()
+                    //        {
+                    //            JobId = model.JobId
+                    //        };
+                    //        //var countriesRepo = new CountriesRepository();
+                    //        //postalAddressModel.Countries = countriesRepo.GetCountries();
+                    //        //var regionsRepo = new RegionsRepository();
+                    //        //postalAddressModel.Regions = regionsRepo.GetRegions();
+                    //        return PartialView("CreateBookingPartial", equipmentModel);
 
                     default:
                         return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -231,9 +222,9 @@ namespace MVC_Test.Controllers
         }
 
 
-        // NEW STARTED
+       
 
-        [HttpPost] //THIS IS has worked
+        [HttpPost] 
         [ValidateAntiForgeryToken]
         public ActionResult CreateSchedulePartial(ScheduleEdit model)
         {

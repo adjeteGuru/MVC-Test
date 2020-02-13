@@ -11,6 +11,9 @@ namespace MVC_Test.Models.ViewModels
     {
         [Display(Name = "Job Number")]
         public string JobId { get; set; }
+
+        [Display(Name = "Job Reference")]
+        public string JobRef { get; set; }
         public string text { get; set; }
         public string Description { get; set; }
         public string Location { get; set; }
@@ -26,6 +29,8 @@ namespace MVC_Test.Models.ViewModels
         [Display(Name = "Client")]
         public string SelectedClientId { get; set; }
         public IEnumerable<SelectListItem> Clients { get; set; }
+
+        public Status Status { get; set; }
 
     }
 }

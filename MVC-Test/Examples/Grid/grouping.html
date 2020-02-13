@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Connected jQuery Grids</title>
+    <meta charset="utf-8" />
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
+    <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <table id="grid"></table>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var grid = $('#grid').grid({
+                primaryKey: 'Id',
+                dataSource: '/SchedulesGrouping/Get',
+                grouping: { groupBy: 'ClientId' },
+                columns: [{ field: 'Id', width: 56 },
+                    { field: 'text' },
+                    //{ field: 'ClientName' },
+                    { field: 'start_date', title: 'Event Location' },
+                    {field: 'end_date', title: 'Coordinator'}
+                    //{ field: 'SchTypeId' },
+                ]
+            });
+        });
+    </script>
+</body>
+</html>

@@ -12,7 +12,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.SelectedBookingType, htmlAttributes: new { @class = "control-label col-md-2", id = "BookingTypeLabel" })
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.SelectedBookingType, new SelectList(Model.BookingTypes, "Value", "Text"), htmlAttributes: new { @class = "form-control", id = "BookingType" })
+                @Html.DropDownListFor(model => model.SelectedBookingType, new SelectList(Model.BookingTypes, "Value", "Text"), htmlAttributes: new { @class = "form-control", id = "BookingTypes" })
                 @Html.ValidationMessageFor(model => model.SelectedBookingType, "", new { @class = "text-danger" })
             </div>
         </div>

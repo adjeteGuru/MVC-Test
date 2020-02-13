@@ -28,17 +28,19 @@ namespace MVC_Test.Repositories
                         {
                             JobId = j.JobId,
                             text = j.text,
-                            //NameConcatenateLocation = j.
+                           Description = j.Description,
                             DateCreated = j.DateCreated,
                             Location = j.Location,
                             Coordinator = j.Coordinator,
-                            // ClientId = j.Client.Name,
+                            
                             Client = j.ClientId,
                             start_date = j.start_date,
                             TXDate = j.TXDate,
                             end_date = j.end_date,
-                            CommercialLead = j.CommercialLead
-                            // Status = j.Status
+                            CommercialLead = j.CommercialLead,
+                            JobRef =j.JobRef,
+                            Status= j.Status
+                            
                         };
 
                         jobsDisplay.Add(jobDisplay);
@@ -82,7 +84,8 @@ namespace MVC_Test.Repositories
                             end_date = job.end_date,
                             CommercialLead = job.CommercialLead,
                             SelectedClientId = job.Client.Id,
-                            //SelectedStatus = job.JobStatu.Id
+                            JobRef = job.JobRef,
+                            Status = job.Status
 
                         };
                         var clientsRepo = new ClientRepository();
@@ -146,7 +149,9 @@ namespace MVC_Test.Repositories
                             end_date = jobedit.end_date,
                             ClientId = jobedit.SelectedClientId,
                             // statusId = jobedit.SelectedStatus,
-                            CommercialLead = jobedit.CommercialLead
+                            CommercialLead = jobedit.CommercialLead,
+                            JobRef = jobedit.JobRef,
+                            Status = jobedit.Status
 
                         };
 

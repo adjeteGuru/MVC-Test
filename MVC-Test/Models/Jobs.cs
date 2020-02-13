@@ -15,6 +15,7 @@ namespace MVC_Test.Models
        
             [Key]
             public Guid JobId { get; set; }
+        public string JobRef { get; set; }
             public string text { get; set; }
             public string Description { get; set; }
             public string Location { get; set; }

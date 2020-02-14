@@ -111,7 +111,7 @@ namespace MVC_Test.Controllers
             return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
         }
 
-        // POST: Customer/Edit/5
+        //// POST: job/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult EditJobPartial(JobEdit model)
@@ -165,19 +165,19 @@ namespace MVC_Test.Controllers
                 switch (model.SelectedBookingType)
                 {
                     case "Schedule":
-                        var scheduleModel = new Schedule()
+                        var scheduleModel = new ScheduleEdit()
                         {
                             JobId = model.JobId
                         };
                         return PartialView("CreateSchedulePartial", scheduleModel);
 
-                    //    case "Crew":
-                    //        var crewModel = new Crew()
-                    //        {
-                    //            JobId = model.JobId
-                    //        };
+                    case "Crew":
+                        var crewModel = new Crew()
+                        {
+                            JobId = model.JobId
+                        };
 
-                    //        return PartialView("CreateCrewPartial", crewModel);
+                        return PartialView("CreateCrewPartial", crewModel);
 
                     //    case "BookinFleet":
                     //        var fleetModel = new BookingFleet()
@@ -240,6 +240,13 @@ namespace MVC_Test.Controllers
             }
             return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
         }
+
+
+        // ADD ROLE
+
+
+
+            //END ROLE
 
 
 

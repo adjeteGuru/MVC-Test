@@ -15,13 +15,16 @@ namespace MVC_Test.Models
         [Key]
         [Required]
         public  int Id { get; set; }
+
+        [Required]
+        public Guid JobId { get; set; }
         public  string text { get; set; }
       
         public  DateTime? start_date { get; set; }
         public  DateTime? end_date { get; set; }
         public SchType SchType { get; set; }
 
-        public Guid JobId { get; set; }
+       
         public virtual Jobs Job { get; set; }
 
      

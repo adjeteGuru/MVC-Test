@@ -76,6 +76,7 @@ namespace MVC_Test.Controllers
 
 
         // GET: Job/Edit/5
+        [HttpGet]
 
         public ActionResult Edit(string id)
         {
@@ -166,26 +167,27 @@ namespace MVC_Test.Controllers
                 {
                     case "Schedule":
                         var scheduleModel = new ScheduleEdit()
+                      //  var scheduleModel = new Schedule()
                         {
                             JobId = model.JobId
                         };
                         return PartialView("CreateSchedulePartial", scheduleModel);
 
                     case "Crew":
-                        var crewModel = new Crew()
+                        var crewModel = new CrewEdit()
                         {
                             JobId = model.JobId
                         };
 
                         return PartialView("CreateCrewPartial", crewModel);
 
-                    //    case "BookinFleet":
-                    //        var fleetModel = new BookingFleet()
-                    //        {
-                    //            JobId = model.JobId
-                    //        };
+                    //case "BookingFleet":
+                    //    var fleetModel = new BookingFleet()
+                    //    {
+                    //        JobId = model.JobId
+                    //    };
 
-                    //        return PartialView("CreateBookingFleetPartial", fleetModel);
+                    //    return PartialView("CreateBookingFleetPartial", fleetModel);
 
                     //    case "BookingHotel":
                     //        var hotelModel = new BookingHotel()
@@ -228,6 +230,7 @@ namespace MVC_Test.Controllers
         [HttpPost] 
         [ValidateAntiForgeryToken]
         public ActionResult CreateSchedulePartial(ScheduleEdit model)
+       // public ActionResult CreateSchedulePartial(ScheduleEdit model)
         {
             if (ModelState.IsValid)
             {

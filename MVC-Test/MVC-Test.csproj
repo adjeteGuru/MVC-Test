@@ -182,10 +182,10 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\JOBBISController.cs" />
     <Compile Include="Controllers\JobDController.cs" />
     <Compile Include="Controllers\JobsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\ScheduleDController.cs" />
     <Compile Include="DAL\CloudbassContext.cs" />
     <Compile Include="DAL\CloudbassInitializer.cs" />
     <Compile Include="Global.asax.cs">
@@ -325,23 +325,18 @@
     <Content Include="Views\Jobs\Edit.cshtml" />
     <Content Include="Views\Jobs\Create.cshtml" />
     <Content Include="Views\Jobs\BookingTypePartial.cshtml" />
-    <Content Include="Views\Jobs\CreateSchedulePartial.cshtml" />
     <Content Include="Views\Jobs\EditJobPartial.cshtml" />
     <Content Include="Views\JobD\Create.cshtml" />
     <Content Include="Views\JobD\Delete.cshtml" />
     <Content Include="Views\JobD\Details.cshtml" />
     <Content Include="Views\JobD\Edit.cshtml" />
     <Content Include="Views\JobD\Index.cshtml" />
-    <Content Include="Views\ScheduleD\Create.cshtml" />
-    <Content Include="Views\ScheduleD\Delete.cshtml" />
-    <Content Include="Views\ScheduleD\Details.cshtml" />
-    <Content Include="Views\ScheduleD\Edit.cshtml" />
-    <Content Include="Views\ScheduleD\Index.cshtml" />
+    <Content Include="Views\Jobs\CreateSchedulePartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Examples\Grid\" />
     <Folder Include="Images\" />
+    <Folder Include="Views\JOBBIS\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

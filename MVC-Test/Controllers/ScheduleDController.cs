@@ -11,113 +11,112 @@ using MVC_Test.Models;
 
 namespace MVC_Test.Controllers
 {
-    public class JobDController : Controller
+    public class ScheduleDController : Controller
     {
         private CloudbassContext db = new CloudbassContext();
 
-        // GET: JobD
+        // GET: ScheduleD
         public ActionResult Index()
         {
-            var jobs = db.Jobs.Include(j => j.Client);
-            return View(jobs.ToList());
+            var schedules = db.Schedules.Include(s => s.Job);
+            return View(schedules.ToList());
         }
 
-        // GET: JobD/Details/5
-        public ActionResult Details(Guid? id)
+        // GET: ScheduleD/Details/5
+        public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Jobs jobs = db.Jobs.Find(id);
-            if (jobs == null)
+            Schedule schedule = db.Schedules.Find(id);
+            if (schedule == null)
             {
                 return HttpNotFound();
             }
-            return View(jobs);
+            return View(schedule);
         }
 
-        // GET: JobD/Create
+        // GET: ScheduleD/Create
         public ActionResult Create()
         {
-            ViewBag.ClientId = new SelectList(db.Clients, "Id", "name");
+            ViewBag.JobId = new SelectList(db.Jobs, "JobId", "JobRef");
             return View();
         }
 
-        // POST: JobD/Create
+        // POST: ScheduleD/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "JobId,JobRef,text,Description,Location,DateCreated,start_date,TXDate,end_date,Coordinator,CommercialLead,ClientId,Status")] Jobs jobs)
+        public ActionResult Create([Bind(Include = "Id,JobId,text,start_date,end_date,SchType")] Schedule schedule)
         {
             if (ModelState.IsValid)
             {
-                jobs.JobId = Guid.NewGuid();
-                db.Jobs.Add(jobs);
+                db.Schedules.Add(schedule);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.ClientId = new SelectList(db.Clients, "Id", "name", jobs.ClientId);
-            return View(jobs);
+            ViewBag.JobId = new SelectList(db.Jobs, "JobId", "JobRef", schedule.JobId);
+            return View(schedule);
         }
 
-        // GET: JobD/Edit/5
-        public ActionResult Edit(Guid? id)
+        // GET: ScheduleD/Edit/5
+        public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Jobs jobs = db.Jobs.Find(id);
-            if (jobs == null)
+            Schedule schedule = db.Schedules.Find(id);
+            if (schedule == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.ClientId = new SelectList(db.Clients, "Id", "name", jobs.ClientId);
-            return View(jobs);
+            ViewBag.JobId = new SelectList(db.Jobs, "JobId", "JobRef", schedule.JobId);
+            return View(schedule);
         }
 
-        // POST: JobD/Edit/5
+        // POST: ScheduleD/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "JobId,JobRef,text,Description,Location,DateCreated,start_date,TXDate,end_date,Coordinator,CommercialLead,ClientId,Status")] Jobs jobs)
+        public ActionResult Edit([Bind(Include = "Id,JobId,text,start_date,end_date,SchType")] Schedule schedule)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(jobs).State = EntityState.Modified;
+                db.Entry(schedule).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.ClientId = new SelectList(db.Clients, "Id", "name", jobs.ClientId);
-            return View(jobs);
+            ViewBag.JobId = new SelectList(db.Jobs, "JobId", "JobRef", schedule.JobId);
+            return View(schedule);
         }
 
-        // GET: JobD/Delete/5
-        public ActionResult Delete(Guid? id)
+        // GET: ScheduleD/Delete/5
+        public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Jobs jobs = db.Jobs.Find(id);
-            if (jobs == null)
+            Schedule schedule = db.Schedules.Find(id);
+            if (schedule == null)
             {
                 return HttpNotFound();
             }
-            return View(jobs);
+            return View(schedule);
         }
 
-        // POST: JobD/Delete/5
+        // POST: ScheduleD/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(Guid id)
+        public ActionResult DeleteConfirmed(int id)
         {
-            Jobs jobs = db.Jobs.Find(id);
-            db.Jobs.Remove(jobs);
+            Schedule schedule = db.Schedules.Find(id);
+            db.Schedules.Remove(schedule);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -14,15 +14,15 @@
     </div>
 </div>
 
-<div id="EditJobPartial">
+<div id="EditCustomerPartial">
     @Html.Action("EditJobPartial", new { id = Url.RequestContext.RouteData.Values["id"] })
 </div>
 
-<div id="SelectBookingTypePartial">
+<div id="SelectAddressTypePartial">
     @Html.Action("BookingTypePartial", new { id = Url.RequestContext.RouteData.Values["id"] })
 </div>
 
-<div id="CreateSchedule"></div>
+<div id="CreateBooking"></div>
 
 <div class="row">
     <div class="form-group">
@@ -39,52 +39,5 @@
     @Scripts.Render("~/bundles/jqueryunobtrusive") @*For unobtrusive-ajax*@
     @Scripts.Render("~/bundles/jqueryval") @*For validate and validate-unobtrusive*@
 
-    <script type="text/javascript">
-        $(document).ready(function () {
-            var selectedClient = $("#Clients").val();
-            
-            addJob(selectedClient);
-           
-    });
-
-
-
-        // $('#Client').change(function () {
-        //        var selectedClient = $("#Client").val();
-            
-        //     if (selectedClient != null && jobStatuSelect !=null) {
-
-        //          addJob(selectedClient,  );
-        //    }
-
-        //});
-
-       
-        @*function addJob(selectedClient, jobStatuSelect) {
-           $.getJSON('@Url.Action("GetJobStatus")', { id: jobStatuSelect }, function (statuss) {
-                        if (statuss != null && !jQuery.isEmptyObject(statuss))
-                        {
-                            jobStatuSelect.append($('<option/>', {
-                                value: null,
-                                text: ""
-                            }));
-                            $.each(statuss, function (index, status) {
-                                regionsSelect.append($('<option/>', {
-                                    value: status.Value,
-                                    text: status.Text
-                                }));
-                            });
-                        };
-           });
-        }*@
-
-
-
-
-    </script>
+   
 }
-
-
-
-
-

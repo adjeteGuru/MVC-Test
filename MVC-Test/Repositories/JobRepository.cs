@@ -283,7 +283,7 @@ namespace MVC_Test.Repositories
         {
             //if (model != null && string.IsNullOrEmpty(model.JobId) )
 
-            if (model != null && Guid.TryParse(model.Id.ToString(), out Guid jobid))
+            if (model != null && Guid.TryParse(model.JobId, out Guid jobid))
             {
                 using (var context = new CloudbassContext())
                 {
@@ -302,8 +302,6 @@ namespace MVC_Test.Repositories
                         end_date = model.end_date,
                         SchType = model.SchType
                         
-
-
                     };
 
                     //schedule.SchType = context.SchTypes.Find(schedule.SchTypeId);

@@ -38,6 +38,7 @@ namespace MVC_Test
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
         }
 
+        public System.Data.Entity.DbSet<MVC_Test.Models.ViewModels.ScheduleEdit> ScheduleEdits { get; set; }
     }
 
 }

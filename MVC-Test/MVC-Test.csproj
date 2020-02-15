@@ -182,17 +182,15 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\JOBBISController.cs" />
-    <Compile Include="Controllers\JobDController.cs" />
     <Compile Include="Controllers\JobsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ScheduleDController.cs" />
     <Compile Include="DAL\CloudbassContext.cs" />
     <Compile Include="DAL\CloudbassInitializer.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\SortHelper.cs" />
-    <Compile Include="Metadata\BookingType.cs" />
     <Compile Include="Metadata\MetadataRepository.cs" />
     <Compile Include="Migrations\202002122042582_InitialCreate.cs" />
     <Compile Include="Migrations\202002122042582_InitialCreate.designer.cs">
@@ -206,6 +204,10 @@
     <Compile Include="Migrations\202002131301145_202002131046574_202002122042582_InitialCreate_New.designer.cs">
       <DependentUpon>202002131301145_202002131046574_202002122042582_InitialCreate_New.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202002141130174_202002122042582_InitialCreate_New_2.cs" />
+    <Compile Include="Migrations\202002141130174_202002122042582_InitialCreate_New_2.designer.cs">
+      <DependentUpon>202002141130174_202002122042582_InitialCreate_New_2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models.ViewModels\BookingEquipment.cs" />
     <Compile Include="Models.ViewModels\BookingFleet.cs" />
@@ -214,6 +216,8 @@
     <Compile Include="Models.ViewModels\Client.cs" />
     <Compile Include="Models.ViewModels\County.cs" />
     <Compile Include="Models.ViewModels\Crew.cs" />
+    <Compile Include="Models.ViewModels\CrewEdit.cs" />
+    <Compile Include="Models.ViewModels\CrewList.cs" />
     <Compile Include="Models.ViewModels\Employee.cs" />
     <Compile Include="Models.ViewModels\Has_Role.cs" />
     <Compile Include="Models.ViewModels\JobEdit.cs" />
@@ -224,6 +228,7 @@
     <Compile Include="Models.ViewModels\ScheduleList.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\BookingType.cs" />
     <Compile Include="Models\Client.cs" />
     <Compile Include="Models\County.cs" />
     <Compile Include="Models\Crew.cs" />
@@ -264,7 +269,6 @@
     <Content Include="Content\fonts\gijgo-material.woff" />
     <Content Include="Content\fonts\gijgo-material.ttf" />
     <Content Include="Content\fonts\gijgo-material.eot" />
-    <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\grid\checkbox.js" />
     <Content Include="Scripts\grid\checkbox.min.js" />
     <Content Include="Scripts\grid\core.js" />
@@ -277,11 +281,16 @@
     <Content Include="Scripts\grid\droppable.min.js" />
     <Content Include="Scripts\grid\grid.js" />
     <Content Include="Scripts\grid\grid.min.js" />
-    <Content Include="Scripts\jquery-3.3.1.js" />
-    <Content Include="Scripts\jquery-3.3.1.min.js" />
-    <Content Include="Scripts\jquery-3.3.1.slim.js" />
-    <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
+    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.4.1.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.4.1.min.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -322,16 +331,16 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Jobs\Index.cshtml" />
+    <Content Include="Views\ScheduleD\Create.cshtml" />
+    <Content Include="Views\ScheduleD\Delete.cshtml" />
+    <Content Include="Views\ScheduleD\Details.cshtml" />
+    <Content Include="Views\ScheduleD\Edit.cshtml" />
+    <Content Include="Views\ScheduleD\Index.cshtml" />
+    <Content Include="Views\Jobs\EditJobPartial.cshtml" />
+    <Content Include="Views\Jobs\BookingTypePartial.cshtml" />
+    <Content Include="Views\Jobs\CreateSchedulePartial.cshtml" />
     <Content Include="Views\Jobs\Edit.cshtml" />
     <Content Include="Views\Jobs\Create.cshtml" />
-    <Content Include="Views\Jobs\BookingTypePartial.cshtml" />
-    <Content Include="Views\Jobs\EditJobPartial.cshtml" />
-    <Content Include="Views\JobD\Create.cshtml" />
-    <Content Include="Views\JobD\Delete.cshtml" />
-    <Content Include="Views\JobD\Details.cshtml" />
-    <Content Include="Views\JobD\Edit.cshtml" />
-    <Content Include="Views\JobD\Index.cshtml" />
-    <Content Include="Views\Jobs\CreateSchedulePartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -348,8 +357,6 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="packages.config" />
-    <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
-    <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
@@ -364,6 +371,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202002131301145_202002131046574_202002122042582_InitialCreate_New.resx">
       <DependentUpon>202002131301145_202002131046574_202002122042582_InitialCreate_New.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002141130174_202002122042582_InitialCreate_New_2.resx">
+      <DependentUpon>202002141130174_202002122042582_InitialCreate_New_2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -247,9 +247,24 @@ namespace MVC_Test.Controllers
 
         // ADD ROLE
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateCrewPartial(CrewEdit model)
+        // public ActionResult CreateSchedulePartial(ScheduleEdit model)
+        {
+            if (ModelState.IsValid)
+            {
+                var repo = new JobRepository();
+                var updatedModel = repo.SaveCrew(model);
+                if (updatedModel != null)
+                {
+                    return RedirectToAction("Edit", new { id = model.JobId });
+                }
+            }
+            return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        }
 
-
-            //END ROLE
+        //END ROLE
 
 
 

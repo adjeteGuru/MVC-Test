@@ -25,8 +25,11 @@
                         email = c.String(),
                         toContact = c.String(),
                         address = c.String(),
+                        Clients_Id = c.String(maxLength: 128),
                     })
-                .PrimaryKey(t => t.Id);
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Client", t => t.Clients_Id)
+                .Index(t => t.Clients_Id);
             
             CreateTable(
                 "dbo.County",
@@ -41,19 +44,19 @@
                 "dbo.Crew",
                 c => new
                     {
-                        has_RoleId = c.Int(nullable: false, identity: true),
+                        crewId = c.Int(nullable: false, identity: true),
+                        has_RoleId = c.Int(nullable: false),
                         JobId = c.Guid(nullable: false),
                         start_date = c.DateTime(),
                         end_date = c.DateTime(),
                         totalDays = c.Double(nullable: false),
-                        rate = c.Decimal(nullable: false, precision: 18, scale: 2),
-                        Has_Role_Id = c.Int(),
+                        quatity = c.Int(nullable: false),
                     })
-                .PrimaryKey(t => t.has_RoleId)
-                .ForeignKey("dbo.Has_Role", t => t.Has_Role_Id)
+                .PrimaryKey(t => t.crewId)
+                .ForeignKey("dbo.Has_Role", t => t.has_RoleId, cascadeDelete: true)
                 .ForeignKey("dbo.Jobs", t => t.JobId, cascadeDelete: true)
-                .Index(t => t.JobId)
-                .Index(t => t.Has_Role_Id);
+                .Index(t => t.has_RoleId)
+                .Index(t => t.JobId);
             
             CreateTable(
                 "dbo.Has_Role",
@@ -62,9 +65,6 @@
                         Id = c.Int(nullable: false, identity: true),
                         employeeId = c.Int(nullable: false),
                         roleId = c.Int(nullable: false),
-                        start_date = c.DateTime(),
-                        end_date = c.DateTime(),
-                        totalDays = c.Double(nullable: false),
                         rate = c.Decimal(nullable: false, precision: 18, scale: 2),
                     })
                 .PrimaryKey(t => t.Id)
@@ -109,7 +109,8 @@
                 "dbo.Jobs",
                 c => new
                     {
-                        JobId = c.Guid(nullable: false),
+                        JobId = c.Guid(nullable: false, identity: true),
+                        JobRef = c.String(),
                         text = c.String(),
                         Description = c.String(),
                         Location = c.String(),
@@ -127,15 +128,28 @@
                 .Index(t => t.ClientId);
             
             CreateTable(
-                "dbo.Schedule",
+                "dbo.ScheduleEdit",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
+                        JobId = c.String(),
                         text = c.String(),
                         start_date = c.DateTime(),
                         end_date = c.DateTime(),
                         SchType = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.Schedule",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
                         JobId = c.Guid(nullable: false),
+                        text = c.String(),
+                        start_date = c.DateTime(),
+                        end_date = c.DateTime(),
+                        SchType = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Jobs", t => t.JobId, cascadeDelete: true)
@@ -148,18 +162,21 @@
             DropForeignKey("dbo.Schedule", "JobId", "dbo.Jobs");
             DropForeignKey("dbo.Crew", "JobId", "dbo.Jobs");
             DropForeignKey("dbo.Jobs", "ClientId", "dbo.Client");
-            DropForeignKey("dbo.Crew", "Has_Role_Id", "dbo.Has_Role");
+            DropForeignKey("dbo.Crew", "has_RoleId", "dbo.Has_Role");
             DropForeignKey("dbo.Has_Role", "roleId", "dbo.Role");
             DropForeignKey("dbo.Has_Role", "employeeId", "dbo.Employee");
             DropForeignKey("dbo.Employee", "countyId", "dbo.County");
+            DropForeignKey("dbo.Client", "Clients_Id", "dbo.Client");
             DropIndex("dbo.Schedule", new[] { "JobId" });
             DropIndex("dbo.Jobs", new[] { "ClientId" });
             DropIndex("dbo.Employee", new[] { "countyId" });
             DropIndex("dbo.Has_Role", new[] { "roleId" });
             DropIndex("dbo.Has_Role", new[] { "employeeId" });
-            DropIndex("dbo.Crew", new[] { "Has_Role_Id" });
             DropIndex("dbo.Crew", new[] { "JobId" });
+            DropIndex("dbo.Crew", new[] { "has_RoleId" });
+            DropIndex("dbo.Client", new[] { "Clients_Id" });
             DropTable("dbo.Schedule");
+            DropTable("dbo.ScheduleEdit");
             DropTable("dbo.Jobs");
             DropTable("dbo.Role");
             DropTable("dbo.Employee");

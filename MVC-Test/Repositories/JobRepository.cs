@@ -322,5 +322,46 @@ namespace MVC_Test.Repositories
             // Return false if customeredit == null or CustomerID is not a guid
             return null;
         }
+
+        //Save Crew
+        public CrewEdit SaveCrew(CrewEdit model)
+        {
+            //if (model != null && string.IsNullOrEmpty(model.JobId) )
+
+            if (model != null && Guid.TryParse(model.JobId, out Guid jobid))
+            {
+                using (var context = new CloudbassContext())
+                {
+
+                    var crew = new Models.Crew()
+                    {
+                        //Id = newGuid.ToString(),
+                        //Id = customerid,
+                        // JobId = model.JobId,
+
+                        JobId = jobid,
+                        has_RoleId = model.has_RoleId,
+
+                        start_date = model.start_date,
+
+                        end_date = model.end_date,
+                        totalDays = model.totalDays,
+                        quatity = model.quatity
+
+                    };
+
+                    
+                    context.Crews.Add(crew);
+                    context.SaveChanges();
+
+                   
+                    return model;
+
+                }
+            }
+
+            // Return false if customeredit == null or CustomerID is not a guid
+            return null;
+        }
     }
 }

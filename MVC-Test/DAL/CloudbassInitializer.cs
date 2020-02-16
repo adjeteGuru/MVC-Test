@@ -5,6 +5,7 @@ using System.Web;
 using System.Data.Entity;
 using MVC_Test.Models;
 using MVC_Test.DAL;
+using System.Data.Entity.Migrations;
 
 namespace MVC_Test.DAL
 {
@@ -130,18 +131,18 @@ namespace MVC_Test.DAL
             //    return roles;
             //}
 
-            //context.Crews.AddRange(new List<Crew> 
-            //{
+            context.Crews.AddRange(new List<Crew>
+            {
 
-            //    //var services = new List<Service>
-            //    //{
-            //    new Crew{JobId=context.Jobs.Find("cb12").JobId, has_RoleId=context.Has_Roles.Find(1).Id, start_date=DateTime.Parse("2019-12-11"), end_date=DateTime.Parse("2019-12-14"), totalDays= 1, rate=270},
-            //    //new Crew{JobId=context.Jobs.Find("cb12").Id,has_RoleId=context.Has_Roles.Find(2).Id, start_date=DateTime.Parse("2019-12-11"), end_date=DateTime.Parse("2019-12-14"), totalDays= 0.2, rate=270},
-            //    new Crew{JobId=context.Jobs.Find("cb13").JobId,has_RoleId=context.Has_Roles.Find(3).Id, start_date=DateTime.Parse("2019-12-11"), end_date=DateTime.Parse("2019-12-14"), totalDays= 1.5, rate=275},
-            //    //new Crew{JobId=context.Jobs.Find("cb13").Id,has_RoleId=context.Has_Roles.Find(1).Id, start_date=DateTime.Parse("2019-12-11"), end_date=DateTime.Parse("2019-12-14"), totalDays= 1, rate=270},
+                //var services = new List<Service>
+                //{
+               // new Crew{ crewId=1,JobId=context.Jobs.Find("cb12").JobId, has_RoleId=context.Has_Roles.Find(1).Id, start_date=DateTime.Parse("2019-12-11"), end_date=DateTime.Parse("2019-12-14"), totalDays= 1},
+                //new Crew{JobId=context.Jobs.Find("cb12").Id,has_RoleId=context.Has_Roles.Find(2).Id, start_date=DateTime.Parse("2019-12-11"), end_date=DateTime.Parse("2019-12-14"), totalDays= 0.2, rate=270},
+                //new Crew{JobId=context.Jobs.Find("cb13").JobId,has_RoleId=context.Has_Roles.Find(3).Id, start_date=DateTime.Parse("2019-12-11"), end_date=DateTime.Parse("2019-12-14"), totalDays= 1.5, 
+                //new Crew{JobId=context.Jobs.Find("cb13").Id,has_RoleId=context.Has_Roles.Find(1).Id, start_date=DateTime.Parse("2019-12-11"), end_date=DateTime.Parse("2019-12-14"), totalDays= 1, rate=270},
+                 new Crew { crewId = 1, JobId = Guid.Parse("17020a65 - 1b96 - 4120 - b359 - 786ecca0c081"), has_RoleId= 1,start_date = new DateTime(2019, 3,11),end_date= new DateTime(2019, 5,11) ,totalDays= 1.5 ,quatity = 1},
 
-
-            //});
+            });
             //    return services;
             //}
 
@@ -152,23 +153,31 @@ namespace MVC_Test.DAL
 
 
 
-            //Jobs job = new Jobs
-            //{
-            //    JobId = 1,
-            //    DateCreated = new DateTime(2016, 3, 11),
-            //    DateDispatched = new DateTime(2016, 3, 12),
+            Jobs job = new Jobs
+            {
+                JobId = Guid.Parse("17020a65 - 1b96 - 4120 - b359 - 786ecca0c081"),
+                text = "SPL",
+                Description = "friendly",
+                Location = "Scotland celtic park",
+                Coordinator = "Dixon",
+                DateCreated = DateTime.Parse("2019-12-01"),
+                start_date = new DateTime(2016, 3, 11),
+                end_date = DateTime.Parse("2019-12-17"),
+                Status = Status.Cancelled,
+                CommercialLead = "Francis Akai",
+                ClientId = context.Clients.Find(2).Id
+                
+               
+                //Crews = new List<Crew>
+                //{
+                //    new Crew { crewId = 1, JobId = Guid.Parse("17020a65 - 1b96 - 4120 - b359 - 786ecca0c081"), has_RoleId= 1,start_date = new DateTime(2019, 3,11),end_date= new DateTime(2019, 5,11) ,totalDays= 1.5 ,quatity = 1},
+               
+                //}
+            };
+
+            context.Jobs.AddOrUpdate(o => o.JobId, job);
 
 
-            //    OrderItems = new List<OrderItem>
-            //    {
-            //        new OrderItem { OrderItemId = 1, OrderId = 1, ProductId = 1, Quantity = 1},
-            //        new OrderItem { OrderItemId = 2, OrderId = 1, ProductId = 2, Quantity = 2}
-            //    }
-            //};
-
-           // context.Jobs.AddOrUpdate(o => o.OrderId, job);
-            
-            
 
 
             context.SaveChanges();

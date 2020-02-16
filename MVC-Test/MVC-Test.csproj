@@ -192,25 +192,9 @@
     </Compile>
     <Compile Include="Helpers\SortHelper.cs" />
     <Compile Include="Metadata\MetadataRepository.cs" />
-    <Compile Include="Migrations\202002122042582_InitialCreate.cs" />
-    <Compile Include="Migrations\202002122042582_InitialCreate.designer.cs">
-      <DependentUpon>202002122042582_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202002131046574_202002122042582_InitialCreate_New.cs" />
-    <Compile Include="Migrations\202002131046574_202002122042582_InitialCreate_New.designer.cs">
-      <DependentUpon>202002131046574_202002122042582_InitialCreate_New.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202002131301145_202002131046574_202002122042582_InitialCreate_New.cs" />
-    <Compile Include="Migrations\202002131301145_202002131046574_202002122042582_InitialCreate_New.designer.cs">
-      <DependentUpon>202002131301145_202002131046574_202002122042582_InitialCreate_New.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202002141130174_202002122042582_InitialCreate_New_2.cs" />
-    <Compile Include="Migrations\202002141130174_202002122042582_InitialCreate_New_2.designer.cs">
-      <DependentUpon>202002141130174_202002122042582_InitialCreate_New_2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202002160026588_CrewImproved.cs" />
-    <Compile Include="Migrations\202002160026588_CrewImproved.designer.cs">
-      <DependentUpon>202002160026588_CrewImproved.cs</DependentUpon>
+    <Compile Include="Migrations\202002161745393_InitialCreate.cs" />
+    <Compile Include="Migrations\202002161745393_InitialCreate.designer.cs">
+      <DependentUpon>202002161745393_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models.ViewModels\BookingEquipment.cs" />
@@ -345,6 +329,7 @@
     <Content Include="Views\Jobs\CreateSchedulePartial.cshtml" />
     <Content Include="Views\Jobs\Edit.cshtml" />
     <Content Include="Views\Jobs\Create.cshtml" />
+    <Content Include="Views\Jobs\CreateCrewPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -367,20 +352,8 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202002122042582_InitialCreate.resx">
-      <DependentUpon>202002122042582_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202002131046574_202002122042582_InitialCreate_New.resx">
-      <DependentUpon>202002131046574_202002122042582_InitialCreate_New.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202002131301145_202002131046574_202002122042582_InitialCreate_New.resx">
-      <DependentUpon>202002131301145_202002131046574_202002122042582_InitialCreate_New.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202002141130174_202002122042582_InitialCreate_New_2.resx">
-      <DependentUpon>202002141130174_202002122042582_InitialCreate_New_2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202002160026588_CrewImproved.resx">
-      <DependentUpon>202002160026588_CrewImproved.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202002161745393_InitialCreate.resx">
+      <DependentUpon>202002161745393_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -21,7 +21,7 @@ namespace MVC_Test.Models
        // public Decimal rate { get; set; }
        
         public int quatity { get; set; }
-        // public virtual Jobs Job { get; set; }
+         public virtual Jobs Job { get; set; }
         public virtual Has_Role Has_Role { get; set; }
     }
 }

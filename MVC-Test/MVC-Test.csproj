@@ -208,6 +208,10 @@
     <Compile Include="Migrations\202002141130174_202002122042582_InitialCreate_New_2.designer.cs">
       <DependentUpon>202002141130174_202002122042582_InitialCreate_New_2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202002160026588_CrewImproved.cs" />
+    <Compile Include="Migrations\202002160026588_CrewImproved.designer.cs">
+      <DependentUpon>202002160026588_CrewImproved.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models.ViewModels\BookingEquipment.cs" />
     <Compile Include="Models.ViewModels\BookingFleet.cs" />
@@ -374,6 +378,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202002141130174_202002122042582_InitialCreate_New_2.resx">
       <DependentUpon>202002141130174_202002122042582_InitialCreate_New_2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002160026588_CrewImproved.resx">
+      <DependentUpon>202002160026588_CrewImproved.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

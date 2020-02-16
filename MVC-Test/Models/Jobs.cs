@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -14,7 +15,8 @@ namespace MVC_Test.Models
     {              
        
             [Key]
-            public Guid JobId { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public Guid JobId { get; set; }
         public string JobRef { get; set; }
             public string text { get; set; }
             public string Description { get; set; }
@@ -30,6 +32,7 @@ namespace MVC_Test.Models
             public virtual Client Client { get; set; }
 
             public Status Status { get; set; }
+            public ICollection<Crew> Crews { get; set; }
         
     }
 }

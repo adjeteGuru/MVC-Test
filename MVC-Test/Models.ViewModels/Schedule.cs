@@ -16,11 +16,11 @@ namespace MVC_Test.Models.ViewModels
         public string text { get; set; }
 
         [DataType(DataType.Date)]
-       // [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime? start_date { get; set; }
 
         [DataType(DataType.Date)]
-       // [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime? end_date { get; set; }
         public SchType SchType { get; set; }
 

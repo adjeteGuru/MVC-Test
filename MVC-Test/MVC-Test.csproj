@@ -196,6 +196,14 @@
     <Compile Include="Migrations\202002161745393_InitialCreate.designer.cs">
       <DependentUpon>202002161745393_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202002171548057_crewIdRemoved.cs" />
+    <Compile Include="Migrations\202002171548057_crewIdRemoved.designer.cs">
+      <DependentUpon>202002171548057_crewIdRemoved.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202002171613549_crewIdAdded.cs" />
+    <Compile Include="Migrations\202002171613549_crewIdAdded.designer.cs">
+      <DependentUpon>202002171613549_crewIdAdded.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models.ViewModels\BookingEquipment.cs" />
     <Compile Include="Models.ViewModels\BookingFleet.cs" />
@@ -451,6 +459,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202002161745393_InitialCreate.resx">
       <DependentUpon>202002161745393_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002171548057_crewIdRemoved.resx">
+      <DependentUpon>202002171548057_crewIdRemoved.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002171613549_crewIdAdded.resx">
+      <DependentUpon>202002171613549_crewIdAdded.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

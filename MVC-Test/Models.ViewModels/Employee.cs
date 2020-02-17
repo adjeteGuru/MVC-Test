@@ -21,7 +21,7 @@ namespace MVC_Test.Models.ViewModels
         public bool isAvailable { get; set; }
 
         [DataType(DataType.Date)]
-       // [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
 
         public DateTime? start_date { get; set; }
         public string photo { get; set; }

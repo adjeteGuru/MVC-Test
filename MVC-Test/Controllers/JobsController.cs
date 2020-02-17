@@ -230,7 +230,7 @@ namespace MVC_Test.Controllers
         [HttpPost] 
         [ValidateAntiForgeryToken]
         public ActionResult CreateSchedulePartial(ScheduleEdit model)
-       // public ActionResult CreateSchedulePartial(ScheduleEdit model)
+       
         {
             if (ModelState.IsValid)
             {
@@ -250,7 +250,7 @@ namespace MVC_Test.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult CreateCrewPartial(CrewEdit model)
-        // public ActionResult CreateSchedulePartial(ScheduleEdit model)
+       
         {
             if (ModelState.IsValid)
             {

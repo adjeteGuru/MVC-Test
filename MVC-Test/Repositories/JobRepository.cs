@@ -1,6 +1,7 @@
 ﻿using MVC_Test.Models.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
@@ -38,7 +39,7 @@ namespace MVC_Test.Repositories
                             TXDate = j.TXDate,
                             end_date = j.end_date,
                             CommercialLead = j.CommercialLead,
-                            JobRef =j.JobRef,
+                           // JobRef =j.JobRef,
                             Status= j.Status
                             
                         };
@@ -55,7 +56,8 @@ namespace MVC_Test.Repositories
 
         }
 
-
+        //this include here is to add Linq to find a job with jobId that matches the data about other objects 
+        //in the data's being returned the the db
         public JobEdit GetJob(Guid id)
         {
             if (id != Guid.Empty)
@@ -64,6 +66,8 @@ namespace MVC_Test.Repositories
                 {
                     var job = context.Jobs.AsNoTracking()
                                             .Where(j => j.JobId == id)
+                                            //.Include(j => j.Crews)
+                                            //.FirstOrDefault();
                                             .Single();
 
                     if (job != null)
@@ -84,7 +88,7 @@ namespace MVC_Test.Repositories
                             end_date = job.end_date,
                             CommercialLead = job.CommercialLead,
                             SelectedClientId = job.Client.Id,
-                            JobRef = job.JobRef,
+                            //JobRef = job.JobRef,
                             Status = job.Status
 
                         };
@@ -112,7 +116,7 @@ namespace MVC_Test.Repositories
             {
                 //Id = ToString(),
                 JobId = Guid.NewGuid().ToString(),
-                // Id = string.IsNullOrEmpty(string).ToString(),
+               
                 Clients = cRepo.GetClients(),
                 //JobStatu = sRepo.GetJobStatus()
 
@@ -128,14 +132,14 @@ namespace MVC_Test.Repositories
                 using (var context = new CloudbassContext())
                 {
 
-                    // if (string.IsNullOrEmpty(jobedit.Id))
+                  
                     if (Guid.TryParse(jobedit.JobId, out Guid newGuid))
                     {
 
                         var job = new Models.Jobs()
                         {
                             JobId = newGuid,
-                            // Id = ToString(),
+                           
                             text = jobedit.text,
                             Description = jobedit.Description,
 
@@ -150,7 +154,7 @@ namespace MVC_Test.Repositories
                             ClientId = jobedit.SelectedClientId,
                             // statusId = jobedit.SelectedStatus,
                             CommercialLead = jobedit.CommercialLead,
-                            JobRef = jobedit.JobRef,
+                           // JobRef = jobedit.JobRef,
                             Status = jobedit.Status
 
                         };
@@ -170,7 +174,7 @@ namespace MVC_Test.Repositories
 
         // START SCHEDULE LIST
 
-        // public List<Models.DTO.ScheduleListView> GetScheduleList(string jobid)
+       
         public ScheduleList GetScheduleList(Guid jobid)
         {
             if (jobid != Guid.Empty)
@@ -200,19 +204,7 @@ namespace MVC_Test.Repositories
 
                             };
 
-                            //var schTypesRepo = new SchTypeRepository();
-                            //scheduleVm.SchTypName = schTypesRepo.GetSchTypeName(schedule.SchTypeId);
-                            //var jobStatuRepo = new JobStatuRepository();
-                            //scheduleVm.StatusName = jobStatuRepo.GetJobStatuName(schedule.statusId);
-                            //scheduleListView.Schedules.Add(scheduleVm);                                                   
-
-
-                            //var schTypesRepo = new SchTypeRepository();
-                            //scheduleVm.SchTypName = schTypesRepo.GetSchTypes().ToString();
-                            //var schStatuRepo = new ScheduleStatuRepository();
-                            //scheduleVm.StatusName = schStatuRepo.GetScheduleStatus().ToString();
-                            //scheduleListView.Schedules.Add(scheduleVm);
-
+                           
                         }
                         return scheduleListView;
                     }
@@ -222,9 +214,7 @@ namespace MVC_Test.Repositories
         }
 
 
-        //START SECOND
-
-        //public List<Models.DTO.Schedule> GetSchedule(string jobid, int scheduleid)
+        //get schedule
         public Schedule GetSchedule(Guid jobid, int scheduleid)
         {
             if (jobid != Guid.Empty)
@@ -249,25 +239,8 @@ namespace MVC_Test.Repositories
 
 
                         };
-
-
-                        //var schTypesRepo = new SchTypeRepository();
-                        //scheduleVm.SchTypName = schTypesRepo.GetSchTypeName(schedule.SchTypeId);
-                        //var jobStatuRepo = new JobStatuRepository();
-                        //scheduleVm.StatusName = jobStatuRepo.GetJobStatuName(schedule.statusId);
-
-
-                        //var schTypesRepo = new SchTypeRepository();
-                        //scheduleVm.SchTypName = schTypesRepo.GetSchTypes().ToString();
-                        //var schStatuRepo = new ScheduleStatuRepository();
-                        //scheduleVm.StatusName = schStatuRepo.GetScheduleStatus().ToString();
-
-
-
-                        //var schTypesRepo = new SchTypeRepository();
-                        //scheduleVm.SchTypName = schTypesRepo.GetSchTypes().ToString();
-                        //var scheduleStatuRepo = new ScheduleStatuRepository();
-                        //scheduleVm.StatusName = scheduleStatuRepo.GetScheduleStatus().ToString();
+                        
+                       
                         return scheduleVm;
                     }
 
@@ -278,10 +251,10 @@ namespace MVC_Test.Repositories
         }
 
 
-
+        //execute save
         public ScheduleEdit SaveSchedule(ScheduleEdit model)
         {
-            //if (model != null && string.IsNullOrEmpty(model.JobId) )
+            
 
             if (model != null && Guid.TryParse(model.JobId, out Guid jobid))
             {
@@ -289,10 +262,7 @@ namespace MVC_Test.Repositories
                 {
 
                     var schedule = new Models.Schedule()
-                    {
-                        //Id = newGuid.ToString(),
-                        //Id = customerid,
-                        // JobId = model.JobId,
+                    {                       
 
                         JobId = jobid,
                         text = model.text?.Trim(),
@@ -304,15 +274,123 @@ namespace MVC_Test.Repositories
                         
                     };
 
-                    //schedule.SchType = context.SchTypes.Find(schedule.SchTypeId);
-                    //schedule.ScheduleStatu = context.ScheduleStatus.Find(schedule.statusId);
+                   
                     context.Schedules.Add(schedule);
                     context.SaveChanges();
+                                      
 
-                    //var schTypesRepo = new SchTypeRepository();
-                    //model.SchType = schTypesRepo.GetSchTypes();
-                    //var schStatuRepo = new ScheduleStatuRepository();
-                    //model.ScheduleStatu = schStatuRepo.GetScheduleStatus();
+                    return model;
+
+                }
+            }
+
+            // Return false if customeredit == null or CustomerID is not a guid
+            return null;
+        }
+
+
+        //get list
+        public CrewList GetCrewList(Guid jobid)
+        {
+            if (jobid != Guid.Empty)
+            {
+                using (var context = new CloudbassContext())
+                {
+                    var crews = context.Crews.AsNoTracking()
+                        .Where(x => x.JobId == jobid)
+                        .OrderBy(x => x.crewId);
+
+                    if (crews != null)
+                    {
+                        var crewListView = new CrewList();
+                        foreach (var crew in crews)
+                        {
+                            var crewVm = new Crew()
+                            {
+                                JobId = crew.JobId.ToString("D"),
+                                crewId = crew.crewId,
+                                has_RoleId = crew.Has_Role.Role.Id,
+                                totalDays = crew.totalDays,
+                                
+                                start_date = crew.start_date,
+                                end_date = crew.end_date,
+                               
+                            };
+
+
+                        }
+                        return crewListView;
+                    }
+                }
+            }
+            return null;
+        }
+
+
+
+        //get crew
+        public Crew GetCrew(Guid jobid, int crewid)
+        {
+            if (jobid != Guid.Empty)
+            {
+                using (var context = new CloudbassContext())
+                {
+                    var crew = context.Crews.AsNoTracking()
+                        .Where(x => x.JobId == jobid && x.crewId == crewid)
+                        .Single();
+
+
+                    if (crew != null)
+                    {
+                        var crewVm = new Crew()
+                        {
+                            JobId = crew.JobId.ToString("D"),
+                           // has_RoleId = crew.has_RoleId,
+                            has_RoleId = crew.Has_Role.Role.Id,
+                            start_date = crew.start_date,
+                            end_date = crew.end_date,
+                            totalDays = crew.totalDays,
+
+                        };
+
+
+                        return crewVm;
+                    }
+
+                }
+            }
+            return null;
+
+        }
+
+        //Save Crew
+        public CrewEdit SaveCrew(CrewEdit model)
+        {
+
+
+            if (model != null && Guid.TryParse(model.JobId, out Guid jobid))
+            {
+                using (var context = new CloudbassContext())
+                {
+
+                    var crew = new Models.Crew()
+                    {
+
+                        JobId = jobid,
+                        has_RoleId = model.has_RoleId,
+
+                        start_date = model.start_date,
+
+                        end_date = model.end_date,
+                        totalDays = model.totalDays,
+
+
+                    };
+
+
+                    context.Crews.Add(crew);
+                    context.SaveChanges();
+
 
                     return model;
 

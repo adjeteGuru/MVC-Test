@@ -167,7 +167,7 @@ namespace MVC_Test.Controllers
                 {
                     case "Schedule":
                         var scheduleModel = new ScheduleEdit()
-                      //  var scheduleModel = new Schedule()
+                       // var scheduleModel = new Schedule()
                         {
                             JobId = model.JobId
                         };
@@ -175,6 +175,7 @@ namespace MVC_Test.Controllers
 
                     case "Crew":
                         var crewModel = new CrewEdit()
+                       // var crewModel = new Crew()
                         {
                             JobId = model.JobId
                         };
@@ -230,7 +231,7 @@ namespace MVC_Test.Controllers
         [HttpPost] 
         [ValidateAntiForgeryToken]
         public ActionResult CreateSchedulePartial(ScheduleEdit model)
-       // public ActionResult CreateSchedulePartial(ScheduleEdit model)
+       
         {
             if (ModelState.IsValid)
             {
@@ -247,9 +248,24 @@ namespace MVC_Test.Controllers
 
         // ADD ROLE
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateCrewPartial(CrewEdit model)
 
+        {
+            if (ModelState.IsValid)
+            {
+                var repo = new JobRepository();
+                var updatedModel = repo.SaveCrew(model);
+                if (updatedModel != null)
+                {
+                    return RedirectToAction("Edit", new { id = model.JobId });
+                }
+            }
+            return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        }
 
-            //END ROLE
+        //END ROLE
 
 
 

@@ -42,18 +42,20 @@
         <th>
             @Html.DisplayNameFor(model => model.CommercialLead)
         </th>
-        <th>
-                @Html.DisplayNameFor(model => model.Status)
-            </th>
 
         <th>
             @Html.DisplayNameFor(model => model.Client)
         </th>
-        <th>
-                @Html.DisplayNameFor(model => model.JobRef)
-            </th>
 
-       
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+
+        @*<th>
+            @Html.DisplayNameFor(model => model.JobRef)
+        </th>*@
+
+
         <th></th>
     </tr>
 
@@ -95,9 +97,9 @@
                     @Html.DisplayFor(modelItem => item.Status)
                 </td>
 
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.JobRef)
-            </td>
+            </td>*@
           
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.JobId })
@@ -107,3 +109,5 @@
     }
 
 </table>
+
+

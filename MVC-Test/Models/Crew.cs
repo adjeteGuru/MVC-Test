@@ -12,9 +12,11 @@ namespace MVC_Test.Models
      
 
         [Key]
+        [Required]
         public int crewId { get; set; }
+        [Required]
         public Guid JobId { get; set; }
-               
+        [Required]
         public int has_RoleId { get; set; }
         public DateTime? start_date { get; set; }
         public DateTime? end_date { get; set; }

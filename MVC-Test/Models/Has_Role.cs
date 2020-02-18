@@ -10,7 +10,7 @@ namespace MVC_Test.Models
     {
         [Key]
         [Required]
-        public  int Id { get; set; }
+        public  int has_RoleId { get; set; }
         public  int employeeId { get; set; }
         public  int roleId { get; set; }
         public DateTime? start_date { get; set; }

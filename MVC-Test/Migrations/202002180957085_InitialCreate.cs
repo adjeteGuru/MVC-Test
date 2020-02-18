@@ -45,18 +45,17 @@
                 c => new
                     {
                         crewId = c.Int(nullable: false, identity: true),
-                        has_RoleId = c.Int(nullable: false),
                         JobId = c.Guid(nullable: false),
+                        has_RoleId = c.Int(nullable: false),
                         start_date = c.DateTime(),
                         end_date = c.DateTime(),
                         totalDays = c.Double(nullable: false),
-                        quatity = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.crewId)
                 .ForeignKey("dbo.Has_Role", t => t.has_RoleId, cascadeDelete: true)
                 .ForeignKey("dbo.Jobs", t => t.JobId, cascadeDelete: true)
-                .Index(t => t.has_RoleId)
-                .Index(t => t.JobId);
+                .Index(t => t.JobId)
+                .Index(t => t.has_RoleId);
             
             CreateTable(
                 "dbo.Has_Role",
@@ -65,6 +64,8 @@
                         Id = c.Int(nullable: false, identity: true),
                         employeeId = c.Int(nullable: false),
                         roleId = c.Int(nullable: false),
+                        start_date = c.DateTime(),
+                        end_date = c.DateTime(),
                         rate = c.Decimal(nullable: false, precision: 18, scale: 2),
                     })
                 .PrimaryKey(t => t.Id)
@@ -109,7 +110,7 @@
                 "dbo.Jobs",
                 c => new
                     {
-                        JobId = c.Guid(nullable: false, identity: true),
+                        JobId = c.Guid(nullable: false, identity: true, defaultValueSql: "newsequentialid()"),
                         JobRef = c.String(),
                         text = c.String(),
                         Description = c.String(),
@@ -172,8 +173,8 @@
             DropIndex("dbo.Employee", new[] { "countyId" });
             DropIndex("dbo.Has_Role", new[] { "roleId" });
             DropIndex("dbo.Has_Role", new[] { "employeeId" });
-            DropIndex("dbo.Crew", new[] { "JobId" });
             DropIndex("dbo.Crew", new[] { "has_RoleId" });
+            DropIndex("dbo.Crew", new[] { "JobId" });
             DropIndex("dbo.Client", new[] { "Clients_Id" });
             DropTable("dbo.Schedule");
             DropTable("dbo.ScheduleEdit");

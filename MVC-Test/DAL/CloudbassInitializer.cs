@@ -26,19 +26,76 @@ namespace MVC_Test.DAL
             context.SaveChanges();
 
 
-            //});
+            var roles = new List<Role>
+                {
+                new Role{Id=1, name="Rigger"},
+                new Role{Id=2, name="Vision"},
+                new Role{Id=3, name="Camera"},
+                new Role{Id= 4, name="Sound Assistant"},
+                new Role{Id= 5, name="Security"},
+                new Role{Id=6, name="Camera Operator"},
+
+            };
+
+            roles.ForEach(role => context.Roles.AddOrUpdate(x => x.Id, role));
+            context.SaveChanges();
+
+
+            var counties = new List<County>
+                {
+                new County{Id=1, name="Nottinghamshire"},
+                new County{Id=2, name="Derbyshire"},
+
+            };
+
+            counties.ForEach(county => context.Counties.AddOrUpdate(x => x.Id, county));
+            context.SaveChanges();
 
 
 
-            //    return clients;
-            //}
+           
 
-            //
+            var employees = new List<Employee>
+                {
+                new Employee{Id=1, fullName="Carson Alexander", start_date=DateTime.Parse("2005-09-01"), countyId=context.Counties.Find(1).Id, mobile= "09876654321", email="al@gmail.com", postNominals="BSc", bared="sky",isAvailable=true, alergy="nut", nextOfKin="frank",note="ohh",photo="pic.png", Category = Category.Staff,},
+                new Employee{Id=2,fullName="Meredith Alonso",start_date=DateTime.Parse("2002-09-01") , countyId=context.Counties.Find(2).Id, mobile= "09876654321", email="al@gmail.com", postNominals="BSc", bared="sky",isAvailable=false, alergy="nut", nextOfKin="frank",note="ohh",photo="pic.png", Category = Category.Staff},
+                new Employee{Id=3, fullName="Arturo Anand",start_date=DateTime.Parse("2003-09-01") , countyId=context.Counties.Find(1).Id, mobile= "09876654321", email="al@gmail.com", postNominals="BSc", bared="sky",isAvailable=true, alergy="nut", nextOfKin="frank",note="ohh",photo="pic.png", Category = Category.Freelance},
+                new Employee{Id= 4,fullName="Gytis Barzdukas",start_date=DateTime.Parse("2002-09-01") , countyId=context.Counties.Find(2).Id, mobile= "09876654321", email="al@gmail.com", postNominals="BSc", bared="sky",isAvailable=true, alergy="nut", nextOfKin="frank",note="ohh",photo="pic.png", Category = Category.Staff},
+                new Employee{Id=5,fullName="Yan Li",start_date=DateTime.Parse("2002-09-01"), countyId=context.Counties.Find(1).Id, mobile= "09876654321", email="al@gmail.com", postNominals="BSc", bared="sky",isAvailable=false, alergy="nut", nextOfKin="frank",note="ohh",photo="pic.png", Category = Category.Contracted},
+                new Employee{Id=7, fullName="Peggy Justice",start_date=DateTime.Parse("2001-09-01"), countyId=context.Counties.Find(2).Id, mobile= "09876654321", email="al@gmail.com", postNominals="BSc", bared="sky",isAvailable=false, alergy="nut", nextOfKin="frank",note="ohh",photo="pic.png", Category = Category.Contracted},
 
-            //context.Jobs.AddRange(new List<Jobs>
-            //{
+                 };
+
+            employees.ForEach(employee => context.Employees.AddOrUpdate(x => x.Id, employee));
+            context.SaveChanges();
 
 
+
+            var has_roles = new List<Has_Role>
+                {
+                new Has_Role{has_RoleId=1, employeeId=context.Employees.Find(1).Id,roleId=context.Roles.Find(1).Id},
+                new Has_Role{has_RoleId=2, employeeId= context.Employees.Find(6).Id, roleId= context.Roles.Find(2).Id},
+               new Has_Role{has_RoleId=3, employeeId=context.Employees.Find(2).Id,roleId=context.Roles.Find(1).Id},
+               new Has_Role{ has_RoleId=4, employeeId=context.Employees.Find(3).Id,roleId=context.Roles.Find(3).Id},
+                new Has_Role{has_RoleId=5, employeeId= context.Employees.Find(4).Id,roleId=context.Roles.Find(2).Id}
+
+            };
+            has_roles.ForEach(has_role => context.Has_Roles.AddOrUpdate(x => x.has_RoleId, has_role));
+            context.SaveChanges();
+
+
+            var crews = new List<Crew>
+              {
+            // new Crew{ crewId=1,JobId=context.Jobs.Find("cb12").JobId, has_RoleId=context.Has_Roles.Find(1).Id, start_date=DateTime.Parse("2019-12-11"), end_date=DateTime.Parse("2019-12-14"), totalDays= 1},
+            //new Crew{JobId=context.Jobs.Find("cb12").Id,has_RoleId=context.Has_Roles.Find(2).Id, start_date=DateTime.Parse("2019-12-11"), end_date=DateTime.Parse("2019-12-14"), totalDays= 0.2, rate=270},
+            //new Crew{JobId=context.Jobs.Find("cb13").JobId,has_RoleId=context.Has_Roles.Find(3).Id, start_date=DateTime.Parse("2019-12-11"), end_date=DateTime.Parse("2019-12-14"), totalDays= 1.5,
+            //new Crew{JobId=context.Jobs.Find("cb13").Id,has_RoleId=context.Has_Roles.Find(1).Id, start_date=DateTime.Parse("2019-12-11"), end_date=DateTime.Parse("2019-12-14"), totalDays= 1, rate=270},
+              new Crew {  JobId = Guid.Parse("ad3ac28b-3652-ea11-8508-104a7dbc22bb"), has_RoleId= 1,start_date = new DateTime(2019, 3,11),end_date= new DateTime(2019, 5,11) ,totalDays= 1.5},
+
+
+             };
+            crews.ForEach(crew => context.Crews.AddOrUpdate(x => x.crewId, crew));
+            context.SaveChanges();
 
             //     new Jobs{JobId= 17020a65-1b96-4120-b359-786ecca0c081, text="SPL",Description="friendly", Location="Scotland celtic park",Coordinator="Dixon", DateCreated=DateTime.Parse("2019-12-01"), start_date=DateTime.Parse("2019-12-11"), end_date=DateTime.Parse("2019-12-17"), Status = Status.Cancelled, CommercialLead="Francis Akai", ClientId= context.Clients.Find(2).Id},
             //     new Jobs{JobId="cb13",text="MUTV",Description="under 21 league", Location="Manchester Old traford",Coordinator="Sir Bobby", DateCreated=DateTime.Parse("2019-12-10"), start_date=DateTime.Parse("2019-12-11"), end_date=DateTime.Parse("2019-12-16"), Status = Status.Active, CommercialLead="Francis Akai", ClientId=context.Clients.Find(3).Id},
@@ -78,107 +135,6 @@ namespace MVC_Test.DAL
             context.SaveChanges();
 
 
-            //context.Employees.AddRange(new List<Employee> { 
-            //{
-
-            var employees = new List<Employee>
-                {
-                new Employee{Id=1, fullName="Carson Alexander", start_date=DateTime.Parse("2005-09-01"), countyId=context.Counties.Find(1).Id, mobile= "09876654321", email="al@gmail.com", postNominals="BSc", bared="sky",isAvailable=true, alergy="nut", nextOfKin="frank",note="ohh",photo="pic.png", Category = Category.Staff,},
-                new Employee{Id=2,fullName="Meredith Alonso",start_date=DateTime.Parse("2002-09-01") , countyId=context.Counties.Find(2).Id, mobile= "09876654321", email="al@gmail.com", postNominals="BSc", bared="sky",isAvailable=false, alergy="nut", nextOfKin="frank",note="ohh",photo="pic.png", Category = Category.Staff},
-                new Employee{Id=3, fullName="Arturo Anand",start_date=DateTime.Parse("2003-09-01") , countyId=context.Counties.Find(1).Id, mobile= "09876654321", email="al@gmail.com", postNominals="BSc", bared="sky",isAvailable=true, alergy="nut", nextOfKin="frank",note="ohh",photo="pic.png", Category = Category.Freelance},
-                new Employee{Id= 4,fullName="Gytis Barzdukas",start_date=DateTime.Parse("2002-09-01") , countyId=context.Counties.Find(2).Id, mobile= "09876654321", email="al@gmail.com", postNominals="BSc", bared="sky",isAvailable=true, alergy="nut", nextOfKin="frank",note="ohh",photo="pic.png", Category = Category.Staff},
-                new Employee{Id=5,fullName="Yan Li",start_date=DateTime.Parse("2002-09-01"), countyId=context.Counties.Find(1).Id, mobile= "09876654321", email="al@gmail.com", postNominals="BSc", bared="sky",isAvailable=false, alergy="nut", nextOfKin="frank",note="ohh",photo="pic.png", Category = Category.Contracted},
-                new Employee{Id=7, fullName="Peggy Justice",start_date=DateTime.Parse("2001-09-01"), countyId=context.Counties.Find(2).Id, mobile= "09876654321", email="al@gmail.com", postNominals="BSc", bared="sky",isAvailable=false, alergy="nut", nextOfKin="frank",note="ohh",photo="pic.png", Category = Category.Contracted},
-
-                //});
-            //    return employees;
-                 };
-
-            employees.ForEach(employee => context.Employees.AddOrUpdate(x => x.Id, employee));
-            context.SaveChanges();
-
-
-            //context.Counties.AddRange(new List<County>
-            //{
-
-            var counties = new List<County>
-                {
-                new County{Id=1, name="Nottinghamshire"},
-                new County{Id=2, name="Derbyshire"},
-
-               // });
-
-            //    return counties;
-            };
-
-            counties.ForEach(county => context.Counties.AddOrUpdate(x => x.Id, county));
-            context.SaveChanges();
-
-
-            //context.Has_Roles.AddRange(new List<Has_Role> 
-            //{
-
-            var has_roles = new List<Has_Role>
-                {
-                new Has_Role{Id=1, employeeId=context.Employees.Find(5).Id,roleId=context.Roles.Find(1).Id},
-                new Has_Role{Id=2, employeeId= context.Employees.Find(6).Id, roleId= context.Roles.Find(2).Id},
-               new Has_Role{Id=3, employeeId=context.Employees.Find(2).Id,roleId=context.Roles.Find(1).Id},
-               new Has_Role{Id=4, employeeId=context.Employees.Find(3).Id,roleId=context.Roles.Find(3).Id},
-                new Has_Role{Id=5, employeeId= context.Employees.Find(4).Id,roleId=context.Roles.Find(2).Id}
-
-                //});
-
-            //    return has_roles;
-            };
-            has_roles.ForEach(has_role => context.Has_Roles.AddOrUpdate(x => x.Id, has_role));
-            context.SaveChanges();
-
-
-
-            //context.Roles.AddRange(new List<Role> 
-            //{
-            var roles = new List<Role>
-                {
-                new Role{Id=1, name="Rigger"},
-                new Role{Id=2, name="Vision"},
-                new Role{Id=3, name="Camera"},
-                new Role{Id= 4, name="Sound Assistant"},
-                new Role{Id= 5, name="Security"},
-                new Role{Id=6, name="Camera Operator"},
-
-               // });
-            //    return roles;
-            };
-
-            roles.ForEach(role => context.Roles.AddOrUpdate(x => x.Id, role));
-            context.SaveChanges();
-
-
-            //context.Crews.AddRange(new List<Crew>
-            //{
-
-            //var crews = new List<Crew>
-            //  {
-            // new Crew{ crewId=1,JobId=context.Jobs.Find("cb12").JobId, has_RoleId=context.Has_Roles.Find(1).Id, start_date=DateTime.Parse("2019-12-11"), end_date=DateTime.Parse("2019-12-14"), totalDays= 1},
-            //new Crew{JobId=context.Jobs.Find("cb12").Id,has_RoleId=context.Has_Roles.Find(2).Id, start_date=DateTime.Parse("2019-12-11"), end_date=DateTime.Parse("2019-12-14"), totalDays= 0.2, rate=270},
-            //new Crew{JobId=context.Jobs.Find("cb13").JobId,has_RoleId=context.Has_Roles.Find(3).Id, start_date=DateTime.Parse("2019-12-11"), end_date=DateTime.Parse("2019-12-14"), totalDays= 1.5, 
-            //new Crew{JobId=context.Jobs.Find("cb13").Id,has_RoleId=context.Has_Roles.Find(1).Id, start_date=DateTime.Parse("2019-12-11"), end_date=DateTime.Parse("2019-12-14"), totalDays= 1, rate=270},
-            //  new Crew { crewId = 1, JobId = Guid.Parse("17020a65 - 1b96 - 4120 - b359 - 786ecca0c081"), has_RoleId= 1,start_date = new DateTime(2019, 3,11),end_date= new DateTime(2019, 5,11) ,totalDays= 1.5 ,quatity = 1},
-
-            //});
-            //    return services;
-            // };
-            //crews.ForEach(crew => context.Crews.AddOrUpdate(x => x.crewId, crew));
-            //context.SaveChanges();
-
-
-
-            //new Jobs { JobId = 17020a65 - 1b96 - 4120 - b359 - 786ecca0c081, text = "SPL", Description = "friendly", Location = "Scotland celtic park", Coordinator = "Dixon", DateCreated = DateTime.Parse("2019-12-01"), start_date = DateTime.Parse("2019-12-11"), end_date = DateTime.Parse("2019-12-17"), Status = Status.Cancelled, CommercialLead = "Francis Akai", ClientId = context.Clients.Find(2).Id },
-            //     new Jobs{JobId="cb13",text="MUTV",Description="under 21 league", Location="Manchester Old traford",Coordinator="Sir Bobby", DateCreated=DateTime.Parse("2019-12-10"), start_date=DateTime.Parse("2019-12-11"), end_date=DateTime.Parse("2019-12-16"), Status = Status.Active, CommercialLead="Francis Akai", ClientId=context.Clients.Find(3).Id},
-
-
-
-
             Jobs job = new Jobs
             {
                 JobId = Guid.Parse("17020a65 - 1b96 - 4120 - b359 - 786ecca0c081"),
@@ -191,32 +147,15 @@ namespace MVC_Test.DAL
                 end_date = DateTime.Parse("2019-12-17"),
                 Status = Status.Cancelled,
                 CommercialLead = "Francis Akai",
-                ClientId = context.Clients.Find(2).Id,
+                ClientId = context.Clients.Find("it").Id,
 
 
-
-                Crews = new List<Crew>
-                {
-                    new Crew { JobId = Guid.Parse("17020a65 - 1b96 - 4120 - b359 - 786ecca0c081"), has_RoleId = 1, start_date = new DateTime(2019, 3, 11), end_date = new DateTime(2019, 5, 11), totalDays = 1.5/* quatity = 1 */},
-                   // new Crew {JobId = Guid.Parse("17020a65 - 1b96 - 4120 - b359 - 786ecca0c081"), has_RoleId = 1, start_date = new DateTime(2019, 3, 11), end_date = new DateTime(2019, 3, 11), totalDays = 1 /* quatity = 2 */},
-                },
-
-               //JobId = Guid.Parse("c7f3b496-7851-ea11-8508-104a7dbc22bb"),
-               // text = "SPL",
-               // Description = "friendly",
-               // Location = "Scotland celtic park",
-               // Coordinator = "Dixon",
-               // DateCreated = DateTime.Parse("2019-12-01"),
-               // start_date = new DateTime(2016, 3, 11),
-               // end_date = DateTime.Parse("2019-12-17"),
-               // Status = Status.Cancelled,
-               // CommercialLead = "Francis Akai",
-               // ClientId = context.Clients.Find(2).Id,
             };
 
             context.Jobs.AddOrUpdate(o => o.JobId, job);
 
 
+            
 
 
             context.SaveChanges();

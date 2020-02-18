@@ -290,117 +290,117 @@ namespace MVC_Test.Repositories
 
 
         //get list
-        //public CrewList GetCrewList(Guid jobid)
-        //{
-        //    if (jobid != Guid.Empty)
-        //    {
-        //        using (var context = new CloudbassContext())
-        //        {
-        //            var crews = context.Crews.AsNoTracking()
-        //                .Where(x => x.JobId == jobid)
-        //                .OrderBy(x => x.crewId);
+        public CrewList GetCrewList(Guid jobid)
+        {
+            if (jobid != Guid.Empty)
+            {
+                using (var context = new CloudbassContext())
+                {
+                    var crews = context.Crews.AsNoTracking()
+                        .Where(x => x.JobId == jobid)
+                        .OrderBy(x => x.crewId);
 
-        //            if (crews != null)
-        //            {
-        //                var crewListView = new CrewList();
-        //                foreach (var crew in crews)
-        //                {
-        //                    var crewVm = new Crew()
-        //                    {
-        //                        JobId = crew.JobId.ToString("D"),
-        //                        crewId = crew.crewId,
-        //                        //roleName = crew.Has_Role.Role.name,
-        //                        totalDays = crew.totalDays,
-        //                        //SchTypeId = schedule.SchTypeId,
-        //                        //SchTypName = schedule.SchType.name,
-        //                        start_date = crew.start_date,
-        //                        end_date = crew.end_date,
-        //                        //StatusName = schedule.ScheduleStatu.title
+                    if (crews != null)
+                    {
+                        var crewListView = new CrewList();
+                        foreach (var crew in crews)
+                        {
+                            var crewVm = new Crew()
+                            {
+                                JobId = crew.JobId.ToString("D"),
+                                crewId = crew.crewId,
+                                //roleName = crew.Has_Role.Role.name,
+                                totalDays = crew.totalDays,
+                                //SchTypeId = schedule.SchTypeId,
+                                //SchTypName = schedule.SchType.name,
+                                start_date = crew.start_date,
+                                end_date = crew.end_date,
+                                //StatusName = schedule.ScheduleStatu.title
 
-        //                    };
+                            };
 
 
-        //                }
-        //                return crewListView;
-        //            }
-        //        }
-        //    }
-        //    return null;
-        //}
+                        }
+                        return crewListView;
+                    }
+                }
+            }
+            return null;
+        }
 
 
 
         //get crew
-        //public Crew GetCrew(Guid jobid, int crewid)
-        //{
-        //    if (jobid != Guid.Empty)
-        //    {
-        //        using (var context = new CloudbassContext())
-        //        {
-        //            var crew = context.Crews.AsNoTracking()
-        //                .Where(x => x.JobId == jobid && x.crewId== crewid)
-        //                .Single();
+        public Crew GetCrew(Guid jobid, int crewid)
+        {
+            if (jobid != Guid.Empty)
+            {
+                using (var context = new CloudbassContext())
+                {
+                    var crew = context.Crews.AsNoTracking()
+                        .Where(x => x.JobId == jobid && x.crewId == crewid)
+                        .Single();
 
 
-        //            if (crew != null)
-        //            {
-        //                var crewVm = new Crew()
-        //                {
-        //                    JobId = crew.JobId.ToString("D"),
-        //                    has_RoleId= crew.has_RoleId,
-                           
-        //                    start_date = crew.start_date,
-        //                    end_date = crew.end_date,
-        //                    totalDays = crew.totalDays,
-                            
-        //                };
+                    if (crew != null)
+                    {
+                        var crewVm = new Crew()
+                        {
+                            JobId = crew.JobId.ToString("D"),
+                            has_RoleId = crew.has_RoleId,
+
+                            start_date = crew.start_date,
+                            end_date = crew.end_date,
+                            totalDays = crew.totalDays,
+
+                        };
 
 
-        //                return crewVm;
-        //            }
+                        return crewVm;
+                    }
 
-        //        }
-        //    }
-        //    return null;
+                }
+            }
+            return null;
 
-        //}
+        }
 
         //Save Crew
-        //public CrewEdit SaveCrew(CrewEdit model)
-        //{
-          
+        public CrewEdit SaveCrew(CrewEdit model)
+        {
 
-        //    if (model != null && Guid.TryParse(model.JobId, out Guid jobid))
-        //    {
-        //        using (var context = new CloudbassContext())
-        //        {
 
-        //            var crew = new Models.Crew()
-        //            {
-                       
-        //                JobId = jobid,
-        //                has_RoleId = model.has_RoleId,
+            if (model != null && Guid.TryParse(model.JobId, out Guid jobid))
+            {
+                using (var context = new CloudbassContext())
+                {
 
-        //                start_date = model.start_date,
+                    var crew = new Models.Crew()
+                    {
 
-        //                end_date = model.end_date,
-        //                totalDays = model.totalDays,
-                       
+                        JobId = jobid,
+                        has_RoleId = model.has_RoleId,
 
-        //            };
+                        start_date = model.start_date,
 
-                    
-        //            context.Crews.Add(crew);
-        //            context.SaveChanges();
+                        end_date = model.end_date,
+                        totalDays = model.totalDays,
 
-                   
-        //            return model;
 
-        //        }
-        //    }
+                    };
 
-        //    // Return false if customeredit == null or CustomerID is not a guid
-        //    return null;
-        //}
+
+                    context.Crews.Add(crew);
+                    context.SaveChanges();
+
+
+                    return model;
+
+                }
+            }
+
+            // Return false if customeredit == null or CustomerID is not a guid
+            return null;
+        }
     }
 }

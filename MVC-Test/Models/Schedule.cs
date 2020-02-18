@@ -14,14 +14,24 @@ namespace MVC_Test.Models
     {
         [Key]
         [Required]
+
+        [Display(Name = "ID")]
         public  int Id { get; set; }
 
         [Required]
+        [Display(Name = "Job ID")]
         public Guid JobId { get; set; }
+
+        [Display(Name = "Title")]
         public  string text { get; set; }
-      
+
+        [Display(Name = "Start date")]
         public  DateTime? start_date { get; set; }
+
+        [Display(Name = "End date")]
         public  DateTime? end_date { get; set; }
+
+        [Display(Name = "Schedule type")]
         public SchType SchType { get; set; }
 
        

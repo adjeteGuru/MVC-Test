@@ -13,13 +13,24 @@ namespace MVC_Test.Models
 
         [Key]
         [Required]
+
+        [Display(Name = "Crew ID")]
         public int crewId { get; set; }
         [Required]
+        [Display(Name = "Jod ID")]
         public Guid JobId { get; set; }
+
         [Required]
+        [Display(Name = "Has Role")]
         public int has_RoleId { get; set; }
+
+        [Display(Name = "Start date")]
         public DateTime? start_date { get; set; }
+
+        [Display(Name = "End date")]
         public DateTime? end_date { get; set; }
+
+        [Display(Name = "Total days")]
         public double totalDays { get; set; }
       
        

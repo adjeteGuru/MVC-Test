@@ -192,13 +192,9 @@
     </Compile>
     <Compile Include="Helpers\SortHelper.cs" />
     <Compile Include="Metadata\MetadataRepository.cs" />
-    <Compile Include="Migrations\202002180957085_InitialCreate.cs" />
-    <Compile Include="Migrations\202002180957085_InitialCreate.designer.cs">
-      <DependentUpon>202002180957085_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202002181047500_202002180957085_InitialCreate_IdChange.cs" />
-    <Compile Include="Migrations\202002181047500_202002180957085_InitialCreate_IdChange.designer.cs">
-      <DependentUpon>202002181047500_202002180957085_InitialCreate_IdChange.cs</DependentUpon>
+    <Compile Include="Migrations\202002181104462_CreateNew.cs" />
+    <Compile Include="Migrations\202002181104462_CreateNew.designer.cs">
+      <DependentUpon>202002181104462_CreateNew.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models.ViewModels\BookingEquipment.cs" />
@@ -453,11 +449,8 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202002180957085_InitialCreate.resx">
-      <DependentUpon>202002180957085_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202002181047500_202002180957085_InitialCreate_IdChange.resx">
-      <DependentUpon>202002181047500_202002180957085_InitialCreate_IdChange.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202002181104462_CreateNew.resx">
+      <DependentUpon>202002181104462_CreateNew.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -10,7 +10,11 @@ namespace MVC_Test.Models
     {
         [Key]
         [Required]
+
+        [Display(Name = "ID")]
         public  int Id { get; set; }
+
+        [Display(Name = "Title")]
         public  string name { get; set; }
        
     }

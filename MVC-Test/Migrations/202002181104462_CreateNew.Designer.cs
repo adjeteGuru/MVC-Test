@@ -7,13 +7,13 @@ namespace MVC_Test.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.0")]
-    public sealed partial class _202002180957085_InitialCreate_IdChange : IMigrationMetadata
+    public sealed partial class CreateNew : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(_202002180957085_InitialCreate_IdChange));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(CreateNew));
         
         string IMigrationMetadata.Id
         {
-            get { return "202002181047500_202002180957085_InitialCreate_IdChange"; }
+            get { return "202002181104462_CreateNew"; }
         }
         
         string IMigrationMetadata.Source

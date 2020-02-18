@@ -3,7 +3,7 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class InitialCreate : DbMigration
+    public partial class CreateNew : DbMigration
     {
         public override void Up()
         {
@@ -61,14 +61,14 @@
                 "dbo.Has_Role",
                 c => new
                     {
-                        Id = c.Int(nullable: false, identity: true),
+                        has_RoleId = c.Int(nullable: false, identity: true),
                         employeeId = c.Int(nullable: false),
                         roleId = c.Int(nullable: false),
                         start_date = c.DateTime(),
                         end_date = c.DateTime(),
                         rate = c.Decimal(nullable: false, precision: 18, scale: 2),
                     })
-                .PrimaryKey(t => t.Id)
+                .PrimaryKey(t => t.has_RoleId)
                 .ForeignKey("dbo.Employee", t => t.employeeId, cascadeDelete: true)
                 .ForeignKey("dbo.Role", t => t.roleId, cascadeDelete: true)
                 .Index(t => t.employeeId)

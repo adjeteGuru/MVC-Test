@@ -309,14 +309,12 @@ namespace MVC_Test.Repositories
                             {
                                 JobId = crew.JobId.ToString("D"),
                                 crewId = crew.crewId,
-                                //roleName = crew.Has_Role.Role.name,
+                                has_RoleId = crew.Has_Role.Role.Id,
                                 totalDays = crew.totalDays,
-                                //SchTypeId = schedule.SchTypeId,
-                                //SchTypName = schedule.SchType.name,
+                                
                                 start_date = crew.start_date,
                                 end_date = crew.end_date,
-                                //StatusName = schedule.ScheduleStatu.title
-
+                               
                             };
 
 
@@ -347,8 +345,8 @@ namespace MVC_Test.Repositories
                         var crewVm = new Crew()
                         {
                             JobId = crew.JobId.ToString("D"),
-                            has_RoleId = crew.has_RoleId,
-
+                           // has_RoleId = crew.has_RoleId,
+                            has_RoleId = crew.Has_Role.Role.Id,
                             start_date = crew.start_date,
                             end_date = crew.end_date,
                             totalDays = crew.totalDays,

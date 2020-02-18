@@ -21,6 +21,7 @@
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method
             //  to avoid creating duplicate seed data.
+
             var clients = new List<Client>
                 {
                 new Client { Id ="it", name = "ITV", toContact = "Alexander Cooper", email = "alexander@gmail.com", address = "PO Box 12 london", tel = 02051122345 },
@@ -94,7 +95,7 @@
             //new Crew{JobId=context.Jobs.Find("cb12").Id,has_RoleId=context.Has_Roles.Find(2).Id, start_date=DateTime.Parse("2019-12-11"), end_date=DateTime.Parse("2019-12-14"), totalDays= 0.2, rate=270},
             //new Crew{JobId=context.Jobs.Find("cb13").JobId,has_RoleId=context.Has_Roles.Find(3).Id, start_date=DateTime.Parse("2019-12-11"), end_date=DateTime.Parse("2019-12-14"), totalDays= 1.5,
             //new Crew{JobId=context.Jobs.Find("cb13").Id,has_RoleId=context.Has_Roles.Find(1).Id, start_date=DateTime.Parse("2019-12-11"), end_date=DateTime.Parse("2019-12-14"), totalDays= 1, rate=270},
-              new Crew {  JobId = Guid.Parse("ad3ac28b-3652-ea11-8508-104a7dbc22bb"), has_RoleId= 1,start_date = new DateTime(2019, 3,11),end_date= new DateTime(2019, 5,11) ,totalDays= 1.5},
+             // new Crew {  JobId = Guid.Parse("ad3ac28b-3652-ea11-8508-104a7dbc22bb"), has_RoleId= 1,start_date = new DateTime(2019, 3,11),end_date= new DateTime(2019, 5,11) ,totalDays= 1.5},
 
 
              };
@@ -121,7 +122,7 @@
                 new Schedule{text="SPL-Derig",start_date=DateTime.Parse("2019-12-15"), end_date=DateTime.Parse("2019-12-15"),SchType = SchType.DarkDay, JobId =context.Jobs.Find(Guid.Parse("17020a65 - 1b96 - 4120 - b359 - 786ecca0c081")).JobId},
                 new Schedule{text="SPL-Facs",start_date=DateTime.Parse("2019-12-15"), end_date=DateTime.Parse("2019-12-15"),SchType = SchType.Facs, JobId = context.Jobs.Find(Guid.Parse("17020a65 - 1b96 - 4120 - b359 - 786ecca0c081")).JobId},
                 new Schedule{text="SPL-Travel Back", start_date=DateTime.Parse("2019-12-16"), end_date=DateTime.Parse("2019-12-17"), SchType = SchType.TrucksReturn, JobId = context.Jobs.Find(Guid.Parse("17020a65 - 1b96 - 4120 - b359 - 786ecca0c081")).JobId},
-
+ 
                 //new Schedule{text="MUTV-Travel",start_date=DateTime.Parse("2019-12-11"), end_date=DateTime.Parse("2019-09-12"),SchType = SchType.TrucksTravel, JobId = context.Jobs.Find(c7f3b496-7851-ea11-8508-104a7dbc22bb).JobId},
                 //new Schedule{text="MUTV-Cable",start_date=DateTime.Parse("2019-12-12"), end_date=DateTime.Parse("2019-12-12"),SchType = SchType.CableRig, JobId = context.Jobs.Find("cb13").JobId},
                 //new Schedule{text="MUTV-Tech", start_date=DateTime.Parse("2019-12-12"), end_date=DateTime.Parse("2019-12-13"),SchType = SchType.TechRig, JobId = context.Jobs.Find("cb13").JobId},
@@ -132,7 +133,7 @@
                 //new Schedule{text="MUTV-Dark",start_date=DateTime.Parse("2019-12-15"), end_date=DateTime.Parse("2019-12-15"),SchType = SchType.DarkDay, JobId = context.Jobs.Find("cb13").JobId},
                 //new Schedule{text="MUTV-Travel Back",start_date=DateTime.Parse("2019-12-16"), end_date=DateTime.Parse("2019-12-16"),SchType = SchType.TrucksReturn, JobId = context.Jobs.Find("cb13").JobId},
                // });
-
+ 
                
                  };
             schedules.ForEach(schedule => context.Schedules.AddOrUpdate(x => x.Id, schedule));
@@ -166,7 +167,7 @@
 
             base.Seed(context);
 
-        }
 
+        }
     }
 }

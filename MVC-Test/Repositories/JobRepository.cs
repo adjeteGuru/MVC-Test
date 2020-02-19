@@ -287,8 +287,8 @@ namespace MVC_Test.Repositories
             // Return false if customeredit == null or CustomerID is not a guid
             return null;
         }
-
-
+              
+        
         //get list
         public CrewList GetCrewList(Guid jobid)
         {
@@ -363,6 +363,7 @@ namespace MVC_Test.Repositories
 
         }
 
+
         //Save Crew
         public CrewEdit SaveCrew(CrewEdit model)
         {
@@ -400,5 +401,169 @@ namespace MVC_Test.Repositories
             // Return false if customeredit == null or CustomerID is not a guid
             return null;
         }
+
+        //ADD COMBO GET/LIST/SAVE VIEWMODEL
+
+        //get list
+        public ComboList GetComboList(Guid jobid)
+        {
+            if (jobid != Guid.Empty)
+            {
+                using (var context = new CloudbassContext())
+                {
+                    var combos = context.Crews.AsNoTracking()
+                        .Where(x => x.JobId == jobid)
+                        .OrderBy(x => x.crewId);
+
+                    if (combos != null)
+                    {
+                        var comboListView = new ComboList();
+                        foreach (var combo in combos)
+                        {
+                            var comboVm = new ComboClassesViewModel()
+                            {
+                                JobId = combo.JobId.ToString("D"),
+                                crewId = combo.crewId,
+                                rate = combo.Has_Role.rate,
+                                fullName = combo.Has_Role.Employee.fullName,
+                                name = combo.Has_Role.Role.name,
+                               // has_RoleId = combo.Has_Role.Role.Id,
+                                totalDays = combo.totalDays,
+
+                                start_date = combo.start_date,
+                                end_date = combo.end_date,
+
+                            };
+
+
+                        }
+                        return comboListView;
+                    }
+                }
+            }
+            return null;
+        }
+
+
+
+        //get crew
+        public ComboClassesViewModel GetCombo(Guid jobid, int crewid)
+        {
+            if (jobid != Guid.Empty)
+            {
+                using (var context = new CloudbassContext())
+                {
+                    var crew = context.Crews.AsNoTracking()
+                        .Where(x => x.JobId == jobid && x.crewId == crewid)
+                        .Single();
+
+
+                    if (crew != null)
+                    {
+                        var comboVm = new ComboClassesViewModel()
+                        //var crewVm = new Crew()
+                        {                            
+
+                            JobId = crew.JobId.ToString("D"),
+                            crewId = crew.crewId,
+                           
+                            fullName = crew.Has_Role.Employee.fullName,
+                            name = crew.Has_Role.Role.name,
+                            // has_RoleId = combo.Has_Role.Role.Id,
+                            rate = crew.Has_Role.rate,
+
+                            start_date = crew.start_date,
+                            end_date = crew.end_date,
+                            totalDays = crew.totalDays,
+
+                        };
+
+
+                        return comboVm;
+                    }
+
+                }
+            }
+            return null;
+
+        }
+
+
+        //Save Crew//
+        public ComboEdit SaveCombo(ComboEdit model)
+        {
+
+
+            if (model != null && Guid.TryParse(model.JobId, out Guid jobid))
+            {
+                using (var context = new CloudbassContext())
+                {
+
+                    var combo = new Models.Crew()
+                    {
+                        JobId = jobid,
+
+                        crewId = model.crewId,
+                        has_RoleId = model.has_RoleId,
+
+                        start_date = model.start_date,
+
+                        end_date = model.end_date,
+                        totalDays = model.totalDays
+                       
+                    };
+
+                     context.Crews.Add(combo);
+                    context.SaveChanges();
+
+
+                    return model;
+
+                }
+            }
+
+            // Return false if customeredit == null or CustomerID is not a guid
+            return null;
+        }
+
+
+
+        //Save Crew//
+        //public ComboEdit SaveCombo(ComboEdit model)
+        //{
+
+
+        //    if (model != null && Guid.TryParse(model.JobId, out Guid jobid))
+        //    {
+        //        using (var context = new CloudbassContext())
+        //        {
+
+        //            var combo = new ComboClassesViewModel()
+        //            {
+        //                JobId = jobid.ToString(),
+
+        //                fullName = model.fullName,
+        //                name = model.name,
+
+        //                start_date = model.start_date,
+
+        //                end_date = model.end_date,
+        //                totalDays = model.totalDays,
+        //                rate = model.rate
+
+        //            };
+
+        //           // context.Crews.Add();
+        //            context.SaveChanges();
+
+
+        //            return model;
+
+        //        }
+        //    }
+
+        //    // Return false if customeredit == null or CustomerID is not a guid
+        //    return null;
+        //}
     }
 }

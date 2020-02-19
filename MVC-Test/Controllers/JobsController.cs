@@ -36,14 +36,14 @@ namespace MVC_Test.Controllers
 
 
 
-        // GET: Job/Details/5
+        // GET: Jobs/Details/5
         public ActionResult Details(int id)
         {
             return View();
 
         }
 
-        // GET: Job/Create
+        // GET: Jobs/Create
         public ActionResult Create()
         {
             var repo = new JobRepository();
@@ -51,7 +51,7 @@ namespace MVC_Test.Controllers
             return View(job);
         }
 
-        // POST: Job/Create
+        // POST: Jobs/Create
         [HttpPost]
         public ActionResult Create([Bind(Include = "JobId, text,Description, SelectedClientId, DateCreated, Location, Coordinator,start_date, TXDate, end_date, CommercialLead, ")] JobEdit model)
         {
@@ -75,7 +75,7 @@ namespace MVC_Test.Controllers
         }
 
 
-        // GET: Job/Edit/5
+        // GET: Jobs/Edit/5
         [HttpGet]
 
         public ActionResult Edit(string id)
@@ -112,7 +112,7 @@ namespace MVC_Test.Controllers
             return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
         }
 
-        //// POST: job/Edit/5
+        //// POST: jobs/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult EditJobPartial(JobEdit model)
@@ -269,13 +269,36 @@ namespace MVC_Test.Controllers
 
 
 
+        // ADD ROLE
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateComboPartial(ComboEdit model)
+
+        {
+            if (ModelState.IsValid)
+            {
+                var repo = new JobRepository();
+                var updatedModel = repo.SaveCombo(model);
+                if (updatedModel != null)
+                {
+                    return RedirectToAction("Edit", new { id = model.JobId });
+                }
+            }
+            return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        }
+
+        //END ROLE
+
+
+
         // GET: job/Delete/5
         public ActionResult Delete(string id)
         {
             return View();
         }
 
-        // POST: job/Delete/5
+        // POST: jobs/Delete/5
         [HttpPost]
         public ActionResult Delete(string id, FormCollection collection)
         {

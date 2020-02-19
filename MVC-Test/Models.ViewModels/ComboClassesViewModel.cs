@@ -10,7 +10,7 @@ namespace MVC_Test.Models.ViewModels
     {
         //CREW ATTRIBUTES
         public int crewId { get; set; }
-        //public int has_RoleId { get; set; }
+        
       
         public string JobId { get; set; }
 
@@ -37,18 +37,20 @@ namespace MVC_Test.Models.ViewModels
 
 
         //EMPLOYEE ATTRIBUTES
-       // public int employeeId { get; set; }
+       
 
         [Display(Name = "FullName")]
-        public string fullName { get; set; }
+       // public string fullName { get; set; }
+        public int employeeId { get; set; }
 
 
 
         //ROLE ATTRIBUTES
-       // public int roleId { get; set; }
+        
 
         [Display(Name = "Title")]
-        public string name { get; set; }
+       // public string name { get; set; }
+        public int roleId { get; set; }
 
 
 

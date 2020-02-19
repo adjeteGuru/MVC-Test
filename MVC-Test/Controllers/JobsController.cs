@@ -175,28 +175,28 @@ namespace MVC_Test.Controllers
 
                     case "Crew":
                         var crewModel = new CrewEdit()
-                       // var crewModel = new Crew()
+                      
                         {
                             JobId = model.JobId
                         };
 
                         return PartialView("CreateCrewPartial", crewModel);
 
-                    //case "BookingFleet":
-                    //    var fleetModel = new BookingFleet()
+                    //case "Combo":
+                    //    var comboModel = new Has_RoleEdit()
+                    //    {
+                    //        has_RoleId = model.
+                    //    };
+
+                    //    return PartialView("CreateHas_RolePartial", comboModel);
+
+                    //case "BookingHotel":
+                    //    var hotelModel = new BookingHotel()
                     //    {
                     //        JobId = model.JobId
                     //    };
 
-                    //    return PartialView("CreateBookingFleetPartial", fleetModel);
-
-                    //    case "BookingHotel":
-                    //        var hotelModel = new BookingHotel()
-                    //        {
-                    //            JobId = model.JobId
-                    //        };
-
-                    //        return PartialView("CreateBookingHotelPartial", hotelModel);
+                    //    return PartialView("CreateBookingHotelPartial", hotelModel);
 
                     //    case "BookingKit":
                     //        var kitModel = new BookingKit()
@@ -273,16 +273,16 @@ namespace MVC_Test.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CreateComboPartial(ComboEdit model)
+        public ActionResult CreateHas_RolePartial(Has_RoleEdit model)
 
         {
             if (ModelState.IsValid)
             {
                 var repo = new JobRepository();
-                var updatedModel = repo.SaveCombo(model);
+                var updatedModel = repo.SaveHas_Role(model);
                 if (updatedModel != null)
                 {
-                    return RedirectToAction("Edit", new { id = model.JobId });
+                    return RedirectToAction("Edit", new { id = model.has_RoleId });
                 }
             }
             return new HttpStatusCodeResult(HttpStatusCode.BadRequest);

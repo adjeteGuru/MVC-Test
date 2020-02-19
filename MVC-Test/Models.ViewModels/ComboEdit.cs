@@ -9,7 +9,7 @@ namespace MVC_Test.Models.ViewModels
     public class ComboEdit
     {
         //CREW ATTRIBUTES
-        public int crewId { get; set; }
+        //public int crewId { get; set; }
         public int has_RoleId { get; set; }
 
         public string JobId { get; set; }

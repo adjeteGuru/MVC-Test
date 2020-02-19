@@ -211,6 +211,8 @@
     <Compile Include="Models.ViewModels\CrewList.cs" />
     <Compile Include="Models.ViewModels\Employee.cs" />
     <Compile Include="Models.ViewModels\Has_Role.cs" />
+    <Compile Include="Models.ViewModels\Has_RoleEdit.cs" />
+    <Compile Include="Models.ViewModels\Has_RoleList.cs" />
     <Compile Include="Models.ViewModels\JobEdit.cs" />
     <Compile Include="Models.ViewModels\Jobs.cs" />
     <Compile Include="Models.ViewModels\Role.cs" />
@@ -233,6 +235,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ClientRepository.cs" />
     <Compile Include="Repositories\ComboRepository.cs" />
+    <Compile Include="Repositories\Has_RoleRepository.cs" />
     <Compile Include="Repositories\JobRepository.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -430,7 +433,8 @@
     <Content Include="Views\Jobs\CreateSchedulePartial.cshtml" />
     <Content Include="Views\Jobs\Edit.cshtml" />
     <Content Include="Views\Jobs\Create.cshtml" />
-    <Content Include="Views\Jobs\CreateComboPartial.cshtml" />
+    <Content Include="Views\Jobs\CreateCrewPartial.cshtml" />
+    <Content Include="Views\Jobs\CreateHas_RolePartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

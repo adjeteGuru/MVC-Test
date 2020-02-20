@@ -185,7 +185,7 @@ namespace MVC_Test.Controllers
                     //case "Combo":
                     //    var comboModel = new Has_RoleEdit()
                     //    {
-                    //        has_RoleId = model.
+                    //        jo = model.JobId
                     //    };
 
                     //    return PartialView("CreateHas_RolePartial", comboModel);
@@ -278,7 +278,7 @@ namespace MVC_Test.Controllers
         {
             if (ModelState.IsValid)
             {
-                var repo = new JobRepository();
+                var repo = new Has_RoleRepository();
                 var updatedModel = repo.SaveHas_Role(model);
                 if (updatedModel != null)
                 {

@@ -17,7 +17,7 @@ namespace MVC_Test
         public CloudbassContext() : base("CloudbassContext")
         {
             //new added
-           // Database.SetInitializer(new CloudbassInitializer());
+            Database.SetInitializer(new CloudbassInitializer());
         }
 
         // this state which entities are included in rthe data model

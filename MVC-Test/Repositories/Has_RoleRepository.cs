@@ -12,15 +12,14 @@ namespace MVC_Test.Repositories
 
         //get list
         public Has_RoleList GetHas_RoleList(int? hasroleid)
-        {
-            //if (jobid != string.Empty)
+        {           
             if (hasroleid != null)
             {
                 using (var context = new CloudbassContext())
-                //{
-                //    var combos = context.Has_Roles.AsNoTracking()
-                //        .Where(x => x.has_RoleId == hasroleid)
-                //        .OrderBy(x => x.has_RoleId);
+                {
+                    var combos = context.Has_Roles.AsNoTracking()
+                        .Where(x => x.has_RoleId == hasroleid)
+                        .OrderBy(x => x.has_RoleId);
 
                     if (combos != null)
                     {
@@ -59,7 +58,7 @@ namespace MVC_Test.Repositories
         {
 
             if (jobid != null)
-            //if (jobid != Guid.Empty)
+            
             {
                 using (var context = new CloudbassContext())
                 {
@@ -75,7 +74,7 @@ namespace MVC_Test.Repositories
                     if (hasrole != null)
                     {
                         var comboVm = new Has_Role()
-                        //var crewVm = new Crew()
+                        
                         {
 
                             Id = hasrole.has_RoleId,
@@ -106,9 +105,7 @@ namespace MVC_Test.Repositories
         //Save Crew//
         public Has_RoleEdit SaveHas_Role(Has_RoleEdit model)
         {
-
-
-            //if (model != null && Guid.TryParse(model.JobId, out Guid jobid))
+           
             if (model != null /*&& Guid.TryParse(model.JobId, out Guid jobid)*/ )
             {
                 using (var context = new CloudbassContext())
@@ -121,8 +118,7 @@ namespace MVC_Test.Repositories
 
                         employeeId = model.employeeId,
                         roleId = model.roleId,
-                        //has_RoleId = model.has_RoleId,
-
+                       
                         start_date = model.start_date,
 
                         end_date = model.end_date,
@@ -148,42 +144,6 @@ namespace MVC_Test.Repositories
 
 
 
-        //Save Crew//
-        //public ComboEdit SaveCombo(ComboEdit model)
-        //{
-
-
-        //    if (model != null && Guid.TryParse(model.JobId, out Guid jobid))
-        //    {
-        //        using (var context = new CloudbassContext())
-        //        {
-
-        //            var combo = new ComboClassesViewModel()
-        //            {
-        //                JobId = jobid.ToString(),
-
-        //                fullName = model.fullName,
-        //                name = model.name,
-
-        //                start_date = model.start_date,
-
-        //                end_date = model.end_date,
-        //                totalDays = model.totalDays,
-        //                rate = model.rate
-
-        //            };
-
-        //           // context.Crews.Add();
-        //            context.SaveChanges();
-
-
-        //            return model;
-
-        //        }
-        //    }
-
-        //    // Return false if customeredit == null or CustomerID is not a guid
-        //    return null;
-        //}
+        
     }
 }

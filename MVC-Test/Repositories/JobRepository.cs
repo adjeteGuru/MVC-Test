@@ -16,7 +16,7 @@ namespace MVC_Test.Repositories
             {
                 List<Models.Jobs> jobs = new List<Models.Jobs>();
                 jobs = context.Jobs.AsNoTracking()
-                  // .Include(x => x.Client)
+                   //.Include(x => x.Client)
                                    .ToList();
 
                 if (jobs != null)
@@ -69,6 +69,7 @@ namespace MVC_Test.Repositories
                     var job = context.Jobs.AsNoTracking()
                                             .Where(j => j.JobId == id)
                                             .Include(j => j.Crews)
+                                            //.Include(j=> j)
                                             .FirstOrDefault();
                                             //.Single();
 

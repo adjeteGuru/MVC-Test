@@ -19,10 +19,10 @@ namespace MVC_Test.Controllers
         }
 
 
-        public ActionResult SaveOrder(string text, String location, Order[] order)
+        public ActionResult SaveOrder(string text, String location, string client, string coordinator, Order[] order)
         {
             string result = "Error! Order Is Not Complete!";
-            if (text != null && location != null && order != null)
+            if (text != null && location != null && client != null && coordinator != null && order != null)
             {
                 var jobId = Guid.NewGuid();
                 Jobs model = new Jobs();
@@ -32,11 +32,12 @@ namespace MVC_Test.Controllers
                 model.text = text;
                 model.Location = location;
                 model.DateCreated = DateTime.Now;
-                model.start_date = 
-                model.TXDate = new DateTime();
-                model.end_date = new DateTime();
-               // model.Coordinator = coo;
-               // model.CommercialLead = address;
+                model.ClientId = client;
+                //model.start_date = 
+                //model.TXDate = new DateTime();
+                //model.end_date = new DateTime();
+                 model.Coordinator = coordinator;
+                // model.CommercialLead = address;
                 db.Jobs.Add(model);
 
                 foreach (var item in order)

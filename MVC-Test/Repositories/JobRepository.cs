@@ -69,7 +69,7 @@ namespace MVC_Test.Repositories
                     var job = context.Jobs.AsNoTracking()
                                             .Where(j => j.JobId == id)
                                             .Include(j => j.Crews)
-                                            //.Include(j=> j)
+                                            .Include(j=> j.Orders)
                                             .FirstOrDefault();
                                             //.Single();
 

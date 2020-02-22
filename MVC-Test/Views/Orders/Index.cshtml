@@ -6,7 +6,7 @@
     <div class="panel-heading">
         <div class="row">
             <h2 class="panel-title pull-left" style="margin-left:10px;">
-                <strong>Booking Details</strong>
+                <strong style="color:crimson">Booking Details</strong>
             </h2>
             <button style="margin-right:10px" class="btn btn-primary pull-right" onclick="addNewOrder()">New Booking</button>
         </div>
@@ -22,10 +22,11 @@
                 <table class="table table-striped table-responsive">
                     <tbody>
                         <tr>
-                            <td>Job Name : @item.text </td>
-                            <td>Location : @item.Location </td>
-                            <td>Coordinatoor : @item.Coordinator </td>
-                            <td>Date Created : @item.DateCreated</td>
+                            <td style="color:darkblue"> <strong>ClientID : @item.ClientId </strong></td>
+                            <td style="color:darkblue"> <strong> Job Name : @item.text</strong></td>
+                            <td style="color:darkblue"><strong>  Location : @item.Location</strong> </td>
+                            <td style="color:darkblue"> <strong>Coordinatoor : @item.Coordinator </strong></td>
+                            <td style="color:darkblue"><strong> Date Created : @item.DateCreated </strong></td>
                         </tr>
                         <tr>
                             <td colspan="3">
@@ -88,16 +89,31 @@
                         <input type="hidden" id="CustomerId" />
                         <div class="form-group">
                             <label class="control-label col-md-2">
+                                Client ID
+                            </label>
+                            <div class="col-md-4">
+                                <input type="text" id="clientId" name="clientId" placeholder="ClientID" class="form-control" />
+                            </div>
+
+                            <label class="control-label col-md-2">
                                 Job Name
                             </label>
                             <div class="col-md-4">
                                 <input type="text" id="name" name="name" placeholder="Job Name" class="form-control" />
                             </div>
+                        </div>
+                        <div class="form-group">
                             <label class="control-label col-md-2">
                                 Location
                             </label>
                             <div class="col-md-4">
                                 <input type="text" id="address" name="address" placeholder="Job Location" class="form-control" />
+                            </div>
+                            <label class="control-label col-md-2">
+                                Coordinator
+                            </label>
+                            <div class="col-md-4">
+                                <input type="text" id="coordinator" name="coordinator" placeholder="Coordinator" class="form-control" />
                             </div>
                         </div>
                     </div>
@@ -227,10 +243,12 @@
                 });
             });
 
-
+            //here is to store records from Job booking textfields
             var data = JSON.stringify({
+                clientId: $("#clientId").val(),
                 text: $("#name").val(),
                 location: $("#address").val(),
+                coordinator: $("#coordinator").val(),
                 order: orderArr
             });
 

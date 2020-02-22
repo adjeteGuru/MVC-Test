@@ -26,13 +26,15 @@ namespace MVC_Test.Controllers
             {
                 var jobId = Guid.NewGuid();
                 Jobs model = new Jobs();
+                //var model = db.Jobs.First(x => x.JobId == modelModified.JobId);
+
                 model.JobId = jobId;
                 model.text = text;
                 model.Location = location;
                 model.DateCreated = DateTime.Now;
-                model.start_date = new DateTime(12 / 03 / 2020);
-                model.TXDate = new DateTime(13 / 03 / 2020);
-                model.end_date = new DateTime(14 / 03 / 2020);
+                model.start_date = 
+                model.TXDate = new DateTime();
+                model.end_date = new DateTime();
                // model.Coordinator = coo;
                // model.CommercialLead = address;
                 db.Jobs.Add(model);
@@ -50,7 +52,8 @@ namespace MVC_Test.Controllers
                     db.Orders.Add(O);
                 }
                 db.SaveChanges();
-                result = "Success! Order Is Complete!";
+
+                result = "Success! Booking Is Complete!";
             }
             return Json(result, JsonRequestBehavior.AllowGet);
         }

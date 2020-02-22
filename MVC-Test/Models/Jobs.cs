@@ -16,8 +16,7 @@ namespace MVC_Test.Models
        
             [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-
-        [Display(Name = "ID")]
+       // [Display(Name = "ID")]
         public Guid JobId { get; set; }
 
         [Display(Name = "Reference")]
@@ -32,14 +31,26 @@ namespace MVC_Test.Models
         [Display(Name = "Location")]
         public string Location { get; set; }
 
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+
         [Display(Name = "Date created")]
         public DateTime? DateCreated { get; set; }
+
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
 
         [Display(Name = "Start date")]
         public DateTime? start_date { get; set; }
 
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+
         [Display(Name = "Transmission")]
         public DateTime? TXDate { get; set; }
+
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
 
         [Display(Name = "End date")]
         public DateTime? end_date { get; set; }
@@ -59,6 +70,8 @@ namespace MVC_Test.Models
 
             public Status Status { get; set; }
             public ICollection<Crew> Crews { get; set; }
-        
+
+       public virtual ICollection<Order> Orders { get; set; }
+
     }
 }

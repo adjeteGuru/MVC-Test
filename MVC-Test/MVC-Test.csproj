@@ -184,6 +184,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JobsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\OrdersController.cs" />
     <Compile Include="Controllers\ScheduleDController.cs" />
     <Compile Include="DAL\CloudbassContext.cs" />
     <Compile Include="DAL\CloudbassInitializer.cs" />
@@ -195,6 +196,14 @@
     <Compile Include="Migrations\202002181104462_CreateNew.cs" />
     <Compile Include="Migrations\202002181104462_CreateNew.designer.cs">
       <DependentUpon>202002181104462_CreateNew.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202002211654182_OrderAdded.cs" />
+    <Compile Include="Migrations\202002211654182_OrderAdded.designer.cs">
+      <DependentUpon>202002211654182_OrderAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202002220009488_JobsCollection.cs" />
+    <Compile Include="Migrations\202002220009488_JobsCollection.designer.cs">
+      <DependentUpon>202002220009488_JobsCollection.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models.ViewModels\BookingEquipment.cs" />
@@ -230,6 +239,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Jobs.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Order.cs" />
     <Compile Include="Models\Role.cs" />
     <Compile Include="Models\Schedule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -435,6 +445,7 @@
     <Content Include="Views\Jobs\Create.cshtml" />
     <Content Include="Views\Jobs\CreateCrewPartial.cshtml" />
     <Content Include="Views\Jobs\CreateHas_RolePartial.cshtml" />
+    <Content Include="Views\Orders\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -459,6 +470,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202002181104462_CreateNew.resx">
       <DependentUpon>202002181104462_CreateNew.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002211654182_OrderAdded.resx">
+      <DependentUpon>202002211654182_OrderAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002220009488_JobsCollection.resx">
+      <DependentUpon>202002220009488_JobsCollection.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -59,6 +59,14 @@
 
 
 
+            var orders = new List<Order>
+                {
+                new Order{OrderId=Guid.Parse("01c13f5d-e803-49aa-a9a4-003ee2042e16"), ServiceName="Camera", Quantity = 5, Rate= 200, Amount= 1000},
+                new Order{OrderId=Guid.Parse("4627d75c-b72d-4372-8cc1-daffaafa866c"), ServiceName="Vision", Quantity = 4, Rate= 100, Amount= 400},
+            };
+
+            orders.ForEach(order => context.Orders.AddOrUpdate(x => x.OrderId, order));
+            context.SaveChanges();
 
 
             var employees = new List<Employee>
@@ -141,8 +149,8 @@
 
 
             Jobs job = new Jobs
-            {
-                JobId = Guid.Parse("17020a65 - 1b96 - 4120 - b359 - 786ecca0c081"),
+            {//b8441b07-4052-ea11-8508-104a7dbc22bb
+                JobId = Guid.Parse("b8441b07-4052-ea11-9008-104a7dbc22bb"),
                 text = "SPL",
                 Description = "friendly",
                 Location = "Scotland celtic park",
@@ -158,7 +166,6 @@
             };
 
             context.Jobs.AddOrUpdate(o => o.JobId, job);
-
 
 
 

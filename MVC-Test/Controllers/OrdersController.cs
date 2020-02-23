@@ -14,15 +14,15 @@ namespace MVC_Test.Controllers
 
         public ActionResult Index()
         {
-            List<Jobs> OrderAndCustomerList = db.Jobs.ToList();
-            return View(OrderAndCustomerList);
+            List<Jobs> OrderAndJobList = db.Jobs.ToList();
+            return View(OrderAndJobList);
         }
 
 
-        public ActionResult SaveOrder(string text, String location, string client, string coordinator, Order[] order)
+        public ActionResult SaveOrder(string text, String location,/* string client,*/ string coordinator, Order[] order)
         {
-            string result = "Error! Order Is Not Complete!";
-            if (text != null && location != null && client != null && coordinator != null && order != null)
+            string result = "Error! Booking Is Not Complete!";
+            if (text != null && location != null/* && client != null*/ && coordinator != null && order != null)
             {
                 var jobId = Guid.NewGuid();
                 Jobs model = new Jobs();
@@ -32,7 +32,7 @@ namespace MVC_Test.Controllers
                 model.text = text;
                 model.Location = location;
                 model.DateCreated = DateTime.Now;
-                model.ClientId = client;
+               // model.ClientId = client;
                 //model.start_date = 
                 //model.TXDate = new DateTime();
                 //model.end_date = new DateTime();
@@ -57,6 +57,25 @@ namespace MVC_Test.Controllers
                 result = "Success! Booking Is Complete!";
             }
             return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
+        //get client details
+        public JsonResult getClient()
+        {
+            List<Client> clients = new List<Client>();
+
+            //using (CloudbassContext dc = new CloudbassContext())
+            //{
+            //    clients = dc.Clients.OrderBy(x => x.name).ToList();
+            //}
+
+            using (CloudbassContext dc = new CloudbassContext())
+            {
+                clients = dc.Clients.OrderBy(x => x.name).ToList();
+            }
+
+
+            return new JsonResult { Data = clients, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
         }
     }
 }

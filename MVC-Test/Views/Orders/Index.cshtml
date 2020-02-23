@@ -71,7 +71,7 @@
 </div>
 
 
-@*Desing Bootdtrap Modal With Order Form*@
+@*Desing Bootdtrap Modal With Order/Booking Form*@
 
 <div class="modal fade" id="newOrderModal">
     <div class="modal-dialog modal-lg" style=" width: 900px !important;">
@@ -82,7 +82,7 @@
             </div>
             <form id="NewOrderForm">
                 <div class="modal-body">
-                    @*Customer Details*@
+                    @*Job Details*@
                     <h5 style="color:#ff6347">Job Details</h5>
                     <hr />
                     <div class="form-horizontal">
@@ -91,15 +91,22 @@
                             <label class="control-label col-md-2">
                                 Client ID
                             </label>
-                            <div class="col-md-4">
+
+                            @*<div class="col-md-4">
                                 <input type="text" id="clientId" name="clientId" placeholder="ClientID" class="form-control" />
+                            </div>*@
+
+                            <div class="col-md-4">
+                            <select id="clientId" class="clientId form-control" onclick="LoadClient(this)">
+                            <option>Select client</option>
+                            </select>
                             </div>
 
                             <label class="control-label col-md-2">
                                 Job Name
                             </label>
                             <div class="col-md-4">
-                                <input type="text" id="name" name="name" placeholder="Job Name" class="form-control" />
+                                <input type="text" id="jobname" name="jobname" placeholder="Job Name" class="form-control" />
                             </div>
                         </div>
                         <div class="form-group">
@@ -107,7 +114,7 @@
                                 Location
                             </label>
                             <div class="col-md-4">
-                                <input type="text" id="address" name="address" placeholder="Job Location" class="form-control" />
+                                <input type="text" id="location" name="location" placeholder="Job Location" class="form-control" />
                             </div>
                             <label class="control-label col-md-2">
                                 Coordinator
@@ -128,13 +135,13 @@
                                 Service Name
                             </label>
                             <div class="col-md-4">
-                                <input type="text" id="productName" name="productName" placeholder="Service Name" class="form-control" />
+                                <input type="text" id="serviceName" name="serviceName" placeholder="Service Name" class="form-control" />
                             </div>
                             <label class="control-label col-md-2">
                                 Price
                             </label>
                             <div class="col-md-4">
-                                <input type="number" id="price" name="price" placeholder="Rate" class="form-control" />
+                                <input type="number" id="rate" name="rate" placeholder="Rate" class="form-control" />
                             </div>
                         </div>
 
@@ -175,6 +182,49 @@
 
 @section scripts{
     <script>
+
+                var Client = []
+        //fetch Role from database
+
+        function LoadClient(element) {
+            if (Client.length == 0) {
+                    //ajax function for fetch data
+                $.ajax({
+                    type: "GET",
+                    url: '/Orders/getClient',
+                    success: function () {
+                        Client = data;
+                        //render role
+                        renderClient(element);
+                    }
+            
+                })
+            }
+
+            else {
+                //render role to the element
+                renderClient(element);
+            }
+        }
+
+        function renderClient(element) {
+            //declare ele in element
+            var $ele = $(element);
+
+            //make it empty
+            $ele.empty();
+
+            //then added new option for select level   
+            $ele.append($('<option/>').val('0').text('Select'));
+
+             //then loop through the role for load all the Role faced from database to the dropdown list
+            $.each(Client, function (i, val){
+                $ele.append($('<option/>').val(val.Id).text(val.name));
+            })
+        }
+
+        //END CLIENT FUNCTION
+
         //Show Modal.
         function addNewOrder() {
             $("#newOrderModal").modal();
@@ -183,23 +233,25 @@
         $("#addToList").click(function (e) {
             e.preventDefault();
 
-            if ($.trim($("#productName").val()) == "" || $.trim($("#price").val()) == "" || $.trim($("#quantity").val()) == "") return;
+            if ($.trim($("#serviceName").val()) == "" || $.trim($("#rate").val()) == "" || $.trim($("#quantity").val()) == "") return;
 
-            var serviceName = $("#productName").val(),
-                rate = $("#price").val(),
+            var serviceName = $("#serviceName").val(),
+                rate = $("#rate").val(),
                 quantity = $("#quantity").val(),
                 detailsTableBody = $("#detailsTable tbody");
 
-            var productItem = '<tr><td>' + serviceName + '</td><td>' + quantity + '</td><td>' + rate + '</td><td>' + (parseFloat(rate) * parseInt(quantity)) + '</td><td><a data-itemId="0" href="#" class="deleteItem">Remove</a></td></tr>';
-            detailsTableBody.append(productItem);
+            var bookingItem = '<tr><td>' + serviceName + '</td><td>' + quantity + '</td><td>' + rate + '</td><td>' + (parseFloat(rate) * parseInt(quantity)) + '</td><td><a data-itemId="0" href="#" class="deleteItem">Remove</a></td></tr>';
+            detailsTableBody.append(bookingItem);
             clearItem();
         });
+
         //After Add A New Order In The List, Clear Clean The Form For Add More Order.
         function clearItem() {
-            $("#productName").val('');
-            $("#price").val('');
+            $("#serviceName").val('');
+            $("#rate").val('');
             $("#quantity").val('');
         }
+
         // After Add A New Order In The List, If You Want, You Can Remove It.
         $(document).on('click', 'a.deleteItem', function (e) {
             e.preventDefault();
@@ -210,6 +262,7 @@
                 });
             }
         });
+
         //After Click Save Button Pass All Data View To Controller For Save Database
         function saveOrder(data) {
             return $.ajax({
@@ -227,6 +280,7 @@
                 }
             });
         }
+
         //Collect Multiple Order List For Pass To Controller
         $("#saveOrder").click(function (e) {
             e.preventDefault();
@@ -244,10 +298,12 @@
             });
 
             //here is to store records from Job booking textfields
+            //ON THE LEFT SIDE IS OBJECT DECLARED IN THE CONTROLLER
+            //ON THE RIGHT SIDE IS ID OF CLASSES IN THE INDEX SIDE: #jobname
             var data = JSON.stringify({
                 clientId: $("#clientId").val(),
-                text: $("#name").val(),
-                location: $("#address").val(),
+                text: $("#jobname").val(),
+                location: $("#location").val(),
                 coordinator: $("#coordinator").val(),
                 order: orderArr
             });
@@ -258,5 +314,6 @@
                 console.log(err);
             });
         });
+
     </script>
 }

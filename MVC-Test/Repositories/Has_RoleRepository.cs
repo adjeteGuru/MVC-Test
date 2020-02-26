@@ -29,11 +29,13 @@ namespace MVC_Test.Repositories
                             var comboVm = new Has_Role()
                             {
                                 Id = combo.has_RoleId,
-                                employeeId = combo.employeeId,
+                                //employeeName = combo.Employee.fullName,
 
                                 //fullName = combo.Has_Role.Employee.fullName,
                                 roleId = combo.roleId,
-                                // has_RoleId = combo.Has_Role.Role.Id,
+                                employeeId=combo.employeeId,
+                               // roleName =combo.Role.name,
+                                 //has_RoleId = combo.Has_Role.Role.Id,
                                 //totalDays = combo.totalDays,
 
                                 start_date = combo.start_date,
@@ -41,8 +43,7 @@ namespace MVC_Test.Repositories
                                 rate = combo.rate
 
                             };
-
-
+                            
                         }
                         return comboListView;
                     }
@@ -56,9 +57,7 @@ namespace MVC_Test.Repositories
         //get crew
         public Has_Role GetHas_Role(int? jobid, int hasroleid)
         {
-
-            if (jobid != null)
-            
+            if (jobid != null)            
             {
                 using (var context = new CloudbassContext())
                 {
@@ -73,16 +72,16 @@ namespace MVC_Test.Repositories
 
                     if (hasrole != null)
                     {
-                        var comboVm = new Has_Role()
-                        
+                        var comboVm = new Has_Role()                        
                         {
-
                             Id = hasrole.has_RoleId,
                             employeeId = hasrole.employeeId,
-
-                            // fullName = hasrole.Has_Role.Employee.fullName,
+                           // employeeName = hasrole.Employee.fullName,
+                                                       
                             roleId = hasrole.roleId,
-                            // has_RoleId = combo.Has_Role.Role.Id,
+
+                           // roleName = hasrole.Role.name,
+
                             rate = hasrole.rate,
 
                             start_date = hasrole.start_date,
@@ -105,19 +104,17 @@ namespace MVC_Test.Repositories
         //Save Crew//
         public Has_RoleEdit SaveHas_Role(Has_RoleEdit model)
         {
-           
-            if (model != null /*&& Guid.TryParse(model.JobId, out Guid jobid)*/ )
+
+            //if (model != null && Guid.TryParse(model.JobId, out Guid jobid))
+            if (model != null)
             {
                 using (var context = new CloudbassContext())
-                {
-                    List<Models.Has_Role> has_Roles = context.Has_Roles.ToList();
-                    List<Models.Role> roles = context.Roles.ToList();
-                    List<Models.Employee> employees = context.Employees.ToList();
+                {                    
                     var combo = new Models.Has_Role()
                     {
-
-                        employeeId = model.employeeId,
-                        roleId = model.roleId,
+                        //employeeId = model.employeeId,
+                        
+                        //roleId = model.roleId,
                        
                         start_date = model.start_date,
 

@@ -14,11 +14,15 @@ namespace MVC_Test.Models.ViewModels
         [Display(Name = "Job ID")]
         public string JobId { get; set; }
 
-        [Display(Name = "Role")]
+       // [Display(Name = "Role")]
         public int has_RoleId { get; set; }
-        //public string roleName { get; set; }
 
-       
+        public int employeeId { get; set; }
+        //public string employeeName { get; set; }
+
+         public int roleId { get; set; }
+       // public string roleName { get; set; }
+
 
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]

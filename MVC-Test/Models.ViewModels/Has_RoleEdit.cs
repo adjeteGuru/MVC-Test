@@ -8,14 +8,20 @@ namespace MVC_Test.Models.ViewModels
 {
     public class Has_RoleEdit
     {
+
+        
+
+      
         [Display(Name = "ID")]
         public int has_RoleId { get; set; }
 
         [Display(Name = "EmployeeID")]
-        public int employeeId { get; set; }
+        //public int employeeId { get; set; }
+        public string employeeName { get; set; }
 
         [Display(Name = "RoleID")]
-        public int roleId { get; set; }
+        // public int roleId { get; set; }
+        public string roleName { get; set; }
 
         [Display(Name = "Start date")]
         public DateTime? start_date { get; set; }

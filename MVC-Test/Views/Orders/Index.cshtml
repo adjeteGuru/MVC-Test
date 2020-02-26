@@ -93,14 +93,16 @@
                             </label>
 
                             @*<div class="col-md-4">
-                                <input type="text" id="clientId" name="clientId" placeholder="ClientID" class="form-control" />
-                            </div>*@
+                                    <input type="text" id="clientId" name="clientId" placeholder="ClientID" class="form-control" />
+                                </div>*@
 
-                            <div class="col-md-4">
-                            <select id="clientId" class="clientId form-control" onclick="LoadClient(this)">
-                            <option>Select client</option>
+                        <div class="col-md-4">                           
+                            <select id="clientId" class="form-control">
+                            <option value="Select">Select</option>
                             </select>
-                            </div>
+                        </div>
+
+                       
 
                             <label class="control-label col-md-2">
                                 Job Name
@@ -180,48 +182,46 @@
     </div>
 </div>
 
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" />
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
 @section scripts{
     <script>
 
-                var Client = []
-        //fetch Role from database
-
-        function LoadClient(element) {
-            if (Client.length == 0) {
-                    //ajax function for fetch data
-                $.ajax({
-                    type: "GET",
-                    url: '/Orders/getClient',
-                    success: function () {
-                        Client = data;
-                        //render role
-                        renderClient(element);
-                    }
-            
-                })
-            }
-
-            else {
-                //render role to the element
-                renderClient(element);
-            }
+        
+        function AjaxCall(data) {
+            return $.ajax({
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                type: 'POST',
+                url: "/Orders/getClient",
+                data: data
+               
+            });
         }
 
-        function renderClient(element) {
-            //declare ele in element
-            var $ele = $(element);
+        //fetch Role from database   
 
-            //make it empty
-            $ele.empty();
 
-            //then added new option for select level   
-            $ele.append($('<option/>').val('0').text('Select'));
+        AjaxCall('/Orders/getClient', null).done(function (response) {  
+            if (response.length > 0) {  
+                
+                $('#clientId').html('');  
+                var options = '';  
+                options += '<option value="Select">Select</option>';
+               
+                for (var i = 0; i < response.length; i++) {    
+                   
+                    options += '<option value="' + response[i] + '">' + response[i] + '</option>';  
+                }  
+                $('#clientId').append(options);  
+                
+            }  
+        }).fail(function (error) {  
+            alert(error.StatusText);  
+        });   
 
-             //then loop through the role for load all the Role faced from database to the dropdown list
-            $.each(Client, function (i, val){
-                $ele.append($('<option/>').val(val.Id).text(val.name));
-            })
-        }
 
         //END CLIENT FUNCTION
 
@@ -240,7 +240,7 @@
                 quantity = $("#quantity").val(),
                 detailsTableBody = $("#detailsTable tbody");
 
-            var bookingItem = '<tr><td>' + serviceName + '</td><td>' + quantity + '</td><td>' + rate + '</td><td>' + (parseFloat(rate) * parseInt(quantity)) + '</td><td><a data-itemId="0" href="#" class="deleteItem">Remove</a></td></tr>';
+            var bookingItem = '<tr><td>' + serviceName + '</td><td>' + quantity + '</td><td>' + rate + '</td><td>' + (parseFloat(rate) * parseFloat(quantity)) + '</td><td><a data-itemId="0" href="#" class="deleteItem">Remove</a></td></tr>';
             detailsTableBody.append(bookingItem);
             clearItem();
         });

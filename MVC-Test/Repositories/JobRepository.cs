@@ -15,13 +15,12 @@ namespace MVC_Test.Repositories
             using (var context = new CloudbassContext())
             {
                 List<Models.Jobs> jobs = new List<Models.Jobs>();
-                jobs = context.Jobs.AsNoTracking()
-                   //.Include(x => x.Client)
+                jobs = context.Jobs.AsNoTracking()                 
                                    .ToList();
 
                 if (jobs != null)
                 {
-                    List<Jobs> jobsDisplay = new List<Jobs>();
+                    List<Jobs> jobsList = new List<Jobs>();
 
                     foreach (var j in jobs)
                     {
@@ -44,20 +43,18 @@ namespace MVC_Test.Repositories
                             
                         };
 
-                        jobsDisplay.Add(jobDisplay);
+                        jobsList.Add(jobDisplay);
                     }
 
-                    return jobsDisplay;
+                    return jobsList;
                 }
 
                 return null;
             }
 
+        } //End getJobs
 
-        }
 
-        //this include here is to add Linq to find a job with jobId that matches the data about other objects 
-        //in the data's being returned the the db
         public JobEdit GetJob(Guid id)
         {
             if (id != Guid.Empty)
@@ -117,7 +114,6 @@ namespace MVC_Test.Repositories
 
             var job = new JobEdit()
             {
-                //Id = ToString(),
                 JobId = Guid.NewGuid().ToString(),
                
                 Clients = cRepo.GetClients(),
@@ -171,7 +167,7 @@ namespace MVC_Test.Repositories
                 }
             }
 
-            // Return false if customeredit == null or CustomerID is not a guid
+           
             return false;
         }
 
@@ -287,7 +283,7 @@ namespace MVC_Test.Repositories
                 }
             }
 
-            // Return false if customeredit == null or CustomerID is not a guid
+           
             return null;
         }
               
@@ -312,7 +308,9 @@ namespace MVC_Test.Repositories
                             {
                                 JobId = crew.JobId.ToString("D"),
                                 crewId = crew.crewId,
-                                has_RoleId = crew.Has_Role.Role.Id,
+                                //has_RoleId = crew.Has_Role.Role.Id,
+                                employeeName = crew.Has_Role.Employee.fullName,
+                                roleName = crew.Has_Role.Role.name,
                                 totalDays = crew.totalDays,
                                 
                                 start_date = crew.start_date,
@@ -348,8 +346,10 @@ namespace MVC_Test.Repositories
                         var crewVm = new Crew()
                         {
                             JobId = crew.JobId.ToString("D"),
-                           // has_RoleId = crew.has_RoleId,
-                            has_RoleId = crew.Has_Role.Role.Id,
+                          
+                            //has_RoleId = crew.Has_Role.Role.Id,
+                            employeeName =crew.Has_Role.Employee.fullName,
+                            roleName = crew.Has_Role.Role.name,
                             start_date = crew.start_date,
                             end_date = crew.end_date,
                             totalDays = crew.totalDays,
@@ -378,11 +378,12 @@ namespace MVC_Test.Repositories
                 {
 
                     var crew = new Models.Crew()
-                    {
+                    { //HOW TO SAVE SEPARATELY HAS_ROLE INTO 2 DIFERENT (ROLE & EMPLOYEE)
 
                         JobId = jobid,
-                        has_RoleId = model.has_RoleId,
-
+                        //has_RoleId = model.has_RoleId,
+                       // has_RoleId = model.employeeName,
+                        
                         start_date = model.start_date,
 
                         end_date = model.end_date,
@@ -401,7 +402,7 @@ namespace MVC_Test.Repositories
                 }
             }
 
-            // Return false if customeredit == null or CustomerID is not a guid
+            
             return null;
         }
 

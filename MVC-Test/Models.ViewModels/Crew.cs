@@ -9,8 +9,14 @@ namespace MVC_Test.Models.ViewModels
     public class Crew
     {
         public int crewId { get; set; }
-        public int has_RoleId { get; set; }
-        //public string roleName { get; set; }
+        // public int has_RoleId { get; set; }
+
+        //public int employeeId { get; set; }
+        public string employeeName { get; set; }
+
+        // public int roleId { get; set; }
+        public string roleName { get; set; }
+
         public string JobId { get; set; }
                 
 

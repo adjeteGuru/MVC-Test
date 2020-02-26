@@ -9,15 +9,47 @@ namespace MVC_Test.Controllers
 {
     public class OrdersController : Controller
     {
-        // GET: Orders
-        CloudbassContext db = new CloudbassContext();
+        
+        private CloudbassContext db = new CloudbassContext();
+        //constructor of the Order 
+        public OrdersController()
+        {
+            db = new CloudbassContext();
+        }
 
+        // GET: Orders
         public ActionResult Index()
         {
             List<Jobs> OrderAndJobList = db.Jobs.ToList();
             return View(OrderAndJobList);
         }
 
+        //public ActionResult getClient()
+        //{
+        //    IEnumerable<Models.ViewModels.Client> listClientsViewModel =
+        //        (from objClient in db.Clients
+        //         select new Models.ViewModels.Client()
+        //         {
+        //            Id =objClient.Id,
+        //            name=objClient.name
+        //         }).ToList();
+        //    return View(listClientsViewModel);
+        //}
+
+
+        public JsonResult getClient()
+        {
+
+            List<Client> clients = new List<Client>();
+
+            using (CloudbassContext dc = new CloudbassContext())
+            {
+                clients = dc.Clients.OrderBy(x => x.name).ToList();
+
+            }
+
+            return new JsonResult { Data = clients, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+        }
 
         public ActionResult SaveOrder(string text, String location,/* string client,*/ string coordinator, Order[] order)
         {
@@ -60,22 +92,6 @@ namespace MVC_Test.Controllers
         }
 
         //get client details
-        public JsonResult getClient()
-        {
-            List<Client> clients = new List<Client>();
-
-            //using (CloudbassContext dc = new CloudbassContext())
-            //{
-            //    clients = dc.Clients.OrderBy(x => x.name).ToList();
-            //}
-
-            using (CloudbassContext dc = new CloudbassContext())
-            {
-                clients = dc.Clients.OrderBy(x => x.name).ToList();
-            }
-
-
-            return new JsonResult { Data = clients, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
-        }
+       
     }
 }

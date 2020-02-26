@@ -166,16 +166,14 @@ namespace MVC_Test.Controllers
                 switch (model.SelectedBookingType)
                 {
                     case "Schedule":
-                        var scheduleModel = new ScheduleEdit()
-                       // var scheduleModel = new Schedule()
+                        var scheduleModel = new ScheduleEdit()                       
                         {
                             JobId = model.JobId
                         };
                         return PartialView("CreateSchedulePartial", scheduleModel);
 
                     case "Crew":
-                        var crewModel = new CrewEdit()
-                      
+                        var crewModel = new CrewEdit()                      
                         {
                             JobId = model.JobId
                         };
@@ -244,9 +242,8 @@ namespace MVC_Test.Controllers
             }
             return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
         }
-
-
-        // ADD ROLE
+        
+        // ADD Crew
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -255,6 +252,10 @@ namespace MVC_Test.Controllers
         {
             if (ModelState.IsValid)
             {
+                var roleList = new Has_RoleEdit();
+                var employeeList = new Has_RoleEdit();
+
+
                 var repo = new JobRepository();
                 var updatedModel = repo.SaveCrew(model);
                 if (updatedModel != null)
@@ -263,18 +264,13 @@ namespace MVC_Test.Controllers
                 }
             }
             return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        }
-
-        //END ROLE
-
-
-
+        }              
+                
         // ADD ROLE
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult CreateHas_RolePartial(Has_RoleEdit model)
-
         {
             if (ModelState.IsValid)
             {
@@ -287,11 +283,7 @@ namespace MVC_Test.Controllers
             }
             return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
         }
-
-        //END ROLE
-
-
-
+                
         // GET: job/Delete/5
         public ActionResult Delete(string id)
         {

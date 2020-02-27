@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace MVC_Test.Repositories
 {
@@ -17,7 +18,7 @@ namespace MVC_Test.Repositories
                 roles = context.Roles.AsNoTracking()
                     .ToList();
 
-                if(roles != null)
+                if (roles != null)
                 {
                     List<Role> rolesList = new List<Role>();
 
@@ -29,57 +30,74 @@ namespace MVC_Test.Repositories
                             name = role.name
                         };
                         rolesList.Add(currentDisplay);
-                                              
+
                     }
 
                     //return role as list
                     return rolesList;
                 }
                 return null;
-               
+
             }
 
         } //End getRoles
 
-        public RoleEdit GetRole(int? id)
-        {
-            //putting 
-            //RoleList= con
+        //public RoleEdit GetRole(int? id)
+        //{          
 
-            if (id != null)
-            {
-                using (var context = new CloudbassContext())
-                {
-                    var hasroles = context.Has_Roles.AsNoTracking()
-                        .Where(x => x.has_RoleId == id)
-                        .OrderBy(x => x.has_RoleId);
+        //    if (id != null)
+        //    {
+        //        using (var context = new CloudbassContext())
+        //        {
+        //            var hasroles = context.Has_Roles.AsNoTracking()
+        //                .Where(x => x.has_RoleId == id)
+        //                .OrderBy(x => x.has_RoleId);
 
-                    if (hasroles != null)
-                    {
-                        var roleListView = new RoleList();
-                        foreach (var hasrole in hasroles)
-                        {
-                            //var hasroleVm = new Role()
-                            var roleVm = new Models.Role()
-                            {
-                                Id = hasrole.has_RoleId,
-                                name = hasrole.Role.name
+        //            if (hasroles != null)
+        //            {
+        //                var roleListView = new RoleList();
+        //                foreach (var hasrole in hasroles)
+        //                {
+        //                    //var hasroleVm = new Role()
+        //                    var roleVm = new Models.Role()
+        //                    {
+        //                        Id = hasrole.has_RoleId,
+        //                        name = hasrole.Role.name
 
-                            };
-                            //Models.Role role = hasrole.Role;
+        //                    };
+        //                    //Models.Role role = hasrole.Role;
 
-                        }
-                        return NewMethod(roleListView);
-                    }
-                }
-            }
-            return null;
-        }
+        //                }
+        //                return RoleSearch(roleListView);
+        //            }
+        //        }
+        //    }
+        //    return null;
+        //}
 
-        private static RoleEdit NewMethod(RoleList roleListView)
-        {
-            return roleListView;
-        }
+        //public IEnumerable<SelectListItem> GetRoles()
+        //{
+        //    using (var context = new CloudbassContext())
+        //    {
+        //        List<SelectListItem> roles = context.Roles.AsNoTracking()
+        //            .OrderBy(cl => cl.name)
+        //            .Select(cl =>
+        //            new SelectListItem
+        //            {
+        //                Value = cl.Id.ToString(),
+        //                Text = cl.name
+        //            }
+        //            ).ToList();
+
+        //        var roletip = new SelectListItem()
+        //        {
+        //            Value = null,
+        //            Text = "---select role---"
+        //        };
+        //        roles.Insert(0, roletip);
+        //        return new SelectList(roles, "Value", "Text");
+        //    }
+        //}
     }
     
 }

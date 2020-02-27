@@ -35,6 +35,36 @@ namespace MVC_Test.Controllers
         }
 
 
+        //Get RoleList
+        [HttpGet]
+        public ActionResult GetRoles(int? id)
+        {
+            if (id != null)
+            {
+                var repo = new RoleRepository();
+
+                ICollection<Role> roles = repo.GetRoles();
+                return Json(roles, JsonRequestBehavior.AllowGet);
+            }
+            return null;
+        }
+
+        
+        //Get employeeList
+        [HttpGet]
+        public ActionResult GetEmployees(int? id)
+        {
+            if (id != null)
+            {
+                var repo = new EmployeeRepository();
+
+                // IEnumerable<SelectListItem> employees = repo.GetEmployees();
+                ICollection<Employee> employees = repo.GetEmployees();
+                return Json(employees, JsonRequestBehavior.AllowGet);
+            }
+            return null;
+        }
+
 
         // GET: Jobs/Details/5
         public ActionResult Details(int id)
@@ -88,8 +118,7 @@ namespace MVC_Test.Controllers
                     return View();
                 }
             }
-
-            
+                        
 
             return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
@@ -179,42 +208,7 @@ namespace MVC_Test.Controllers
                         };
 
                         return PartialView("CreateCrewPartial", crewModel);
-
-                    //case "Combo":
-                    //    var comboModel = new Has_RoleEdit()
-                    //    {
-                    //        jo = model.JobId
-                    //    };
-
-                    //    return PartialView("CreateHas_RolePartial", comboModel);
-
-                    //case "BookingHotel":
-                    //    var hotelModel = new BookingHotel()
-                    //    {
-                    //        JobId = model.JobId
-                    //    };
-
-                    //    return PartialView("CreateBookingHotelPartial", hotelModel);
-
-                    //    case "BookingKit":
-                    //        var kitModel = new BookingKit()
-                    //        {
-                    //            JobId = model.JobId
-                    //        };
-
-                    //        return PartialView("CreateBookingKitPartial", kitModel);
-
-
-                    //    case "BookingEquipment":
-                    //        var equipmentModel = new BookingEquipment()
-                    //        {
-                    //            JobId = model.JobId
-                    //        };
-                    //        //var countriesRepo = new CountriesRepository();
-                    //        //postalAddressModel.Countries = countriesRepo.GetCountries();
-                    //        //var regionsRepo = new RegionsRepository();
-                    //        //postalAddressModel.Regions = regionsRepo.GetRegions();
-                    //        return PartialView("CreateBookingPartial", equipmentModel);
+                                          
 
                     default:
                         return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -224,7 +218,6 @@ namespace MVC_Test.Controllers
         }
 
 
-       
 
         [HttpPost] 
         [ValidateAntiForgeryToken]
@@ -252,10 +245,6 @@ namespace MVC_Test.Controllers
         {
             if (ModelState.IsValid)
             {
-                var roleList = new Has_RoleEdit();
-                var employeeList = new Has_RoleEdit();
-
-
                 var repo = new JobRepository();
                 var updatedModel = repo.SaveCrew(model);
                 if (updatedModel != null)
@@ -266,23 +255,7 @@ namespace MVC_Test.Controllers
             return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
         }              
                 
-        // ADD ROLE
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult CreateHas_RolePartial(Has_RoleEdit model)
-        {
-            if (ModelState.IsValid)
-            {
-                var repo = new Has_RoleRepository();
-                var updatedModel = repo.SaveHas_Role(model);
-                if (updatedModel != null)
-                {
-                    return RedirectToAction("Edit", new { id = model.has_RoleId });
-                }
-            }
-            return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        }
+  
                 
         // GET: job/Delete/5
         public ActionResult Delete(string id)

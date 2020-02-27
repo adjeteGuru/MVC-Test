@@ -1,8 +1,7 @@
 ﻿@model MVC_Test.Models.ViewModels.CrewEdit
 
-@*@using (Html.BeginForm("CreateCrewPartial", "Jobs", FormMethod.Post))*@
+@using (Html.BeginForm("CreateCrewPartial", "Jobs", FormMethod.Post))
 
-@using (Html.BeginForm("CreateCrewPartial", "Jobs", FormMethod.Post, new { id = "Has_Role"}))
 {
     @Html.AntiForgeryToken()
 
@@ -28,30 +27,30 @@
 
 
 
-        <div class="form-group">
+        @*<div class="form-group">
                 @Html.LabelFor(model => model.has_RoleId, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
                     @Html.EditorFor(model => Model.has_RoleId, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => Model.has_RoleId, "", new { @class = "text-danger" })
                 </div>
-            </div>
+            </div>*@
 
 
-        @*<div class="form-group">
-            @Html.LabelFor(model => model.employeeName, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.SelectedemployeeId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.employeeName, new SelectList(Model.employeeName, "Value", "Text"), htmlAttributes: new { @class = "form-control", @id = "Has_Role" })
-                @Html.ValidationMessageFor(model => model.employeeName, "", new { @class = "text-danger" })
+                @Html.DropDownListFor(model => model.SelectedemployeeId, new SelectList(Model.Employees, "Value", "Text"), htmlAttributes: new { @class = "form-control", id = "Has_Role" })
+                @Html.ValidationMessageFor(model => model.SelectedemployeeId, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.roleName, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.SelectedroleId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.roleName, new SelectList(Model.roleName, "Value", "Text"), htmlAttributes: new { @class = "form-control", @id = "Has_Role" })
-                @Html.ValidationMessageFor(model => model.roleName, "", new { @class = "text-danger" })
+                @Html.DropDownListFor(model => model.SelectedroleId, new SelectList(Model.Roles, "Value", "Text"), htmlAttributes: new { @class = "form-control", id = "Has_Role" })
+                @Html.ValidationMessageFor(model => model.SelectedroleId, "", new { @class = "text-danger" })
             </div>
-        </div>*@
+        </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.start_date, htmlAttributes: new { @class = "control-label col-md-2" })

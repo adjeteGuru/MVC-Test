@@ -51,10 +51,10 @@ namespace MVC_Test.Controllers
             return new JsonResult { Data = clients, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
         }
 
-        public ActionResult SaveOrder(string text, String location,/* string client,*/ string coordinator, Order[] order)
+        public ActionResult SaveOrder(string text, String location, string client, string coordinator, Order[] order)
         {
             string result = "Error! Booking Is Not Complete!";
-            if (text != null && location != null/* && client != null*/ && coordinator != null && order != null)
+            if (text != null && location != null && client != null && coordinator != null && order != null)
             {
                 var jobId = Guid.NewGuid();
                 Jobs model = new Jobs();
@@ -64,7 +64,7 @@ namespace MVC_Test.Controllers
                 model.text = text;
                 model.Location = location;
                 model.DateCreated = DateTime.Now;
-               // model.ClientId = client;
+                model.ClientId = client;
                 //model.start_date = 
                 //model.TXDate = new DateTime();
                 //model.end_date = new DateTime();

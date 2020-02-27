@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace MVC_Test.Models.ViewModels
 {
@@ -15,12 +16,12 @@ namespace MVC_Test.Models.ViewModels
         public string JobId { get; set; }
 
        // [Display(Name = "Role")]
-        public int has_RoleId { get; set; }
+       // public int has_RoleId { get; set; }
 
-        public int employeeId { get; set; }
+        public int SelectedemployeeId { get; set; }
         //public string employeeName { get; set; }
 
-         public int roleId { get; set; }
+         public int SelectedroleId { get; set; }
        // public string roleName { get; set; }
 
 
@@ -39,6 +40,14 @@ namespace MVC_Test.Models.ViewModels
         [Display(Name = "Total days")]
         public double totalDays { get; set; }
         // public Decimal rate { get; set; }
-                
+
+        //public IEnumerable<SelectListItem> Roles { get; set; }
+        //public IEnumerable<SelectListItem> Employees { get; set; }
+
+        public ICollection<Employee> Employees { get; set; }
+
+        public ICollection<Role> Roles { get; set; }
+
+
     }
 }

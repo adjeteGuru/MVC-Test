@@ -172,8 +172,7 @@ namespace MVC_Test.Repositories
         }
 
         // START SCHEDULE LIST
-
-       
+               
         public ScheduleList GetScheduleList(Guid jobid)
         {
             if (jobid != Guid.Empty)
@@ -194,9 +193,7 @@ namespace MVC_Test.Repositories
                                 JobId = schedule.JobId.ToString("D"),
                                 Id = schedule.Id,
                                 text = schedule.text,
-                                SchType = schedule.SchType,
-                                //SchTypeId = schedule.SchTypeId,
-                                //SchTypName = schedule.SchType.name,
+                                SchType = schedule.SchType,                               
                                 start_date = schedule.start_date,
                                 end_date = schedule.end_date,
                                 //StatusName = schedule.ScheduleStatu.title
@@ -224,7 +221,6 @@ namespace MVC_Test.Repositories
                         .Where(x => x.JobId == jobid && x.Id == scheduleid)
                         .Single();
 
-
                     if (schedule != null)
                     {
                         var scheduleVm = new Schedule()
@@ -232,17 +228,13 @@ namespace MVC_Test.Repositories
                             JobId = schedule.JobId.ToString("D"),
                             SchType =schedule.SchType,
                             text = schedule.text?.Trim(),
-
                             start_date = schedule.start_date,
-                            end_date = schedule.end_date,
+                            end_date = schedule.end_date
 
-
-                        };
-                        
+                        };                        
                        
                         return scheduleVm;
                     }
-
                 }
             }
             return null;
@@ -252,37 +244,27 @@ namespace MVC_Test.Repositories
 
         //execute save
         public ScheduleEdit SaveSchedule(ScheduleEdit model)
-        {
-            
+        {            
 
             if (model != null && Guid.TryParse(model.JobId, out Guid jobid))
             {
                 using (var context = new CloudbassContext())
                 {
-
                     var schedule = new Models.Schedule()
-                    {                       
-
+                    { 
                         JobId = jobid,
                         text = model.text?.Trim(),
-
                         start_date = model.start_date,
-
                         end_date = model.end_date,
-                        SchType = model.SchType
-                        
+                        SchType = model.SchType                        
                     };
-
                    
                     context.Schedules.Add(schedule);
-                    context.SaveChanges();
-                                      
+                    context.SaveChanges();                                      
 
                     return model;
-
                 }
             }
-
            
             return null;
         }
@@ -309,16 +291,14 @@ namespace MVC_Test.Repositories
                                 JobId = crew.JobId.ToString("D"),
                                 crewId = crew.crewId,
                                 //has_RoleId = crew.Has_Role.Role.Id,
-                                employeeName = crew.Has_Role.Employee.fullName,
-                                roleName = crew.Has_Role.Role.name,
-                                totalDays = crew.totalDays,
-                                
+                                //employeeName = crew.Has_Role.Employee.fullName,
+                                //roleName = crew.Has_Role.Role.name,
+                                employeeId=crew.Has_Role.employeeId,
+                                roleId=crew.Has_Role.roleId,
+                                totalDays = crew.totalDays,                                
                                 start_date = crew.start_date,
-                                end_date = crew.end_date,
-                               
+                                end_date = crew.end_date                               
                             };
-
-
                         }
                         return crewListView;
                     }
@@ -336,11 +316,13 @@ namespace MVC_Test.Repositories
             {
                 using (var context = new CloudbassContext())
                 {
+                    var rolesRepo = new RoleRepository();
+                    var employeesRepo = new EmployeeRepository();
                     var crew = context.Crews.AsNoTracking()
                         .Where(x => x.JobId == jobid && x.crewId == crewid)
                         .Single();
 
-
+                    //HAS_ROLE MODEL SPLIT INTO EMPLOYEE & ROLE ADDED
                     if (crew != null)
                     {
                         var crewVm = new Crew()
@@ -348,12 +330,15 @@ namespace MVC_Test.Repositories
                             JobId = crew.JobId.ToString("D"),
                           
                             //has_RoleId = crew.Has_Role.Role.Id,
-                            employeeName =crew.Has_Role.Employee.fullName,
-                            roleName = crew.Has_Role.Role.name,
+                           // employeeName =crew.Has_Role.Employee.fullName,
+                            //roleName = crew.Has_Role.Role.name,
+                            employeeId=crew.Has_Role.employeeId,
+                            roleId=crew.Has_Role.roleId,
                             start_date = crew.start_date,
                             end_date = crew.end_date,
                             totalDays = crew.totalDays,
-
+                            Roles= rolesRepo.GetRoles(),
+                            Employees= employeesRepo.GetEmployees()
                         };
 
 
@@ -370,42 +355,31 @@ namespace MVC_Test.Repositories
         //Save Crew
         public CrewEdit SaveCrew(CrewEdit model)
         {
-
-
             if (model != null && Guid.TryParse(model.JobId, out Guid jobid))
             {
                 using (var context = new CloudbassContext())
-                {
-
+                {                   
                     var crew = new Models.Crew()
                     { //HOW TO SAVE SEPARATELY HAS_ROLE INTO 2 DIFERENT (ROLE & EMPLOYEE)
 
-                        JobId = jobid,
-                        //has_RoleId = model.has_RoleId,
-                       // has_RoleId = model.employeeName,
-                        
+                        JobId = jobid,                        
+                        //has_RoleId=model.SelectedemployeeId,
+                        //has_RoleId = model.SelectedroleId,
                         start_date = model.start_date,
-
                         end_date = model.end_date,
-                        totalDays = model.totalDays,
-
-
+                        totalDays = model.totalDays
                     };
 
-
+                    crew.Has_Role.Employee = context.Employees.Find(model.SelectedemployeeId);
+                    crew.Has_Role.Role = context.Roles.Find(model.SelectedroleId);
                     context.Crews.Add(crew);
                     context.SaveChanges();
-
-
-                    return model;
-
+                                       
                 }
             }
-
-            
+                        
             return null;
-        }
+        }               
 
-     
     }
 }

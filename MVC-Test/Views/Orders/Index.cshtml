@@ -212,8 +212,8 @@
                 options += '<option value="Select">Select</option>';
                
                 for (var i = 0; i < response.length; i++) {    
-                   
-                    options += '<option value="' + response[i] + '">' + response[i] + '</option>';  
+
+                    options += '<option value="' + response[i].Id + '">' + response[i].name + '</option>';  
                 }  
                 $('#clientId').append(options);  
                 
@@ -265,6 +265,7 @@
 
         //After Click Save Button Pass All Data View To Controller For Save Database
         function saveOrder(data) {
+            console.log(data)
             return $.ajax({
                 contentType: 'application/json; charset=utf-8',
                 dataType: 'json',
